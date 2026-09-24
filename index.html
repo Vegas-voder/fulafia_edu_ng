@@ -1,264 +1,67 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Federal University Lafia – WordPress Template Development Hub for Faculties, Departments, Directorates, Units and Centres.">
-  <title>FULAFIA – Template Development Hub</title>
+  <title>FULAFIA - Template Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --green:#00703C;--green-dark:#005a30;--green-light:#e6f4ed;
-      --gold:#C9A84C;--gold-light:#fdf6e3;--white:#ffffff;
-      --grey-50:#f8fafc;--grey-100:#f1f5f9;--grey-200:#e2e8f0;
-      --grey-600:#475569;--grey-800:#1e293b;--grey-900:#0f172a;
-      --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
-      --shadow-md:0 4px 16px rgba(0,0,0,.10);
-      --shadow-lg:0 10px 40px rgba(0,0,0,.15);
-      --radius:12px;--radius-lg:18px;--transition:.22s ease;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
-    html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--grey-50);color:var(--grey-800);line-height:1.6;-webkit-font-smoothing:antialiased;}
-    .topbar{background:var(--green-dark);color:rgba(255,255,255,.75);font-size:.78rem;padding:.45rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
-    .topbar a{color:rgba(255,255,255,.75);text-decoration:none}.topbar a:hover{color:#fff}
-    header{background:var(--white);border-bottom:3px solid var(--green);padding:1rem 2rem;display:flex;align-items:center;gap:1.2rem;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm);}
-    .logo-mark{width:58px;height:58px;flex-shrink:0;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-1px;}
-    .logo-text h1{font-size:1.15rem;font-weight:800;color:var(--green-dark);line-height:1.2}
-    .logo-text p{font-size:.72rem;color:var(--grey-600);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
-    .header-badge{margin-left:auto;background:var(--gold);color:var(--grey-900);font-size:.72rem;font-weight:700;padding:.28rem .75rem;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-    .hero{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;background-image:url('assets/hero.jpg');background-size:cover;background-position:center top;}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,80,40,.88) 0%,rgba(0,50,28,.65) 55%,rgba(0,30,15,.35) 100%);}
-    .hero-content{position:relative;z-index:2;max-width:700px;padding:3rem 2rem 3rem 4rem;}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.5);color:var(--gold);font-size:.78rem;font-weight:600;padding:.3rem .85rem;border-radius:20px;margin-bottom:1.2rem;letter-spacing:.08em;text-transform:uppercase;}
-    .hero h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:.9rem;}
-    .hero h2 span{color:var(--gold)}
-    .hero p{font-size:1rem;color:rgba(255,255,255,.82);max-width:520px;margin-bottom:1.8rem;line-height:1.7;}
-    .hero-stats{display:flex;gap:2rem;flex-wrap:wrap;}
-    .stat{display:flex;flex-direction:column}
-    .stat-num{font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1}
-    .stat-label{font-size:.75rem;color:rgba(255,255,255,.7);font-weight:500;margin-top:.2rem}
-    .section{padding:3.5rem 2rem}
-    .section-inner{max-width:1200px;margin:0 auto}
-    .section-header{text-align:center;margin-bottom:2.5rem}
-    .section-tag{display:inline-block;background:var(--green-light);color:var(--green-dark);font-size:.73rem;font-weight:700;padding:.28rem .85rem;border-radius:20px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;}
-    .section-header h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--grey-900);margin-bottom:.5rem;}
-    .section-header p{color:var(--grey-600);font-size:.95rem;max-width:580px;margin:0 auto}
-    .template-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
-    .card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1.5px solid var(--grey-200);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);text-decoration:none;color:inherit;display:flex;flex-direction:column;}
-    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--green);}
-    .card.gold:hover{border-color:var(--gold)}.card.teal:hover{border-color:#0891b2}.card.purple:hover{border-color:#7c3aed}.card.rose:hover{border-color:#e11d48}
-    .card-top{height:7px;background:var(--green);}
-    .card.gold .card-top{background:var(--gold)}.card.teal .card-top{background:#0891b2}.card.purple .card-top{background:#7c3aed}.card.rose .card-top{background:#e11d48}
-    .card-body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
-    .card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;background:var(--green-light);color:var(--green-dark);}
-    .card.gold .card-icon{background:var(--gold-light);color:#92691a}.card.teal .card-icon{background:#e0f2fe;color:#0369a1}.card.purple .card-icon{background:#f3e8ff;color:#6d28d9}.card.rose .card-icon{background:#fff1f2;color:#be123c}
-    .card h3{font-size:1.1rem;font-weight:700;color:var(--grey-900);margin-bottom:.4rem}
-    .card p{font-size:.85rem;color:var(--grey-600);line-height:1.6;flex:1}
-    .card-footer{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.6rem;border-top:1px solid var(--grey-100);background:var(--grey-50);}
-    .card-count{font-size:.75rem;font-weight:600;color:var(--grey-600);}
-    .card-cta{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:700;color:var(--green-dark);background:var(--green-light);padding:.35rem .9rem;border-radius:20px;transition:background var(--transition),color var(--transition);}
-    .card:hover .card-cta{background:var(--green);color:#fff}
-    .card.gold .card-cta{background:var(--gold-light);color:#92691a}.card.gold:hover .card-cta{background:var(--gold);color:var(--grey-900)}
-    .card.teal .card-cta{background:#e0f2fe;color:#0369a1}.card.teal:hover .card-cta{background:#0891b2;color:#fff}
-    .card.purple .card-cta{background:#f3e8ff;color:#6d28d9}.card.purple:hover .card-cta{background:#7c3aed;color:#fff}
-    .card.rose .card-cta{background:#fff1f2;color:#be123c}.card.rose:hover .card-cta{background:#e11d48;color:#fff}
-    .progress-section{background:var(--white);border:1.5px solid var(--grey-200);border-radius:var(--radius-lg);padding:2rem;margin-top:2.5rem;}
-    .progress-section h3{font-size:1rem;font-weight:700;color:var(--grey-900);margin-bottom:1.2rem}
-    .progress-row{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem}
-    .progress-label{font-size:.83rem;font-weight:600;color:#374151;min-width:140px}
-    .progress-bar{flex:1;height:8px;background:var(--grey-200);border-radius:4px;overflow:hidden}
-    .progress-fill{height:100%;border-radius:4px;background:var(--green);width:0%;transition:width 1.2s ease}
-    .progress-pct{font-size:.78rem;font-weight:700;color:var(--grey-600);min-width:35px;text-align:right}
-    .status-badge{font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:10px;text-transform:uppercase;letter-spacing:.05em;}
-    .status-done{background:#dcfce7;color:#16a34a}.status-wip{background:#fef9c3;color:#854d0e}.status-todo{background:var(--grey-100);color:var(--grey-600)}
-    footer{background:var(--grey-900);color:rgba(255,255,255,.6);text-align:center;font-size:.8rem;padding:1.5rem 2rem;border-top:3px solid var(--green);}
-    footer strong{color:var(--gold)}
-    @media(max-width:640px){
-      .hero-content{padding:2.5rem 1.5rem}.hero-stats{gap:1.2rem}
-      .section{padding:2.5rem 1rem}.topbar{font-size:.72rem;padding:.4rem 1rem}
-      header{padding:.8rem 1rem}.topbar span:first-child{display:none}
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: .3rem;
+      text-align: center;
     }
-    @media(prefers-reduced-motion:reduce){.card{transition:none}html{scroll-behavior:auto}}
+    p {
+      color: #64748b;
+      font-size: .9rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      width: 100%;
+      max-width: 300px;
+    }
+    a {
+      display: block;
+      background: #00703C;
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 600;
+      text-align: center;
+      padding: .8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    a:hover { background: #005a30; }
   </style>
 </head>
 <body>
-
-  <div class="topbar">
-    <span><i class="fa fa-map-marker-alt"></i> &nbsp;PMB 146, Lafia, Nasarawa State, Nigeria</span>
-    <span>
-      <a href="https://fulafia.edu.ng" target="_blank" rel="noopener"><i class="fa fa-globe"></i> &nbsp;fulafia.edu.ng</a>
-      &nbsp;|&nbsp; &#x1F6E0;&#xFE0F; WordPress Template Dev Hub
-    </span>
+  <h1>FULAFIA Template Hub</h1>
+  <p>Select a template to preview</p>
+  <div class="grid">
+    <a href="templates/faculty.html">Faculty</a>
+    <a href="templates/department.html">Department</a>
+    <a href="templates/directorate.html">Directorate</a>
+    <a href="templates/unit.html">Unit</a>
+    <a href="templates/centre.html">Centre</a>
   </div>
-
-  <header>
-    <div class="logo-mark">FUL</div>
-    <div class="logo-text">
-      <h1>Federal University Lafia</h1>
-      <p>WordPress Template Development Hub</p>
-    </div>
-    <span class="header-badge">Dev Preview</span>
-  </header>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">&#x1F4BB; Template Workshop</div>
-      <h2>Building the New Face of <span>FULAFIA</span> Online</h2>
-      <p>A centralised hub for all WordPress HTML templates — Faculties, Departments, Directorates, Units and Centres. Click any card below to preview and iterate.</p>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">5</span><span class="stat-label">Template Categories</span></div>
-        <div class="stat"><span class="stat-num">WP</span><span class="stat-label">WordPress Ready</span></div>
-        <div class="stat"><span class="stat-num">&#x26A1;</span><span class="stat-label">Speed Optimised</span></div>
-      </div>
-    </div>
-  </section>
-
-  <main>
-    <section class="section">
-      <div class="section-inner">
-
-        <div class="section-header">
-          <span class="section-tag">Templates</span>
-          <h2>Select a Template to Preview</h2>
-          <p>Each card opens the HTML template for that section. Click, review, and give feedback.</p>
-        </div>
-
-        <div class="template-grid">
-
-          <a href="templates/faculty.html" class="card" id="btn-faculty">
-            <div class="card-top"></div>
-            <div class="card-body">
-              <div class="card-icon"><i class="fa fa-university"></i></div>
-              <h3>Faculty Page</h3>
-              <p>Showcases the faculty overview, academic programmes, staff profiles, news and quick links for prospective students.</p>
-            </div>
-            <div class="card-footer">
-              <span class="card-count">Template 1 of 5</span>
-              <span class="card-cta">Open &nbsp;<i class="fa fa-arrow-right fa-xs"></i></span>
-            </div>
-          </a>
-
-          <a href="templates/department.html" class="card gold" id="btn-department">
-            <div class="card-top"></div>
-            <div class="card-body">
-              <div class="card-icon"><i class="fa fa-book-open"></i></div>
-              <h3>Department Page</h3>
-              <p>Detailed department profile with courses, research focus areas, staff directory, and student resources.</p>
-            </div>
-            <div class="card-footer">
-              <span class="card-count">Template 2 of 5</span>
-              <span class="card-cta">Open &nbsp;<i class="fa fa-arrow-right fa-xs"></i></span>
-            </div>
-          </a>
-
-          <a href="templates/directorate.html" class="card teal" id="btn-directorate">
-            <div class="card-top"></div>
-            <div class="card-body">
-              <div class="card-icon"><i class="fa fa-sitemap"></i></div>
-              <h3>Directorate Page</h3>
-              <p>Presents the directorate's mandate, leadership, services rendered, and key contact information.</p>
-            </div>
-            <div class="card-footer">
-              <span class="card-count">Template 3 of 5</span>
-              <span class="card-cta">Open &nbsp;<i class="fa fa-arrow-right fa-xs"></i></span>
-            </div>
-          </a>
-
-          <a href="templates/unit.html" class="card purple" id="btn-unit">
-            <div class="card-top"></div>
-            <div class="card-body">
-              <div class="card-icon"><i class="fa fa-layer-group"></i></div>
-              <h3>Unit Page</h3>
-              <p>Compact, focused template for administrative and academic units — functions, staff, and resources at a glance.</p>
-            </div>
-            <div class="card-footer">
-              <span class="card-count">Template 4 of 5</span>
-              <span class="card-cta">Open &nbsp;<i class="fa fa-arrow-right fa-xs"></i></span>
-            </div>
-          </a>
-
-          <a href="templates/centre.html" class="card rose" id="btn-centre">
-            <div class="card-top"></div>
-            <div class="card-body">
-              <div class="card-icon"><i class="fa fa-flask"></i></div>
-              <h3>Centre Page</h3>
-              <p>Research and innovation centre template highlighting mission, ongoing projects, publications, and partnerships.</p>
-            </div>
-            <div class="card-footer">
-              <span class="card-count">Template 5 of 5</span>
-              <span class="card-cta">Open &nbsp;<i class="fa fa-arrow-right fa-xs"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <div class="progress-section">
-          <h3>&#x1F4CB; &nbsp;Build Progress Tracker</h3>
-          <div class="progress-row">
-            <span class="progress-label">Faculty Template</span>
-            <div class="progress-bar"><div class="progress-fill" data-target="0"></div></div>
-            <span class="progress-pct">0%</span>
-            <span class="status-badge status-todo">To Do</span>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Department Template</span>
-            <div class="progress-bar"><div class="progress-fill" data-target="0"></div></div>
-            <span class="progress-pct">0%</span>
-            <span class="status-badge status-todo">To Do</span>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Directorate Template</span>
-            <div class="progress-bar"><div class="progress-fill" data-target="0"></div></div>
-            <span class="progress-pct">0%</span>
-            <span class="status-badge status-todo">To Do</span>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Unit Template</span>
-            <div class="progress-bar"><div class="progress-fill" data-target="0"></div></div>
-            <span class="progress-pct">0%</span>
-            <span class="status-badge status-todo">To Do</span>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Centre Template</span>
-            <div class="progress-bar"><div class="progress-fill" data-target="0"></div></div>
-            <span class="progress-pct">0%</span>
-            <span class="status-badge status-todo">To Do</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 <strong>Federal University Lafia</strong> &nbsp;|&nbsp; Template Development Hub &nbsp;|&nbsp; Internal use only.</p>
-  </footer>
-
-  <script>
-    (function(){
-      var fills=document.querySelectorAll('.progress-fill');
-      if(!('IntersectionObserver' in window)){return;}
-      var io=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){
-            var el=e.target;
-            el.style.width=(el.getAttribute('data-target')||'0')+'%';
-            io.unobserve(el);
-          }
-        });
-      },{threshold:0.2});
-      fills.forEach(function(f){io.observe(f);});
-    })();
-  </script>
-
 </body>
 </html>
