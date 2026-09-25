@@ -1,1 +1,464 @@
-<html><body><h1>Directorate</h1><a href=../index.html>Back</a></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Directorate of Management Information Systems – Federal University Lafia.">
+  <title>Directorate of MIS | FULAFIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#8B6914;--gold-light:#A07820;--gold-bg:#f5edd6;
+      --navy:#12192B;--navy-mid:#1e2d4a;
+      --white:#fff;--off-white:#f8f8f6;
+      --grey-100:#f1f2f4;--grey-300:#d1d5db;
+      --grey-500:#6b7280;--grey-800:#1f2937;
+      --body:#2c2c2c;--radius:6px;--t:.2s ease;--max-w:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;color:var(--body);background:var(--white);-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+    .section-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-left:3px solid var(--gold);padding-left:.55rem;margin-bottom:.65rem}
+    .section-title{font-size:clamp(1.35rem,2.5vw,1.9rem);font-weight:800;color:var(--navy);margin-bottom:2rem}
+
+    /* ── TOP BAR ──────────────────────────────────────── */
+    .top-bar{background:var(--navy);padding:.55rem 0;border-bottom:2px solid var(--gold)}
+    .top-bar .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .top-bar__brand{display:flex;align-items:center;gap:.65rem}
+    .top-bar__brand img{width:38px;height:38px;object-fit:contain}
+    .top-bar__name strong{display:block;font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
+    .top-bar__name span{font-size:.68rem;color:rgba(255,255,255,.6)}
+    .top-bar__contact{display:flex;align-items:center;gap:1.4rem}
+    .top-bar__contact a{font-size:.78rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.35rem;transition:color var(--t)}
+    .top-bar__contact a:hover{color:var(--gold-light)}
+    .top-bar__contact svg{width:13px;height:13px;flex-shrink:0;fill:var(--gold)}
+
+    /* ── DIR NAV ──────────────────────────────────────── */
+    .dir-nav{background:var(--white);border-bottom:1px solid var(--grey-300);position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .dir-nav .container{display:flex;align-items:stretch;justify-content:space-between;gap:1rem;position:relative}
+    .dir-nav__brand{display:flex;align-items:center;gap:.55rem;flex-shrink:0;padding:.55rem 0}
+    .dir-nav__brand img{width:30px;height:30px;object-fit:contain}
+    .dir-nav__name{font-size:.85rem;font-weight:800;color:var(--navy);white-space:nowrap}
+    .nav-links{display:flex;align-items:stretch}
+    .nav-links li{position:relative;display:flex}
+    .nav-links a{display:flex;align-items:center;padding:0 .9rem;font-size:.82rem;font-weight:600;color:var(--grey-800);white-space:nowrap;border-bottom:3px solid transparent;transition:color var(--t),border-color var(--t)}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold)}
+    .nav-links li.has-dropdown>a::after{content:'';display:inline-block;width:5px;height:5px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:.4rem;margin-top:-2px}
+    .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--white);border:1px solid var(--grey-300);border-top:2px solid var(--gold);min-width:200px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:100}
+    .dropdown-menu a{display:block;padding:.65rem 1.1rem;font-size:.82rem;font-weight:500;color:var(--grey-800);border-left:3px solid transparent;transition:background var(--t),border-color var(--t),color var(--t)}
+    .dropdown-menu a:hover{background:var(--gold-bg);border-left-color:var(--gold);color:var(--gold)}
+    .nav-links li.has-dropdown:hover .dropdown-menu{display:block}
+    .nav-toggle{display:none}
+    .nav-toggle-label{display:none;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;flex-shrink:0}
+    .nav-toggle-label span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:var(--t)}
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero{position:relative;overflow:hidden;height:clamp(280px,45vw,500px)}
+    .hero__img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .hero__overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(18,25,43,.88) 0%,rgba(18,25,43,.6) 55%,rgba(18,25,43,.18) 100%)}
+    .hero__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:2rem 1.25rem;max-width:calc(var(--max-w) + 2.5rem);margin:0 auto;left:0;right:0}
+    .hero__eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.45rem}
+    .hero__title{font-size:clamp(1.4rem,4vw,2.6rem);font-weight:800;color:var(--white);line-height:1.15;max-width:560px;margin-bottom:.35rem}
+    .hero__sub{font-size:.85rem;color:rgba(255,255,255,.7);font-weight:500;margin-bottom:1rem}
+    .hero__actions{display:flex;gap:.65rem;flex-wrap:wrap}
+    .hero__btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;padding:.55rem 1rem;border-radius:4px;transition:background var(--t),color var(--t);white-space:nowrap}
+    .hero__btn--primary{background:var(--gold);color:var(--white)}
+    .hero__btn--primary:hover{background:var(--gold-light)}
+
+    /* ── BREADCRUMB ───────────────────────────────────── */
+    .breadcrumb{background:var(--grey-100);padding:.55rem 0;border-bottom:1px solid var(--grey-300)}
+    .breadcrumb ol{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+    .breadcrumb li{font-size:.75rem;color:var(--grey-500);display:flex;align-items:center;gap:.4rem}
+    .breadcrumb li+li::before{content:'/';color:var(--grey-300)}
+    .breadcrumb a{color:var(--gold);font-weight:600}
+    .breadcrumb a:hover{color:var(--gold-light)}
+    .breadcrumb li:last-child{color:var(--grey-800);font-weight:600}
+
+    /* ── ABOUT / ACCORDION ────────────────────────────── */
+    .about{padding:3.5rem 0;background:var(--off-white)}
+    .accordion{display:flex;flex-direction:column;gap:.6rem;max-width:820px}
+    details.acc-item{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius);overflow:hidden}
+    details.acc-item[open]{border-color:var(--gold)}
+    details.acc-item[open] summary{color:var(--gold);border-bottom:1px solid var(--grey-100)}
+    summary.acc-header{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;font-size:.92rem;font-weight:700;color:var(--navy);user-select:none;-webkit-user-select:none;transition:background var(--t),color var(--t)}
+    summary.acc-header:hover{background:var(--gold-bg)}
+    summary.acc-header::-webkit-details-marker{display:none}
+    summary.acc-header::after{content:'+';font-size:1.2rem;font-weight:400;color:var(--gold);line-height:1;flex-shrink:0}
+    details.acc-item[open] summary.acc-header::after{content:'−'}
+    .acc-body{padding:1.1rem 1.2rem;font-size:.88rem;line-height:1.8;color:var(--grey-800)}
+    .acc-body p+p{margin-top:.75rem}
+    .acc-body ul{margin-top:.5rem;padding-left:1.1rem;list-style:disc}
+    .acc-body ul li{margin-bottom:.35rem}
+
+    /* ── DIRECTOR MESSAGE ─────────────────────────────── */
+    .director{padding:2.5rem 0;background:var(--white)}
+    .director .container{display:grid;grid-template-columns:230px 1fr;gap:2.5rem;align-items:center}
+    .director__photo-wrap{position:relative;flex-shrink:0}
+    .director__photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:var(--radius);display:block}
+    .director__accent{position:absolute;bottom:-8px;right:-8px;width:55px;height:55px;background:var(--gold);border-radius:var(--radius);z-index:-1}
+    .director__text blockquote{font-size:.92rem;line-height:1.85;color:var(--grey-800);font-style:italic;border-left:4px solid var(--gold);padding-left:1.1rem;margin-bottom:1.2rem}
+    .director__sig-line{width:40px;height:2px;background:var(--gold);margin-bottom:.5rem}
+    .director__sig strong{display:block;font-size:.9rem;font-weight:700;color:var(--navy)}
+    .director__sig span{font-size:.78rem;color:var(--grey-500)}
+
+    /* ── NEWS & EVENTS ────────────────────────────────── */
+    .news-events{padding:3.5rem 0;background:var(--off-white)}
+    .ne-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+    .ne-col__header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--grey-100)}
+    .ne-col__header h3{font-size:1.05rem;font-weight:800;color:var(--navy)}
+    .ne-list{display:flex;flex-direction:column;gap:1rem}
+    .ne-item{display:flex;align-items:stretch;border:1px solid var(--grey-300);border-radius:var(--radius);overflow:hidden;background:var(--white);transition:box-shadow var(--t)}
+    .ne-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .ne-item__thumb{flex-shrink:0;width:100px;overflow:hidden;display:flex}
+    .ne-item__thumb img{width:100%;object-fit:cover;display:block;flex:1;min-height:90px}
+    .ne-item__inner{display:flex;gap:.7rem;align-items:flex-start;padding:.8rem;flex:1}
+    .ne-item__date{flex-shrink:0;width:40px;background:var(--navy);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.35rem .2rem;align-self:flex-start}
+    .ne-item__date .day{font-size:1rem;font-weight:800;color:var(--gold-light);line-height:1}
+    .ne-item__date .mon{font-size:.58rem;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.04em}
+    .ne-item__body h4{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;line-height:1.3}
+    .ne-item__body p{font-size:.76rem;color:var(--grey-500);line-height:1.5}
+    .ne-item__body a.read-more{font-size:.73rem;font-weight:600;color:var(--gold);display:inline-block;margin-top:.3rem}
+    .ne-item__body a.read-more:hover{color:var(--gold-light)}
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
+    .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+    .footer__brand img{width:44px;height:44px;object-fit:contain;margin-bottom:.65rem}
+    .footer__brand p{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.55);max-width:280px}
+    .footer__col h4{font-size:.82rem;font-weight:700;color:var(--gold-light);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem}
+    .footer__col ul li{margin-bottom:.45rem}
+    .footer__col ul a{font-size:.8rem;color:rgba(255,255,255,.6);transition:color var(--t)}
+    .footer__col ul a:hover{color:var(--gold-light)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .footer__bottom p,.footer__bottom a{font-size:.75rem}
+    .footer__bottom a{color:var(--gold-light)}
+
+    /* ── TABLET ───────────────────────────────────────── */
+    @media(max-width:900px){
+      .director .container{grid-template-columns:180px 1fr;gap:1.5rem}
+      .ne-grid{grid-template-columns:1fr}
+      .footer .container{grid-template-columns:1fr 1fr}
+    }
+
+    /* ── MOBILE ───────────────────────────────────────── */
+    @media(max-width:680px){
+      .top-bar{padding:.4rem 0}
+      .top-bar__brand img{width:30px;height:30px}
+      .top-bar__name strong{font-size:.75rem}
+      .top-bar__name span{display:none}
+      .top-bar__contact a:first-child{display:none}
+      .top-bar__contact a{font-size:.75rem}
+      .nav-toggle-label{display:flex}
+      .dir-nav .container{padding:0 1rem}
+      .dir-nav__name{font-size:.78rem;overflow:hidden;text-overflow:ellipsis;max-width:52vw}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;border-top:2px solid var(--gold);box-shadow:0 12px 32px rgba(0,0,0,.15);z-index:200;max-height:80vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+      .nav-toggle:checked~.nav-links{display:flex}
+      .nav-links li{display:block;width:100%}
+      .nav-links a{padding:.9rem 1.25rem;border-bottom:1px solid var(--grey-100);border-left:3px solid transparent;font-size:.9rem;min-height:48px;border-bottom-color:transparent}
+      .nav-links a:hover,.nav-links a.active{border-left-color:var(--gold);background:var(--gold-bg)}
+      .dropdown-menu{display:block;position:static;box-shadow:none;border:none;border-left:3px solid var(--gold);margin-left:1rem;background:var(--grey-100)}
+      .dropdown-menu a{padding:.75rem 1.25rem;font-size:.85rem;min-height:44px}
+      .hero{height:clamp(240px,55vw,340px)}
+      .hero__overlay{background:linear-gradient(to top,rgba(18,25,43,.92) 0%,rgba(18,25,43,.55) 60%,rgba(18,25,43,.1) 100%)}
+      .hero__content{padding:1rem 1rem 1.5rem}
+      .hero__title{font-size:clamp(1.1rem,5vw,1.55rem)}
+      .about{padding:2.5rem 0}
+      summary.acc-header{padding:.8rem 1rem;font-size:.88rem}
+      .acc-body{padding:.9rem 1rem;font-size:.85rem}
+      .director{padding:2rem 0}
+      .director .container{grid-template-columns:1fr;gap:1.25rem}
+      .director__photo{aspect-ratio:16/9;object-position:top center}
+      .director__accent{display:none}
+      .news-events{padding:2.5rem 0}
+      .ne-item{flex-direction:column}
+      .ne-item__thumb{width:100%;height:110px}
+      .footer{padding:2rem 0 1.25rem}
+      .footer .container{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.25rem}
+    }
+    @media(max-width:380px){
+      .hero__btn{width:100%;justify-content:center}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="FULAFIA homepage">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </a>
+      <div class="top-bar__contact">
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Phone">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DIR NAV -->
+  <nav class="dir-nav" aria-label="Directorate navigation">
+    <div class="container">
+      <div class="dir-nav__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="30" height="30">
+        <span class="dir-nav__name">Directorate of MIS</span>
+      </div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="dir-staff.html">Staff</a></li>
+        <li class="has-dropdown">
+          <a href="#">Activities</a>
+          <ul class="dropdown-menu">
+            <li><a href="news-single.html">News &amp; Events</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Conferences</a></li>
+          </ul>
+        </li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 3. HERO -->
+  <section class="hero" aria-label="Directorate hero">
+    <img class="hero__img" src="../assets/mis.png" alt="Directorate of Management Information Systems" loading="eager" fetchpriority="high" decoding="async">
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Federal University Lafia</p>
+      <h1 class="hero__title">Directorate of Management Information Systems</h1>
+      <p class="hero__sub">Powering Institutional Excellence Through Technology</p>
+      <div class="hero__actions">
+        <a href="#about" class="hero__btn hero__btn--primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          About the Directorate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
+        <li>Directorate of MIS</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- 4. ABOUT / ACCORDION -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <span class="section-label">About the Directorate</span>
+      <h2 class="section-title" id="about-heading">Who We Are</h2>
+
+      <div class="accordion" role="list">
+
+        <details class="acc-item" open>
+          <summary class="acc-header">History</summary>
+          <div class="acc-body">
+            <p>The Directorate of Management Information Systems (MIS) was established to coordinate and manage the university&rsquo;s information and communication technology infrastructure. Since its inception, it has grown into a critical pillar of the university&rsquo;s operational and academic functions, overseeing the digital transformation of institutional processes.</p>
+            <p>Over the years, the Directorate has implemented key systems that underpin student records management, financial operations, academic reporting, and administrative communications across all units of the university.</p>
+          </div>
+        </details>
+
+        <details class="acc-item">
+          <summary class="acc-header">Vision &amp; Mission</summary>
+          <div class="acc-body">
+            <p><strong>Vision:</strong> To be the foremost technology-driven directorate in Nigerian university administration, enabling a seamless, data-informed, and innovative university experience.</p>
+            <p><strong>Mission:</strong> To provide reliable, secure, and efficient information systems and technology services that support the academic, research, and administrative goals of the Federal University Lafia.</p>
+          </div>
+        </details>
+
+        <details class="acc-item">
+          <summary class="acc-header">Programmes &amp; Services</summary>
+          <div class="acc-body">
+            <p>The Directorate offers a broad range of technology services and programmes to the university community, including:</p>
+            <ul>
+              <li>Student Information System (SIS) Administration</li>
+              <li>Enterprise Resource Planning (ERP) Support</li>
+              <li>University Website and Portal Management</li>
+              <li>Network Infrastructure and Cybersecurity</li>
+              <li>ICT Training and Capacity Building for Staff</li>
+              <li>Data Analytics and Institutional Reporting</li>
+              <li>Email and Communication Systems Management</li>
+            </ul>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DIRECTOR WELCOME -->
+  <section class="director" id="director" aria-labelledby="director-heading">
+    <div class="container">
+      <div class="director__photo-wrap">
+        <img class="director__photo" src="../assets/VC.jpg" alt="Director, MIS" loading="lazy" decoding="async">
+        <div class="director__accent" aria-hidden="true"></div>
+      </div>
+      <div class="director__text">
+        <span class="section-label">Director&rsquo;s Welcome</span>
+        <h2 class="section-title" id="director-heading">A Message from the Director</h2>
+        <blockquote>
+          &ldquo;Welcome to the Directorate of Management Information Systems at the Federal University Lafia. Our mandate is clear: to harness the power of information technology to enhance every facet of university life. Whether you are a student navigating the academic portal, a staff member accessing institutional data, or an administrator seeking reliable reporting tools — our team is here to ensure your experience is seamless, secure, and efficient. We remain committed to continuous innovation in service of our great institution.&rdquo;
+        </blockquote>
+        <div class="director__sig">
+          <div class="director__sig-line"></div>
+          <strong>[Director&rsquo;s Name]</strong>
+          <span>Director, Management Information Systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. NEWS & EVENTS -->
+  <section class="news-events" id="news" aria-labelledby="ne-heading">
+    <div class="container">
+      <span class="section-label">Stay Informed</span>
+      <h2 class="section-title" id="ne-heading">News &amp; Events</h2>
+      <div class="ne-grid">
+
+        <!-- LATEST NEWS -->
+        <div class="ne-col">
+          <div class="ne-col__header">
+            <h3>Latest News</h3>
+          </div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="ERP Upgrade" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">08</span><span class="mon">Oct</span></div>
+                <div class="ne-item__body">
+                  <h4>University ERP System Upgrade Completed</h4>
+                  <p>The Directorate has successfully completed a major upgrade to the university-wide ERP platform.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="ICT Training" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">20</span><span class="mon">Oct</span></div>
+                <div class="ne-item__body">
+                  <h4>ICT Capacity Building Workshop for Staff</h4>
+                  <p>All academic and non-academic staff are invited to the quarterly ICT training programme.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Portal" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">01</span><span class="mon">Nov</span></div>
+                <div class="ne-item__body">
+                  <h4>Student Portal Scheduled Maintenance Notice</h4>
+                  <p>The student portal will undergo routine maintenance on 1st November between 10 PM and 2 AM.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RECENT EVENTS -->
+        <div class="ne-col">
+          <div class="ne-col__header">
+            <h3>Recent Events</h3>
+          </div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Cybersecurity" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">12</span><span class="mon">Sep</span></div>
+                <div class="ne-item__body">
+                  <h4>Cybersecurity Awareness Week</h4>
+                  <p>The Directorate hosted a week-long awareness campaign on data security and safe digital practices.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Network Infrastructure" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">22</span><span class="mon">Aug</span></div>
+                <div class="ne-item__body">
+                  <h4>Campus-Wide Wi-Fi Infrastructure Expansion</h4>
+                  <p>New access points were deployed across six faculty buildings and the main library.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Data Centre" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">05</span><span class="mon">Jul</span></div>
+                <div class="ne-item__body">
+                  <h4>New University Data Centre Commissioned</h4>
+                  <p>The Vice-Chancellor commissioned the university&rsquo;s new data centre to strengthen data resilience.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>Directorate of Management Information Systems<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About the Directorate</a></li>
+          <li><a href="dir-staff.html">Staff Directory</a></li>
+          <li><a href="#news">News &amp; Events</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
