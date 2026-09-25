@@ -156,8 +156,9 @@
       .top-bar__brand img { width: 30px; height: 30px; }
       .top-bar__name strong { font-size: .75rem; }
       .top-bar__name span { display: none; }
-      .top-bar__contact a:first-child { display: none; }
-      .top-bar__contact a { font-size: .75rem; }
+      .top-bar__contact a:first-child { display: flex; }
+      .top-bar__contact a { font-size: 0; gap: 0; padding: 0; min-width: 36px; min-height: 36px; justify-content: center; }
+      .top-bar__contact svg { width: 20px; height: 20px; }
 
       /* Hamburger */
       .nav-toggle-label { display: flex; }
@@ -167,15 +168,17 @@
       /* Full-screen slide-down mobile nav */
       .nav-links {
         display: none;
-        position: absolute; top: 100%; left: 0; right: 0;
+        position: fixed; top: 0; right: 0; bottom: 0;
+        width: 82%; max-width: 300px;
         background: var(--white);
         flex-direction: column;
-        border-top: 2px solid var(--gold);
-        box-shadow: 0 12px 32px rgba(0,0,0,.15);
-        z-index: 200;
-        max-height: 80vh;
+        border-top: none;
+        border-left: 3px solid var(--gold);
+        box-shadow: -8px 0 40px rgba(0,0,0,.25);
+        z-index: 300;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        padding-top: 4rem;
       }
       .nav-toggle:checked ~ .nav-links { display: flex; }
 
