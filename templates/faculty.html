@@ -52,7 +52,9 @@
     /* FACULTY NAV */
     .faculty-nav { background: var(--white); border-bottom: 1px solid var(--grey-300); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
     .faculty-nav .container { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; position: relative; }
-    .faculty-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); padding: 1rem 1.2rem 1rem 0; white-space: nowrap; flex-shrink: 0; border-right: 2px solid var(--gold); }
+    .faculty-nav__brand { display: flex; align-items: center; gap: .55rem; flex-shrink: 0; padding: .55rem 0; }
+    .faculty-nav__brand img { width: 32px; height: 32px; object-fit: contain; }
+    .faculty-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); white-space: nowrap; }
     .nav-links { display: flex; align-items: stretch; }
     .nav-links li { position: relative; display: flex; }
     .nav-links a { display: flex; align-items: center; padding: 0 1rem; font-size: .85rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
@@ -70,23 +72,21 @@
     .hero { position: relative; overflow: hidden; height: clamp(300px, 45vw, 500px); }
     .hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
     .hero__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,25,43,.82) 0%, rgba(18,25,43,.55) 55%, rgba(18,25,43,.15) 100%); }
-    .hero__content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem 1.25rem; max-width: calc(var(--max-w) + 2.5rem); margin: 0 auto; left: 0; right: 0; }
+    .hero__content { position: absolute; bottom: 0; left: 0; right: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 2rem 1.25rem 2.5rem; max-width: calc(var(--max-w) + 2.5rem); margin: 0 auto; }
     .hero__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: .5rem; }
     .hero__title { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.15; max-width: 560px; margin-bottom: .5rem; }
     .hero__sub { font-size: .9rem; color: rgba(255,255,255,.7); font-weight: 500; }
 
     /* WELCOME */
-    .welcome { padding: 4rem 0; background: var(--white); }
-    .welcome .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3.5rem; align-items: center; }
-    .welcome__photo-wrap { position: relative; }
-    .welcome__photo-placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; }
-    .welcome__photo-placeholder svg { width: 56px; height: 56px; fill: rgba(255,255,255,.2); }
-    .welcome__photo-placeholder span { font-size: .8rem; color: rgba(255,255,255,.35); }
-    .welcome__accent { position: absolute; bottom: -10px; right: -10px; width: 80px; height: 80px; background: var(--gold); border-radius: var(--radius); z-index: -1; }
-    .welcome__text blockquote { font-size: clamp(.95rem, 1.5vw, 1.05rem); line-height: 1.9; color: var(--grey-800); font-style: italic; border-left: 4px solid var(--gold); padding-left: 1.2rem; margin-bottom: 1.5rem; }
-    .welcome__sig-line { width: 40px; height: 2px; background: var(--gold); margin-bottom: .6rem; }
-    .welcome__sig strong { display: block; font-size: .95rem; font-weight: 700; color: var(--navy); }
-    .welcome__sig span { font-size: .8rem; color: var(--grey-500); }
+    .welcome { padding: 2.5rem 0; background: var(--white); }
+    .welcome .container { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: center; }
+    .welcome__photo-wrap { position: relative; flex-shrink: 0; }
+    .welcome__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: var(--radius); display: block; }
+    .welcome__accent { position: absolute; bottom: -8px; right: -8px; width: 60px; height: 60px; background: var(--gold); border-radius: var(--radius); z-index: -1; }
+    .welcome__text blockquote { font-size: .92rem; line-height: 1.85; color: var(--grey-800); font-style: italic; border-left: 4px solid var(--gold); padding-left: 1.1rem; margin-bottom: 1.2rem; }
+    .welcome__sig-line { width: 40px; height: 2px; background: var(--gold); margin-bottom: .5rem; }
+    .welcome__sig strong { display: block; font-size: .9rem; font-weight: 700; color: var(--navy); }
+    .welcome__sig span { font-size: .78rem; color: var(--grey-500); }
 
     /* DEPARTMENTS */
     .departments { padding: 4rem 0; background: var(--off-white); }
@@ -95,12 +95,8 @@
     .dept-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.1); }
     .dept-card__name { background: var(--navy); color: var(--white); font-size: .82rem; font-weight: 700; padding: .65rem 1rem; border-bottom: 2px solid var(--gold); }
     .dept-card__img-wrap { aspect-ratio: 16/10; overflow: hidden; }
-    .dept-card__img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-    .dept-card__img-placeholder svg { width: 38px; height: 38px; opacity: .3; }
-    .c1 { background: linear-gradient(135deg,#1a2744,#2d4070); }
-    .c2 { background: linear-gradient(135deg,#1a3a2a,#2d5c40); }
-    .c3 { background: linear-gradient(135deg,#3a2010,#6b3a1a); }
-    .c4 { background: linear-gradient(135deg,#2a1a3a,#4a2d6b); }
+    .dept-card__img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .35s ease; display: block; }
+    .dept-card:hover .dept-card__img { transform: scale(1.05); }
     .dept-card__footer { padding: .75rem 1rem; font-size: .78rem; color: var(--gold); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: .3rem; }
 
     /* NEWS & EVENTS */
@@ -111,14 +107,18 @@
     .ne-badge { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 20px; }
     .ne-badge--upcoming { background: #e8f5e9; color: #2e7d32; }
     .ne-badge--past { background: #fdf3e0; color: #8B6914; }
-    .ne-list { display: flex; flex-direction: column; gap: 1.1rem; }
-    .ne-item { display: flex; gap: .9rem; align-items: flex-start; }
-    .ne-item__date { flex-shrink: 0; width: 46px; background: var(--navy); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .4rem .3rem; }
-    .ne-item__date .day { font-size: 1.1rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
-    .ne-item__date .mon { font-size: .6rem; font-weight: 600; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .05em; }
-    .ne-item__body h4 { font-size: .87rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; line-height: 1.3; }
-    .ne-item__body p { font-size: .78rem; color: var(--grey-500); line-height: 1.5; }
-    .ne-item__body a.read-more { font-size: .75rem; font-weight: 600; color: var(--gold); display: inline-block; margin-top: .35rem; }
+    .ne-list { display: flex; flex-direction: column; gap: 1rem; }
+    .ne-item { display: flex; gap: 0; align-items: stretch; border: 1px solid var(--grey-300); border-radius: var(--radius); overflow: hidden; background: var(--white); transition: box-shadow var(--t); }
+    .ne-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .ne-item__thumb { flex-shrink: 0; width: 100px; overflow: hidden; }
+    .ne-item__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ne-item__inner { display: flex; gap: .7rem; align-items: flex-start; padding: .8rem; flex: 1; }
+    .ne-item__date { flex-shrink: 0; width: 40px; background: var(--navy); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .35rem .2rem; align-self: flex-start; }
+    .ne-item__date .day { font-size: 1rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+    .ne-item__date .mon { font-size: .58rem; font-weight: 600; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .04em; }
+    .ne-item__body h4 { font-size: .84rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; line-height: 1.3; }
+    .ne-item__body p { font-size: .76rem; color: var(--grey-500); line-height: 1.5; }
+    .ne-item__body a.read-more { font-size: .73rem; font-weight: 600; color: var(--gold); display: inline-block; margin-top: .3rem; }
     .ne-item__body a.read-more:hover { color: var(--gold-light); }
 
     /* FOOTER */
@@ -136,8 +136,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .welcome .container { grid-template-columns: 1fr; gap: 2rem; }
-      .welcome__photo-placeholder { aspect-ratio: 16/7; }
+      .welcome .container { grid-template-columns: 200px 1fr; gap: 1.5rem; }
+      .welcome__photo { aspect-ratio: 3/4; }
       .ne-grid { grid-template-columns: 1fr; }
       .footer .container { grid-template-columns: 1fr 1fr; }
     }
@@ -184,7 +184,10 @@
   <!-- 2. FACULTY NAV -->
   <nav class="faculty-nav" aria-label="Faculty navigation">
     <div class="container">
-      <span class="faculty-nav__name">Faculty of Environmental Design</span>
+      <div class="faculty-nav__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="32" height="32">
+        <span class="faculty-nav__name">Faculty of Environmental Design</span>
+      </div>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -223,10 +226,7 @@
   <section class="welcome" id="about" aria-labelledby="welcome-heading">
     <div class="container">
       <div class="welcome__photo-wrap">
-        <div class="welcome__photo-placeholder" role="img" aria-label="Dean photo placeholder">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          <span>Dean&rsquo;s Photo</span>
-        </div>
+        <img class="welcome__photo" src="../assets/VC.jpg" alt="Dean, Faculty of Environmental Design" loading="lazy" decoding="async">
         <div class="welcome__accent" aria-hidden="true"></div>
       </div>
       <div class="welcome__text">
@@ -259,9 +259,7 @@
         <a href="#dept-arch" class="dept-card" id="dept-arch" aria-label="Department of Architecture">
           <div class="dept-card__name">Department of Architecture</div>
           <div class="dept-card__img-wrap">
-            <div class="dept-card__img-placeholder c1" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3L12 3z"/></svg>
-            </div>
+            <img class="dept-card__img" src="../assets/sample.jpg" alt="Architecture building" loading="lazy" decoding="async">
           </div>
           <div class="dept-card__footer">View Department &rarr;</div>
         </a>
@@ -269,9 +267,7 @@
         <a href="#dept-urp" class="dept-card" id="dept-urp" aria-label="Urban and Regional Planning">
           <div class="dept-card__name">Urban &amp; Regional Planning</div>
           <div class="dept-card__img-wrap">
-            <div class="dept-card__img-placeholder c2" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
+            <img class="dept-card__img" src="../assets/sample.jpg" alt="Urban planning" loading="lazy" decoding="async">
           </div>
           <div class="dept-card__footer">View Department &rarr;</div>
         </a>
@@ -279,9 +275,7 @@
         <a href="#dept-bt" class="dept-card" id="dept-bt" aria-label="Building Technology">
           <div class="dept-card__name">Department of Building Technology</div>
           <div class="dept-card__img-wrap">
-            <div class="dept-card__img-placeholder c3" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            </div>
+            <img class="dept-card__img" src="../assets/sample.jpg" alt="Building technology" loading="lazy" decoding="async">
           </div>
           <div class="dept-card__footer">View Department &rarr;</div>
         </a>
@@ -289,9 +283,7 @@
         <a href="#dept-em" class="dept-card" id="dept-em" aria-label="Estate Management">
           <div class="dept-card__name">Department of Estate Management</div>
           <div class="dept-card__img-wrap">
-            <div class="dept-card__img-placeholder c4" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            </div>
+            <img class="dept-card__img" src="../assets/sample.jpg" alt="Estate management" loading="lazy" decoding="async">
           </div>
           <div class="dept-card__footer">View Department &rarr;</div>
         </a>
@@ -315,27 +307,36 @@
           </div>
           <ul class="ne-list">
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">12</span><span class="mon">Oct</span></div>
-              <div class="ne-item__body">
-                <h4>Faculty Research Colloquium 2025</h4>
-                <p>Annual cross-departmental colloquium showcasing ongoing research projects across the Faculty.</p>
-                <a href="#" class="read-more">Read more &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Faculty Research Colloquium" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">12</span><span class="mon">Oct</span></div>
+                <div class="ne-item__body">
+                  <h4>Faculty Research Colloquium 2025</h4>
+                  <p>Annual cross-departmental colloquium showcasing ongoing research across the Faculty.</p>
+                  <a href="#" class="read-more">Read more &rarr;</a>
+                </div>
               </div>
             </li>
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">03</span><span class="mon">Nov</span></div>
-              <div class="ne-item__body">
-                <h4>New Postgraduate Programmes Announced</h4>
-                <p>M.Sc. programmes in Architecture and Urban Planning open for applications for 2025/2026 session.</p>
-                <a href="#" class="read-more">Read more &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Postgraduate programmes" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">03</span><span class="mon">Nov</span></div>
+                <div class="ne-item__body">
+                  <h4>New Postgraduate Programmes Announced</h4>
+                  <p>M.Sc. in Architecture and Urban Planning open for 2025/2026 applications.</p>
+                  <a href="#" class="read-more">Read more &rarr;</a>
+                </div>
               </div>
             </li>
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">18</span><span class="mon">Nov</span></div>
-              <div class="ne-item__body">
-                <h4>Industry Partnership Summit</h4>
-                <p>Top firms from the built environment sector will engage Faculty staff and final-year students.</p>
-                <a href="#" class="read-more">Read more &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Industry Partnership Summit" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">18</span><span class="mon">Nov</span></div>
+                <div class="ne-item__body">
+                  <h4>Industry Partnership Summit</h4>
+                  <p>Top built-environment firms will engage Faculty staff and final-year students.</p>
+                  <a href="#" class="read-more">Read more &rarr;</a>
+                </div>
               </div>
             </li>
           </ul>
@@ -349,27 +350,36 @@
           </div>
           <ul class="ne-list">
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">05</span><span class="mon">Sep</span></div>
-              <div class="ne-item__body">
-                <h4>2025/2026 Session Orientation</h4>
-                <p>New students were officially welcomed into the Faculty by the Dean and departmental heads.</p>
-                <a href="#" class="read-more">View highlights &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Session Orientation" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">05</span><span class="mon">Sep</span></div>
+                <div class="ne-item__body">
+                  <h4>2025/2026 Session Orientation</h4>
+                  <p>New students were welcomed by the Dean and departmental heads.</p>
+                  <a href="#" class="read-more">View highlights &rarr;</a>
+                </div>
               </div>
             </li>
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">20</span><span class="mon">Aug</span></div>
-              <div class="ne-item__body">
-                <h4>Architecture Design Studio Exhibition</h4>
-                <p>Final-year students presented design projects at the Annual Studio Exhibition.</p>
-                <a href="#" class="read-more">View highlights &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Studio Exhibition" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">20</span><span class="mon">Aug</span></div>
+                <div class="ne-item__body">
+                  <h4>Architecture Design Studio Exhibition</h4>
+                  <p>Final-year students presented projects at the Annual Studio Exhibition.</p>
+                  <a href="#" class="read-more">View highlights &rarr;</a>
+                </div>
               </div>
             </li>
             <li class="ne-item">
-              <div class="ne-item__date"><span class="day">14</span><span class="mon">Jul</span></div>
-              <div class="ne-item__body">
-                <h4>Estate Management Field Trip &mdash; Abuja</h4>
-                <p>Students visited major real estate developments across the Federal Capital Territory.</p>
-                <a href="#" class="read-more">View highlights &rarr;</a>
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Field Trip Abuja" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">14</span><span class="mon">Jul</span></div>
+                <div class="ne-item__body">
+                  <h4>Estate Management Field Trip &mdash; Abuja</h4>
+                  <p>Students visited major real estate developments across the FCT.</p>
+                  <a href="#" class="read-more">View highlights &rarr;</a>
+                </div>
               </div>
             </li>
           </ul>
