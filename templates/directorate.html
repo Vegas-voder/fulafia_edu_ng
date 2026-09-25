@@ -127,15 +127,6 @@
     .ne-item__body a.read-more:hover{color:var(--gold-light)}
 
     /* ── FOOTER ───────────────────────────────────────── */
-
-    /* CONTACT CTA */
-    .contact-cta{padding:3.5rem 0;background:var(--off-white)}
-    .cta-inner{background:var(--navy);border-radius:var(--radius);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-left:4px solid var(--gold)}
-    .cta-text h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.5rem}
-    .cta-text p{color:rgba(255,255,255,.8);font-size:.9rem}
-    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:700;padding:.8rem 1.5rem;border-radius:30px;transition:background var(--t)}
-    .cta-btn:hover{background:var(--gold-light)}
-    .cta-btn svg{width:16px;height:16px;fill:currentColor}
     .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
     .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
     .footer__brand img{width:44px;height:44px;object-fit:contain;margin-bottom:.65rem}
@@ -149,6 +140,16 @@
     .footer__bottom a{color:var(--gold-light)}
 
     /* ── TABLET ───────────────────────────────────────── */
+
+    /* CONTACT CTA */
+    .contact-cta{padding:3.5rem 0;background:var(--off-white)}
+    .cta-inner{background:var(--navy);border-radius:var(--radius);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-left:4px solid var(--gold)}
+    .cta-text h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.5rem}
+    .cta-text p{color:rgba(255,255,255,.8);font-size:.9rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:700;padding:.8rem 1.5rem;border-radius:30px;transition:background var(--t)}
+    .cta-btn:hover{background:var(--gold-light)}
+    .cta-btn svg{width:16px;height:16px;fill:currentColor}
+
     @media(max-width:900px){
       .director .container{grid-template-columns:180px 1fr;gap:1.5rem}
       .ne-grid{grid-template-columns:1fr}
@@ -194,6 +195,8 @@
     }
     @media(max-width:380px){
       .hero__btn{width:100%;justify-content:center}
+    }
+    @media(max-width:680px){
     }
     @media(max-width:680px){
       .contact-cta{padding:2.5rem 0}
