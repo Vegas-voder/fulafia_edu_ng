@@ -96,6 +96,14 @@
     .staff-card__role{font-size:.72rem;color:var(--grey-500);line-height:1.4}
     .staff-card__gold{display:block;width:24px;height:2px;background:var(--gold);margin:.45rem auto 0}
 
+    /* CONTACT CTA */
+    .contact-cta{padding:3.5rem 0;background:var(--off-white)}
+    .cta-inner{background:var(--navy);border-radius:var(--radius);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-left:4px solid var(--gold)}
+    .cta-text h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.5rem}
+    .cta-text p{color:rgba(255,255,255,.8);font-size:.9rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:700;padding:.8rem 1.5rem;border-radius:30px;transition:background var(--t)}
+    .cta-btn:hover{background:var(--gold-light)}
+    .cta-btn svg{width:16px;height:16px;fill:currentColor}
     /* FOOTER */
     .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
     .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
@@ -143,6 +151,12 @@
     }
     @media(max-width:380px){
       .staff-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .contact-cta{padding:2.5rem 0}
+      .cta-inner{padding:1.5rem;flex-direction:column;align-items:flex-start;text-align:left;gap:1.5rem}
+      .cta-text h2{font-size:1.25rem}
+      .cta-btn{width:100%;justify-content:center}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
   </style>
@@ -379,7 +393,23 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 id="cta-heading">Need More Information?</h2>
+          <p>Get in touch with us for any inquiries or assistance.</p>
+        </div>
+        <a href="tel:+234123456789" class="cta-btn">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          Contact: +234 123 456 789
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__brand">

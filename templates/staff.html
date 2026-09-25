@@ -134,6 +134,12 @@
     @media(max-width:360px){
       .staff-grid{grid-template-columns:1fr 1fr}
     }
+    @media(max-width:680px){
+      .contact-cta{padding:2.5rem 0}
+      .cta-inner{padding:1.5rem;flex-direction:column;align-items:flex-start;text-align:left;gap:1.5rem}
+      .cta-text h2{font-size:1.25rem}
+      .cta-btn{width:100%;justify-content:center}
+    }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
   </style>
 </head>
@@ -348,7 +354,23 @@
     </div><!-- /.container -->
   </section>
 
-  <!-- 4. FOOTER -->
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 id="cta-heading">Need More Information?</h2>
+          <p>Get in touch with us for any inquiries or assistance.</p>
+        </div>
+        <a href="tel:+234123456789" class="cta-btn">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          Contact: +234 123 456 789
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__brand">

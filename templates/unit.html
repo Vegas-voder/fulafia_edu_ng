@@ -126,6 +126,14 @@
     .ne-item__body a.read-more{font-size:.73rem;font-weight:600;color:var(--gold);display:inline-block;margin-top:.3rem}
     .ne-item__body a.read-more:hover{color:var(--gold-light)}
 
+    /* CONTACT CTA */
+    .contact-cta{padding:3.5rem 0;background:var(--off-white)}
+    .cta-inner{background:var(--navy);border-radius:var(--radius);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-left:4px solid var(--gold)}
+    .cta-text h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.5rem}
+    .cta-text p{color:rgba(255,255,255,.8);font-size:.9rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:700;padding:.8rem 1.5rem;border-radius:30px;transition:background var(--t)}
+    .cta-btn:hover{background:var(--gold-light)}
+    .cta-btn svg{width:16px;height:16px;fill:currentColor}
     /* FOOTER */
     .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
     .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
@@ -185,7 +193,23 @@
     @media(max-width:380px){
       .hero__btn{width:100%;justify-content:center}
     }
+    @media(max-width:680px){
+      .contact-cta{padding:2.5rem 0}
+      .cta-inner{padding:1.5rem;flex-direction:column;align-items:flex-start;text-align:left;gap:1.5rem}
+      .cta-text h2{font-size:1.25rem}
+      .cta-btn{width:100%;justify-content:center}
+    }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+
+    /* CONTACT STRIP */
+    .contact-strip{background:var(--navy-mid,#1e2d4a);border-top:1px solid rgba(255,255,255,.08);border-bottom:3px solid var(--gold);padding:1.75rem 0}
+    .contact-strip .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .contact-strip__label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+    .contact-strip__info{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+    .contact-strip__item{display:flex;align-items:center;gap:.5rem}
+    .contact-strip__item svg{width:15px;height:15px;fill:var(--gold);flex-shrink:0}
+    .contact-strip__item a{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.88);transition:color var(--t)}
+    .contact-strip__item a:hover{color:var(--gold-light)}
   </style>
 </head>
 <body>
@@ -444,7 +468,41 @@
     </div>
   </section>
 
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 id="cta-heading">Need More Information?</h2>
+          <p>Get in touch with us for any inquiries or assistance.</p>
+        </div>
+        <a href="tel:+234123456789" class="cta-btn">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          Contact: +234 123 456 789
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- 7. FOOTER -->
+
+  <!-- CONTACT STRIP -->
+  <div class="contact-strip" aria-label="Contact information">
+    <div class="container">
+      <div class="contact-strip__label">Contact Us</div>
+      <div class="contact-strip__info">
+        <div class="contact-strip__item">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          <a href="tel:+2341234567890">+234 123 456 7890</a>
+        </div>
+        <div class="contact-strip__item">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          <a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__brand">
