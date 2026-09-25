@@ -3,65 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FULAFIA - Template Hub</title>
+  <title>FULAFIA – Template Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Inter, system-ui, sans-serif;
-      background: #f1f5f9;
+      background: #f8f8f6;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .site-header {
+      background: #12192B;
+      border-bottom: 3px solid #8B6914;
+      padding: .9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .site-header img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
+    .site-header__text strong {
+      display: block;
+      font-size: .9rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .site-header__text span {
+      font-size: .68rem;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .03em;
+    }
+
+    /* Main content */
+    main {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 3rem 1.5rem;
     }
-    h1 {
-      font-size: 1.4rem;
+
+    .hub-label {
+      font-size: .7rem;
       font-weight: 700;
-      color: #0f172a;
-      margin-bottom: .3rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #8B6914;
+      border-left: 3px solid #8B6914;
+      padding-left: .5rem;
+      margin-bottom: .75rem;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #12192B;
+      margin-bottom: .35rem;
       text-align: center;
     }
-    p {
-      color: #64748b;
-      font-size: .9rem;
-      margin-bottom: 2rem;
+
+    .sub {
+      font-size: .85rem;
+      color: #6b7280;
+      margin-bottom: 2.2rem;
       text-align: center;
     }
+
+    /* Buttons */
     .grid {
       display: flex;
       flex-direction: column;
-      gap: .8rem;
+      gap: .75rem;
       width: 100%;
       max-width: 300px;
     }
-    a {
-      display: block;
-      background: #00703C;
-      color: #fff;
-      font-size: .95rem;
+
+    a.btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #12192B;
+      color: #ffffff;
+      font-size: .9rem;
       font-weight: 600;
-      text-align: center;
-      padding: .8rem 1.5rem;
-      border-radius: 8px;
+      padding: .85rem 1.2rem;
+      border-radius: 6px;
       text-decoration: none;
+      border-left: 4px solid #8B6914;
+      transition: background .18s, border-color .18s;
     }
-    a:hover { background: #005a30; }
+    a.btn:hover {
+      background: #1e2d4a;
+      border-left-color: #A07820;
+    }
+    a.btn::after {
+      content: '→';
+      font-size: .95rem;
+      color: #8B6914;
+    }
+
+    /* Footer */
+    footer {
+      background: #12192B;
+      border-top: 2px solid #8B6914;
+      text-align: center;
+      padding: .85rem 1rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,.4);
+    }
+    footer strong { color: rgba(255,255,255,.7); }
   </style>
 </head>
 <body>
-  <h1>FULAFIA Template Hub</h1>
-  <p>Select a template to preview</p>
-  <div class="grid">
-    <a href="templates/faculty.html">Faculty</a>
-    <a href="templates/department.html">Department</a>
-    <a href="templates/directorate.html">Directorate</a>
-    <a href="templates/unit.html">Unit</a>
-    <a href="templates/centre.html">Centre</a>
-  </div>
+
+  <header class="site-header">
+    <img src="assets/Logo.png" alt="Federal University Lafia logo" width="42" height="42">
+    <div class="site-header__text">
+      <strong>Federal University Lafia</strong>
+      <span>WordPress Template Development Hub</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="hub-label">Dev Preview</p>
+    <h1>Select a Template</h1>
+    <p class="sub">Click to open and review each page template</p>
+
+    <div class="grid">
+      <a href="templates/faculty.html" class="btn">Faculty</a>
+      <a href="templates/department.html" class="btn">Department</a>
+      <a href="templates/directorate.html" class="btn">Directorate</a>
+      <a href="templates/unit.html" class="btn">Unit</a>
+      <a href="templates/centre.html" class="btn">Centre</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 <strong>Federal University Lafia</strong> &mdash; Internal dev use only
+  </footer>
+
 </body>
 </html>
