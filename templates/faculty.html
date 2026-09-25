@@ -125,6 +125,33 @@
     .ne-item__body a.read-more { font-size: .73rem; font-weight: 600; color: var(--gold); display: inline-block; margin-top: .3rem; }
     .ne-item__body a.read-more:hover { color: var(--gold-light); }
 
+    /* ABOUT / ACCORDION */
+    .about { padding: 3.5rem 0; background: var(--off-white); }
+    .accordion { display: flex; flex-direction: column; gap: .6rem; max-width: 820px; }
+    details.acc-item { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); overflow: hidden; }
+    details.acc-item[open] { border-color: var(--gold); }
+    details.acc-item[open] summary { color: var(--gold); border-bottom: 1px solid var(--grey-100); }
+    summary.acc-header { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.2rem; font-size: .92rem; font-weight: 700; color: var(--navy); user-select: none; -webkit-user-select: none; transition: background var(--t), color var(--t); }
+    summary.acc-header:hover { background: var(--gold-bg); }
+    summary.acc-header::-webkit-details-marker { display: none; }
+    summary.acc-header::after { content: '+'; font-size: 1.2rem; font-weight: 400; color: var(--gold); line-height: 1; flex-shrink: 0; }
+    details.acc-item[open] summary.acc-header::after { content: '\2212'; }
+    .acc-body { padding: 1.1rem 1.2rem; font-size: .88rem; line-height: 1.8; color: var(--grey-800); }
+    .acc-body p + p { margin-top: .75rem; }
+    .acc-body ul { margin-top: .5rem; padding-left: 1.1rem; list-style: disc; }
+    .acc-body ul li { margin-bottom: .35rem; }
+
+    /* MANAGEMENT GRID */
+    .management { padding: 3.5rem 0; background: var(--white); }
+    .mgt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+    .mgt-card { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); overflow: hidden; transition: box-shadow var(--t), border-color var(--t); display: flex; flex-direction: column; }
+    .mgt-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); border-color: var(--gold); }
+    .mgt-card__photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top; background: var(--grey-100); display: block; }
+    .mgt-card__info { padding: 1rem; }
+    .mgt-card__name { font-size: .92rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+    .mgt-card__title { font-size: .72rem; color: var(--gold); font-weight: 700; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
+    .mgt-card__role { font-size: .78rem; color: var(--grey-500); line-height: 1.4; }
+
     /* FOOTER */
     .footer { background: var(--navy); border-top: 3px solid var(--gold); color: rgba(255,255,255,.65); padding: 2.5rem 0 1.5rem; }
     .footer .container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -197,9 +224,8 @@
         background: var(--gold-bg);
       }
 
-      /* Mobile dropdowns: always visible when parent open */
       .dropdown-menu {
-        display: block;
+        display: none;
         position: static;
         box-shadow: none;
         border: none;
@@ -207,6 +233,7 @@
         margin-left: 1rem;
         background: var(--grey-100);
       }
+      .nav-links li.has-dropdown:focus-within .dropdown-menu { display: block; }
       .dropdown-menu a { padding: .75rem 1.25rem; font-size: .85rem; min-height: 44px; }
 
       /* Hero: tighter, text always readable */
@@ -238,6 +265,12 @@
       .ne-item { flex-direction: column; }
       .ne-item__thumb { width: 100%; height: 120px; }
       .ne-item__inner { padding: .7rem; }
+
+      .about { padding: 2.5rem 0; }
+      summary.acc-header { padding: .8rem 1rem; font-size: .88rem; }
+      .acc-body { padding: .9rem 1rem; font-size: .85rem; }
+      .management { padding: 2.5rem 0; }
+      .mgt-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
 
       /* Footer */
       .footer { padding: 2rem 0 1.25rem; }
@@ -332,7 +365,7 @@
   </section>
 
   <!-- 4. DEAN'S WELCOME -->
-  <section class="welcome" id="about" aria-labelledby="welcome-heading">
+  <section class="welcome" id="dean-welcome" aria-labelledby="welcome-heading">
     <div class="container">
       <div class="welcome__photo-wrap">
         <img class="welcome__photo" src="../assets/VC.jpg" alt="Dean, Faculty of Environmental Design" loading="lazy" decoding="async">
@@ -611,8 +644,8 @@
           <li><a href="#">Home</a></li>
           <li><a href="#about">About the Faculty</a></li>
           <li><a href="#departments">Departments</a></li>
-          <li><a href="#staff">Staff Directory</a></li>
-          <li><a href="management.html">Faculty Management</a></li>
+          <li><a href="#management">Management Team</a></li>
+          <li><a href="#news">News &amp; Events</a></li>
         </ul>
       </div>
       <div class="footer__col">
