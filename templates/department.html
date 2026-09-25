@@ -203,7 +203,8 @@
       .nav-links li{display:block;width:100%}
       .nav-links a{padding:.9rem 1.25rem;border-bottom:1px solid var(--grey-100);border-left:3px solid transparent;font-size:.9rem;min-height:48px;border-bottom-color:transparent}
       .nav-links a:hover,.nav-links a.active{border-left-color:var(--gold);background:var(--gold-bg)}
-      .dropdown-menu{display:block;position:static;box-shadow:none;border:none;border-left:3px solid var(--gold);margin-left:1rem;background:var(--grey-100)}
+      .dropdown-menu{display:none;position:static;box-shadow:none;border:none;border-left:3px solid var(--gold);margin-left:1rem;background:var(--grey-100)}
+      .nav-links li.has-dropdown:focus-within .dropdown-menu{display:block}
       .dropdown-menu a{padding:.75rem 1.25rem;font-size:.85rem;min-height:44px}
 
       /* Hero */
