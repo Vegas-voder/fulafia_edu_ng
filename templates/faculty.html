@@ -1,1 +1,417 @@
-<html><body><h1>Faculty</h1><a href=../index.html>Back</a></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faculty of Environmental Design – Federal University Lafia. Explore programmes, departments, staff and news.">
+  <title>Faculty of Environmental Design | Federal University Lafia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:       #8B6914;
+      --gold-light: #A07820;
+      --gold-bg:    #f5edd6;
+      --navy:       #12192B;
+      --navy-mid:   #1e2d4a;
+      --white:      #ffffff;
+      --off-white:  #f8f8f6;
+      --grey-100:   #f1f2f4;
+      --grey-300:   #d1d5db;
+      --grey-500:   #6b7280;
+      --grey-800:   #1f2937;
+      --body-text:  #2c2c2c;
+      --radius:     6px;
+      --t:          .2s ease;
+      --max-w:      1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--body-text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .section-label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border-left: 3px solid var(--gold); padding-left: .55rem; margin-bottom: .65rem; }
+    .section-title { font-size: clamp(1.35rem, 2.5vw, 1.9rem); font-weight: 800; color: var(--navy); margin-bottom: 2rem; }
+
+    /* TOP BAR */
+    .top-bar { background: var(--navy); padding: .55rem 0; border-bottom: 2px solid var(--gold); }
+    .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .top-bar__brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    .top-bar__brand img { width: 38px; height: 38px; object-fit: contain; }
+    .top-bar__name { display: flex; flex-direction: column; }
+    .top-bar__name strong { font-size: .82rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .top-bar__name span { font-size: .68rem; color: rgba(255,255,255,.6); }
+    .top-bar__contact { display: flex; align-items: center; gap: 1.4rem; }
+    .top-bar__contact a { font-size: .78rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: .35rem; transition: color var(--t); }
+    .top-bar__contact a:hover { color: var(--gold-light); }
+    .top-bar__contact svg { width: 13px; height: 13px; flex-shrink: 0; fill: var(--gold); }
+
+    /* FACULTY NAV */
+    .faculty-nav { background: var(--white); border-bottom: 1px solid var(--grey-300); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+    .faculty-nav .container { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; position: relative; }
+    .faculty-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); padding: 1rem 1.2rem 1rem 0; white-space: nowrap; flex-shrink: 0; border-right: 2px solid var(--gold); }
+    .nav-links { display: flex; align-items: stretch; }
+    .nav-links li { position: relative; display: flex; }
+    .nav-links a { display: flex; align-items: center; padding: 0 1rem; font-size: .85rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-links li.has-dropdown > a::after { content: ''; display: inline-block; width: 5px; height: 5px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: .4rem; margin-top: -2px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid var(--grey-300); border-top: 2px solid var(--gold); min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,.12); z-index: 100; }
+    .dropdown-menu a { display: block; padding: .65rem 1.1rem; font-size: .83rem; font-weight: 500; color: var(--grey-800); border-bottom: none; border-left: 3px solid transparent; transition: background var(--t), border-color var(--t), color var(--t); }
+    .dropdown-menu a:hover { background: var(--gold-bg); border-left-color: var(--gold); color: var(--gold); }
+    .nav-links li.has-dropdown:hover .dropdown-menu { display: block; }
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 1rem 0; flex-shrink: 0; }
+    .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* HERO */
+    .hero { position: relative; overflow: hidden; height: clamp(300px, 45vw, 500px); }
+    .hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .hero__overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,25,43,.82) 0%, rgba(18,25,43,.55) 55%, rgba(18,25,43,.15) 100%); }
+    .hero__content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem 1.25rem; max-width: calc(var(--max-w) + 2.5rem); margin: 0 auto; left: 0; right: 0; }
+    .hero__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: .5rem; }
+    .hero__title { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.15; max-width: 560px; margin-bottom: .5rem; }
+    .hero__sub { font-size: .9rem; color: rgba(255,255,255,.7); font-weight: 500; }
+
+    /* WELCOME */
+    .welcome { padding: 4rem 0; background: var(--white); }
+    .welcome .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3.5rem; align-items: center; }
+    .welcome__photo-wrap { position: relative; }
+    .welcome__photo-placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; }
+    .welcome__photo-placeholder svg { width: 56px; height: 56px; fill: rgba(255,255,255,.2); }
+    .welcome__photo-placeholder span { font-size: .8rem; color: rgba(255,255,255,.35); }
+    .welcome__accent { position: absolute; bottom: -10px; right: -10px; width: 80px; height: 80px; background: var(--gold); border-radius: var(--radius); z-index: -1; }
+    .welcome__text blockquote { font-size: clamp(.95rem, 1.5vw, 1.05rem); line-height: 1.9; color: var(--grey-800); font-style: italic; border-left: 4px solid var(--gold); padding-left: 1.2rem; margin-bottom: 1.5rem; }
+    .welcome__sig-line { width: 40px; height: 2px; background: var(--gold); margin-bottom: .6rem; }
+    .welcome__sig strong { display: block; font-size: .95rem; font-weight: 700; color: var(--navy); }
+    .welcome__sig span { font-size: .8rem; color: var(--grey-500); }
+
+    /* DEPARTMENTS */
+    .departments { padding: 4rem 0; background: var(--off-white); }
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .dept-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--grey-300); transition: transform var(--t), box-shadow var(--t); display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+    .dept-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+    .dept-card__name { background: var(--navy); color: var(--white); font-size: .82rem; font-weight: 700; padding: .65rem 1rem; border-bottom: 2px solid var(--gold); }
+    .dept-card__img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+    .dept-card__img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .dept-card__img-placeholder svg { width: 38px; height: 38px; opacity: .3; }
+    .c1 { background: linear-gradient(135deg,#1a2744,#2d4070); }
+    .c2 { background: linear-gradient(135deg,#1a3a2a,#2d5c40); }
+    .c3 { background: linear-gradient(135deg,#3a2010,#6b3a1a); }
+    .c4 { background: linear-gradient(135deg,#2a1a3a,#4a2d6b); }
+    .dept-card__footer { padding: .75rem 1rem; font-size: .78rem; color: var(--gold); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: .3rem; }
+
+    /* NEWS & EVENTS */
+    .news-events { padding: 4rem 0; background: var(--white); }
+    .ne-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .ne-col__header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 2px solid var(--grey-100); }
+    .ne-col__header h3 { font-size: 1.05rem; font-weight: 800; color: var(--navy); }
+    .ne-badge { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 20px; }
+    .ne-badge--upcoming { background: #e8f5e9; color: #2e7d32; }
+    .ne-badge--past { background: #fdf3e0; color: #8B6914; }
+    .ne-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .ne-item { display: flex; gap: .9rem; align-items: flex-start; }
+    .ne-item__date { flex-shrink: 0; width: 46px; background: var(--navy); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .4rem .3rem; }
+    .ne-item__date .day { font-size: 1.1rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+    .ne-item__date .mon { font-size: .6rem; font-weight: 600; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .05em; }
+    .ne-item__body h4 { font-size: .87rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; line-height: 1.3; }
+    .ne-item__body p { font-size: .78rem; color: var(--grey-500); line-height: 1.5; }
+    .ne-item__body a.read-more { font-size: .75rem; font-weight: 600; color: var(--gold); display: inline-block; margin-top: .35rem; }
+    .ne-item__body a.read-more:hover { color: var(--gold-light); }
+
+    /* FOOTER */
+    .footer { background: var(--navy); border-top: 3px solid var(--gold); color: rgba(255,255,255,.65); padding: 2.5rem 0 1.5rem; }
+    .footer .container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer__brand img { width: 44px; height: 44px; object-fit: contain; margin-bottom: .65rem; }
+    .footer__brand p { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.55); max-width: 280px; }
+    .footer__col h4 { font-size: .82rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .85rem; }
+    .footer__col ul li { margin-bottom: .45rem; }
+    .footer__col ul a { font-size: .8rem; color: rgba(255,255,255,.6); transition: color var(--t); }
+    .footer__col ul a:hover { color: var(--gold-light); }
+    .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer__bottom p, .footer__bottom a { font-size: .75rem; }
+    .footer__bottom a { color: var(--gold-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .welcome .container { grid-template-columns: 1fr; gap: 2rem; }
+      .welcome__photo-placeholder { aspect-ratio: 16/7; }
+      .ne-grid { grid-template-columns: 1fr; }
+      .footer .container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-toggle-label { display: flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; border-top: 2px solid var(--gold); box-shadow: 0 8px 20px rgba(0,0,0,.1); z-index: 200; }
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-links a { padding: .85rem 1.25rem; border-bottom: 1px solid var(--grey-100); border-left: 3px solid transparent; }
+      .nav-links li.has-dropdown:hover .dropdown-menu, .dropdown-menu { display: block; position: static; box-shadow: none; border: none; border-left: 3px solid var(--gold); margin-left: 1rem; }
+      .faculty-nav__name { font-size: .78rem; padding-right: .8rem; }
+      .footer .container { grid-template-columns: 1fr; }
+      .dept-grid { grid-template-columns: 1fr 1fr; }
+      .top-bar__contact a:first-child { display: none; }
+    }
+    @media (max-width: 380px) { .dept-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="Federal University Lafia homepage">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </a>
+      <div class="top-bar__contact">
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Call us">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. FACULTY NAV -->
+  <nav class="faculty-nav" aria-label="Faculty navigation">
+    <div class="container">
+      <span class="faculty-nav__name">Faculty of Environmental Design</span>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li class="has-dropdown">
+          <a href="#departments">Departments</a>
+          <ul class="dropdown-menu">
+            <li><a href="#dept-arch">Architecture</a></li>
+            <li><a href="#dept-urp">Urban &amp; Regional Planning</a></li>
+            <li><a href="#dept-bt">Building Technology</a></li>
+            <li><a href="#dept-em">Estate Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#news">News</a></li>
+        <li><a href="management.html">Management</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 3. HERO -->
+  <section class="hero" aria-label="Faculty hero image">
+    <img class="hero__img" src="../assets/environmental.jpg" alt="Faculty of Environmental Design" loading="eager" fetchpriority="high" decoding="async">
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Federal University Lafia</p>
+      <h1 class="hero__title">Faculty of Environmental Design</h1>
+      <p class="hero__sub">Shaping the Built Environment &mdash; Sustainably</p>
+    </div>
+  </section>
+
+  <!-- 4. DEAN'S WELCOME -->
+  <section class="welcome" id="about" aria-labelledby="welcome-heading">
+    <div class="container">
+      <div class="welcome__photo-wrap">
+        <div class="welcome__photo-placeholder" role="img" aria-label="Dean photo placeholder">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          <span>Dean&rsquo;s Photo</span>
+        </div>
+        <div class="welcome__accent" aria-hidden="true"></div>
+      </div>
+      <div class="welcome__text">
+        <span class="section-label">Dean&rsquo;s Welcome</span>
+        <h2 class="section-title" id="welcome-heading">A Message from the Dean</h2>
+        <blockquote>
+          &ldquo;Welcome to the Faculty of Environmental Design at the Federal University Lafia.
+          Our Faculty is committed to nurturing creative, analytical, and technically
+          sound professionals who are equipped to shape the built environment with integrity
+          and sustainability at the core. Whether you are a prospective student, a researcher,
+          or a partner institution, we invite you to explore the wealth of knowledge,
+          innovation, and community that defines us.&rdquo;
+        </blockquote>
+        <div class="welcome__sig">
+          <div class="welcome__sig-line"></div>
+          <strong>Prof. [Dean&rsquo;s Name]</strong>
+          <span>Dean, Faculty of Environmental Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DEPARTMENTS -->
+  <section class="departments" id="departments" aria-labelledby="dept-heading">
+    <div class="container">
+      <span class="section-label">Our Departments</span>
+      <h2 class="section-title" id="dept-heading">Academic Departments</h2>
+      <div class="dept-grid">
+
+        <a href="#dept-arch" class="dept-card" id="dept-arch" aria-label="Department of Architecture">
+          <div class="dept-card__name">Department of Architecture</div>
+          <div class="dept-card__img-wrap">
+            <div class="dept-card__img-placeholder c1" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3L12 3z"/></svg>
+            </div>
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+
+        <a href="#dept-urp" class="dept-card" id="dept-urp" aria-label="Urban and Regional Planning">
+          <div class="dept-card__name">Urban &amp; Regional Planning</div>
+          <div class="dept-card__img-wrap">
+            <div class="dept-card__img-placeholder c2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+
+        <a href="#dept-bt" class="dept-card" id="dept-bt" aria-label="Building Technology">
+          <div class="dept-card__name">Department of Building Technology</div>
+          <div class="dept-card__img-wrap">
+            <div class="dept-card__img-placeholder c3" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </div>
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+
+        <a href="#dept-em" class="dept-card" id="dept-em" aria-label="Estate Management">
+          <div class="dept-card__name">Department of Estate Management</div>
+          <div class="dept-card__img-wrap">
+            <div class="dept-card__img-placeholder c4" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. NEWS & EVENTS -->
+  <section class="news-events" id="news" aria-labelledby="ne-heading">
+    <div class="container">
+      <span class="section-label">Stay Informed</span>
+      <h2 class="section-title" id="ne-heading">News &amp; Events</h2>
+      <div class="ne-grid">
+
+        <!-- NEWS (upcoming) -->
+        <div class="ne-col">
+          <div class="ne-col__header">
+            <h3>Latest News</h3>
+            <span class="ne-badge ne-badge--upcoming">Upcoming</span>
+          </div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">12</span><span class="mon">Oct</span></div>
+              <div class="ne-item__body">
+                <h4>Faculty Research Colloquium 2025</h4>
+                <p>Annual cross-departmental colloquium showcasing ongoing research projects across the Faculty.</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">03</span><span class="mon">Nov</span></div>
+              <div class="ne-item__body">
+                <h4>New Postgraduate Programmes Announced</h4>
+                <p>M.Sc. programmes in Architecture and Urban Planning open for applications for 2025/2026 session.</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">18</span><span class="mon">Nov</span></div>
+              <div class="ne-item__body">
+                <h4>Industry Partnership Summit</h4>
+                <p>Top firms from the built environment sector will engage Faculty staff and final-year students.</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- EVENTS (past) -->
+        <div class="ne-col">
+          <div class="ne-col__header">
+            <h3>Recent Events</h3>
+            <span class="ne-badge ne-badge--past">Past</span>
+          </div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">05</span><span class="mon">Sep</span></div>
+              <div class="ne-item__body">
+                <h4>2025/2026 Session Orientation</h4>
+                <p>New students were officially welcomed into the Faculty by the Dean and departmental heads.</p>
+                <a href="#" class="read-more">View highlights &rarr;</a>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">20</span><span class="mon">Aug</span></div>
+              <div class="ne-item__body">
+                <h4>Architecture Design Studio Exhibition</h4>
+                <p>Final-year students presented design projects at the Annual Studio Exhibition.</p>
+                <a href="#" class="read-more">View highlights &rarr;</a>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__date"><span class="day">14</span><span class="mon">Jul</span></div>
+              <div class="ne-item__body">
+                <h4>Estate Management Field Trip &mdash; Abuja</h4>
+                <p>Students visited major real estate developments across the Federal Capital Territory.</p>
+                <a href="#" class="read-more">View highlights &rarr;</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>Faculty of Environmental Design<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About the Faculty</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="#staff">Staff Directory</a></li>
+          <li><a href="management.html">Faculty Management</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
