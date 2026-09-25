@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Faculty Research Colloquium 2025 – Faculty of Environmental Design, Federal University Lafia.">
+  <title>Faculty Research Colloquium 2025 | FULAFIA News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#8B6914;--gold-light:#A07820;--gold-bg:#f5edd6;
+      --navy:#12192B;--navy-mid:#1e2d4a;
+      --white:#fff;--off-white:#f8f8f6;
+      --grey-100:#f1f2f4;--grey-300:#d1d5db;
+      --grey-500:#6b7280;--grey-800:#1f2937;
+      --body:#2c2c2c;--radius:6px;--t:.2s ease;--max-w:820px;--max-w-wide:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;color:var(--body);background:var(--white);-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{width:100%;max-width:var(--max-w-wide);margin:0 auto;padding:0 1.25rem}
+    .container--narrow{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+
+    /* TOP BAR */
+    .top-bar{background:var(--navy);padding:.55rem 0;border-bottom:2px solid var(--gold)}
+    .top-bar .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .top-bar__brand{display:flex;align-items:center;gap:.65rem}
+    .top-bar__brand img{width:38px;height:38px;object-fit:contain}
+    .top-bar__name strong{display:block;font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
+    .top-bar__name span{font-size:.68rem;color:rgba(255,255,255,.6)}
+    .top-bar__contact{display:flex;align-items:center;gap:1.4rem}
+    .top-bar__contact a{font-size:.78rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.35rem;transition:color var(--t)}
+    .top-bar__contact a:hover{color:var(--gold-light)}
+    .top-bar__contact svg{width:13px;height:13px;flex-shrink:0;fill:var(--gold)}
+
+    /* CONTEXT NAV */
+    .ctx-nav{background:var(--white);border-bottom:1px solid var(--grey-300);position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .ctx-nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.55rem;padding-bottom:.55rem}
+    .ctx-nav__brand{display:flex;align-items:center;gap:.55rem}
+    .ctx-nav__brand img{width:28px;height:28px;object-fit:contain}
+    .ctx-nav__name{font-size:.85rem;font-weight:800;color:var(--navy)}
+    .ctx-nav__links{display:flex;gap:1.5rem}
+    .ctx-nav__links a{font-size:.8rem;font-weight:600;color:var(--grey-800);transition:color var(--t)}
+    .ctx-nav__links a:hover,.ctx-nav__links a.active{color:var(--gold)}
+
+    /* BREADCRUMB */
+    .breadcrumb{background:var(--grey-100);padding:.55rem 0;border-bottom:1px solid var(--grey-300)}
+    .breadcrumb ol{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+    .breadcrumb li{font-size:.75rem;color:var(--grey-500);display:flex;align-items:center;gap:.4rem}
+    .breadcrumb li+li::before{content:'/';color:var(--grey-300)}
+    .breadcrumb a{color:var(--gold);font-weight:600}
+    .breadcrumb a:hover{color:var(--gold-light)}
+    .breadcrumb li:last-child{color:var(--grey-800);font-weight:600}
+
+    /* ARTICLE HERO */
+    .article-hero{width:100%;aspect-ratio:16/6;overflow:hidden;background:var(--grey-100);position:relative}
+    .article-hero img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .article-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,25,43,.45) 0%,transparent 55%)}
+
+    /* ARTICLE LAYOUT */
+    .article-wrap{padding:2.5rem 0 4rem}
+    .article-meta{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.2rem}
+    .meta-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);padding:.25rem .7rem;border-radius:20px;border-left:3px solid var(--gold)}
+    .meta-date{font-size:.78rem;color:var(--grey-500);display:flex;align-items:center;gap:.35rem}
+    .meta-date svg{width:13px;height:13px;fill:var(--gold);flex-shrink:0}
+    .article-title{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:.75rem}
+    .article-intro{font-size:1rem;color:var(--grey-500);line-height:1.75;margin-bottom:1.75rem;font-weight:500}
+    .article-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:1.75rem}
+    .article-body{font-size:.95rem;line-height:1.85;color:var(--grey-800)}
+    .article-body p{margin-bottom:1.2rem}
+    .article-body h2{font-size:1.15rem;font-weight:800;color:var(--navy);margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold-bg)}
+    .article-body ul{padding-left:1.2rem;list-style:disc;margin-bottom:1.2rem}
+    .article-body ul li{margin-bottom:.4rem}
+    .article-body blockquote{border-left:4px solid var(--gold);padding:1rem 1.2rem;background:var(--gold-bg);border-radius:0 var(--radius) var(--radius) 0;font-style:italic;color:var(--grey-800);margin:1.5rem 0;font-size:.95rem;line-height:1.8}
+    .article-body blockquote cite{display:block;margin-top:.5rem;font-size:.8rem;font-style:normal;font-weight:700;color:var(--navy)}
+    .article-body figure{margin:1.75rem 0}
+    .article-body figure img{width:100%;border-radius:var(--radius)}
+    .article-body figcaption{font-size:.75rem;color:var(--grey-500);margin-top:.45rem;text-align:center}
+    .article-body a{color:var(--gold);font-weight:600}
+    .article-body a:hover{color:var(--gold-light)}
+
+    /* ARTICLE FOOTER */
+    .article-footer{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--grey-300);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .article-footer__back{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:700;color:var(--gold);border:1.5px solid rgba(139,105,20,.4);padding:.5rem 1rem;border-radius:4px;transition:background var(--t)}
+    .article-footer__back:hover{background:var(--gold-bg)}
+    .article-footer__share{font-size:.75rem;color:var(--grey-500)}
+    .article-footer__share strong{color:var(--navy)}
+
+    /* RELATED */
+    .related{padding:3rem 0;background:var(--off-white);border-top:2px solid var(--grey-100)}
+    .related__label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-left:3px solid var(--gold);padding-left:.55rem;margin-bottom:.65rem;display:inline-block}
+    .related__title{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:var(--navy);margin-bottom:1.5rem}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .related-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--grey-300);overflow:hidden;display:flex;flex-direction:column;transition:transform var(--t),box-shadow var(--t)}
+    .related-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.09)}
+    .related-card__img{aspect-ratio:16/8;overflow:hidden}
+    .related-card__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    .related-card:hover .related-card__img img{transform:scale(1.04)}
+    .related-card__body{padding:.85rem 1rem}
+    .related-card__meta{font-size:.7rem;color:var(--grey-500);margin-bottom:.35rem}
+    .related-card__title{font-size:.88rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.5rem}
+    .related-card__link{font-size:.75rem;font-weight:600;color:var(--gold)}
+    .related-card__link:hover{color:var(--gold-light)}
+
+    /* FOOTER */
+    .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
+    .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+    .footer__brand img{width:44px;height:44px;object-fit:contain;margin-bottom:.65rem}
+    .footer__brand p{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.55);max-width:280px}
+    .footer__col h4{font-size:.82rem;font-weight:700;color:var(--gold-light);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem}
+    .footer__col ul li{margin-bottom:.45rem}
+    .footer__col ul a{font-size:.8rem;color:rgba(255,255,255,.6);transition:color var(--t)}
+    .footer__col ul a:hover{color:var(--gold-light)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .footer__bottom p,.footer__bottom a{font-size:.75rem}
+    .footer__bottom a{color:var(--gold-light)}
+
+    /* RESPONSIVE */
+    @media(max-width:680px){
+      .top-bar{padding:.4rem 0}
+      .top-bar__brand img{width:30px;height:30px}
+      .top-bar__name strong{font-size:.75rem}
+      .top-bar__name span{display:none}
+      .top-bar__contact a:first-child{display:none}
+      .ctx-nav__links{display:none}
+      .article-hero{aspect-ratio:16/8}
+      .article-wrap{padding:1.75rem 0 3rem}
+      .related-grid{grid-template-columns:1fr}
+      .footer .container{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.25rem}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </a>
+      <div class="top-bar__contact">
+        <a href="mailto:info@fulafia.edu.ng">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXT NAV -->
+  <nav class="ctx-nav" aria-label="Context navigation">
+    <div class="container">
+      <div class="ctx-nav__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="28" height="28">
+        <span class="ctx-nav__name">Faculty of Environmental Design</span>
+      </div>
+      <div class="ctx-nav__links">
+        <a href="faculty.html">Home</a>
+        <a href="faculty.html#about">About</a>
+        <a href="faculty.html#departments">Departments</a>
+        <a href="faculty.html#news" class="active">News</a>
+        <a href="management.html">Management</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
+        <li><a href="faculty.html">Faculty of Environmental Design</a></li>
+        <li><a href="faculty.html#news">News &amp; Events</a></li>
+        <li>Faculty Research Colloquium 2025</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <div class="article-hero">
+    <img src="../assets/news.jpg" alt="Faculty Research Colloquium 2025" loading="eager" fetchpriority="high" decoding="async">
+    <div class="article-hero__overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="article-wrap">
+    <div class="container--narrow">
+
+      <div class="article-meta">
+        <span class="meta-tag">News</span>
+        <span class="meta-date">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
+          12 October 2025
+        </span>
+        <span class="meta-date">Faculty of Environmental Design</span>
+      </div>
+
+      <h1 class="article-title">Faculty Research Colloquium 2025</h1>
+      <p class="article-intro">The annual Faculty Research Colloquium brings together academic staff and postgraduate students to present ongoing research, fostering cross-departmental collaboration and scholarly inquiry.</p>
+      <div class="article-divider"></div>
+
+      <div class="article-body">
+        <p>The Faculty of Environmental Design is pleased to announce the <strong>2025 Faculty Research Colloquium</strong>, scheduled for <strong>12th October 2025</strong> at the Faculty Conference Hall, Federal University Lafia. This flagship event brings together researchers, practitioners, and students to explore cutting-edge ideas across architecture, urban planning, estate management, and building technology.</p>
+
+        <h2>This Year&rsquo;s Theme</h2>
+        <p>The colloquium is themed <em>&ldquo;Sustainability and Innovation in the Built Environment.&rdquo;</em> Participants will present papers and posters across five thematic tracks:</p>
+        <ul>
+          <li>Sustainable Architecture and Green Building Design</li>
+          <li>Urban Renewal and Housing Policy in Nigeria</li>
+          <li>Digital Tools in Architectural Practice</li>
+          <li>Real Estate Markets and Infrastructure Development</li>
+          <li>Construction Technology and Materials Innovation</li>
+        </ul>
+
+        <blockquote>
+          &ldquo;The Faculty Research Colloquium is more than an academic event &mdash; it is a celebration of intellectual curiosity and the power of research to transform the built environment.&rdquo;
+          <cite>&mdash; Dean, Faculty of Environmental Design</cite>
+        </blockquote>
+
+        <h2>Keynote Speaker</h2>
+        <p>The colloquium will feature a keynote address by a distinguished architect and urban planner with over two decades of experience in sustainable design practice across West Africa. Details will be announced closer to the date.</p>
+
+        <figure>
+          <img src="../assets/newss.jpg" alt="A session from the previous colloquium" loading="lazy" decoding="async">
+          <figcaption>A session from the 2024 Faculty Research Colloquium.</figcaption>
+        </figure>
+
+        <h2>How to Participate</h2>
+        <p>Academic staff and postgraduate students are encouraged to submit abstracts for paper presentations. Undergraduates may participate as audience members and poster presenters. Abstract submissions should reach the Faculty Research Committee via Departmental Research Coordinators by <strong>30th September 2025</strong>.</p>
+        <p>For enquiries contact <a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a> or visit the Faculty Secretariat during working hours.</p>
+      </div>
+
+      <div class="article-footer">
+        <a href="faculty.html#news" class="article-footer__back">&larr; Back to News &amp; Events</a>
+        <span class="article-footer__share"><strong>Share:</strong> Copy link &middot; Email</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RELATED NEWS -->
+  <section class="related" aria-labelledby="related-heading">
+    <div class="container">
+      <span class="related__label">More Stories</span>
+      <h2 class="related__title" id="related-heading">Related News &amp; Events</h2>
+      <div class="related-grid">
+        <a href="news-single.html" class="related-card">
+          <div class="related-card__img">
+            <img src="../assets/newss.jpg" alt="Postgraduate Programmes" loading="lazy" decoding="async">
+          </div>
+          <div class="related-card__body">
+            <p class="related-card__meta">03 November 2025 &middot; Announcement</p>
+            <h3 class="related-card__title">New Postgraduate Programmes Announced for 2025/2026</h3>
+            <span class="related-card__link">Read more &rarr;</span>
+          </div>
+        </a>
+        <a href="news-single.html" class="related-card">
+          <div class="related-card__img">
+            <img src="../assets/news.jpg" alt="Industry Partnership Summit" loading="lazy" decoding="async">
+          </div>
+          <div class="related-card__body">
+            <p class="related-card__meta">18 November 2025 &middot; Event</p>
+            <h3 class="related-card__title">Industry Partnership Summit &mdash; Built Environment Sector</h3>
+            <span class="related-card__link">Read more &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>Faculty of Environmental Design<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Home</a></li>
+          <li><a href="faculty.html#about">About</a></li>
+          <li><a href="faculty.html#departments">Departments</a></li>
+          <li><a href="faculty.html#news">News &amp; Events</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
