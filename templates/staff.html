@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Staff Directory – Federal University Lafia.">
+  <title>Staff Directory | FULAFIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#8B6914; --gold-light:#A07820; --gold-bg:#f5edd6;
+      --navy:#12192B;
+      --white:#fff; --off-white:#f8f8f6;
+      --grey-100:#f1f2f4; --grey-300:#d1d5db;
+      --grey-500:#6b7280; --grey-800:#1f2937;
+      --body:#2c2c2c; --radius:6px; --t:.2s ease; --max-w:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;color:var(--body);background:var(--off-white);-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+
+    /* ── TOP BAR ───────────────────────────────────── */
+    .top-bar{background:var(--navy);padding:.55rem 0;border-bottom:2px solid var(--gold)}
+    .top-bar .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .top-bar__brand{display:flex;align-items:center;gap:.65rem}
+    .top-bar__brand img{width:38px;height:38px;object-fit:contain}
+    .top-bar__name strong{display:block;font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
+    .top-bar__name span{font-size:.68rem;color:rgba(255,255,255,.6)}
+    .top-bar__contact{display:flex;align-items:center;gap:1.4rem}
+    .top-bar__contact a{font-size:.78rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.35rem;transition:color var(--t)}
+    .top-bar__contact a:hover{color:var(--gold-light)}
+    .top-bar__contact svg{width:13px;height:13px;flex-shrink:0;fill:var(--gold)}
+
+    /* ── PAGE BANNER ───────────────────────────────── */
+    .page-banner{background:var(--navy);padding:2rem 0 1.75rem;border-bottom:3px solid var(--gold)}
+    .page-banner .container{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .page-banner__left{}
+    .page-banner__eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem}
+    .page-banner h1{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;color:var(--white);line-height:1.2}
+    .page-banner__back{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.25);padding:.45rem .9rem;border-radius:4px;transition:background var(--t),color var(--t);white-space:nowrap;align-self:flex-end}
+    .page-banner__back:hover{background:rgba(255,255,255,.1);color:var(--white)}
+    .page-banner__back svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+
+    /* ── BREADCRUMB ────────────────────────────────── */
+    .breadcrumb{background:var(--grey-100);padding:.5rem 0;border-bottom:1px solid var(--grey-300)}
+    .breadcrumb ol{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+    .breadcrumb li{font-size:.74rem;color:var(--grey-500);display:flex;align-items:center;gap:.4rem}
+    .breadcrumb li+li::before{content:'/';color:var(--grey-300)}
+    .breadcrumb a{color:var(--gold);font-weight:600}
+    .breadcrumb a:hover{color:var(--gold-light)}
+    .breadcrumb li:last-child{color:var(--grey-800);font-weight:600}
+
+    /* ── STAFF SECTION ─────────────────────────────── */
+    .staff{padding:3rem 0 4rem}
+
+    /* Category label — backend outputs one per staff group */
+    .staff-cat{margin-bottom:2.5rem}
+    .staff-cat+.staff-cat{margin-top:3.5rem;padding-top:3rem;border-top:2px solid var(--grey-300)}
+    .staff-cat__header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+    .staff-cat__header h2{font-size:1rem;font-weight:800;color:var(--navy)}
+    .staff-cat__line{flex:1;height:1px;background:var(--grey-300)}
+    .staff-cat__count{font-size:.72rem;font-weight:700;color:var(--gold);background:var(--gold-bg);padding:.2rem .65rem;border-radius:20px;white-space:nowrap}
+
+    /* Grid */
+    .staff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.25rem}
+
+    /* Card */
+    .staff-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow var(--t),border-color var(--t)}
+    .staff-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);border-color:var(--gold)}
+    .staff-card__photo-wrap{aspect-ratio:3/4;overflow:hidden;background:var(--grey-100);position:relative}
+    .staff-card__photo{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .35s ease}
+    .staff-card:hover .staff-card__photo{transform:scale(1.04)}
+    /* Placeholder shown when no photo */
+    .staff-card__photo-wrap::after{
+      content:'';display:none;position:absolute;inset:0;
+      background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid,#1e2d4a) 100%);
+    }
+    .staff-card__photo-wrap.no-photo::after{display:block}
+    .staff-card__photo-wrap.no-photo .staff-card__initials{display:flex}
+    .staff-card__initials{display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:var(--gold);z-index:1}
+    .staff-card__info{padding:.85rem .9rem;flex:1;display:flex;flex-direction:column}
+    .staff-card__rank{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:.25rem}
+    .staff-card__name{font-size:.88rem;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:.2rem}
+    .staff-card__role{font-size:.75rem;color:var(--grey-500);line-height:1.4;margin-bottom:.65rem;flex:1}
+    .staff-card__contact{display:flex;gap:.5rem;margin-top:auto}
+    .staff-card__contact a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:4px;background:var(--grey-100);border:1px solid var(--grey-300);transition:background var(--t),border-color var(--t)}
+    .staff-card__contact a:hover{background:var(--gold-bg);border-color:var(--gold)}
+    .staff-card__contact svg{width:14px;height:14px;fill:var(--grey-500);flex-shrink:0}
+    .staff-card__contact a:hover svg{fill:var(--gold)}
+
+    /* Empty state (shown if no staff returned) */
+    .staff-empty{text-align:center;padding:4rem 1rem;color:var(--grey-500)}
+    .staff-empty svg{width:48px;height:48px;fill:var(--grey-300);margin:0 auto 1rem}
+    .staff-empty p{font-size:.9rem}
+
+    /* ── FOOTER ────────────────────────────────────── */
+    .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2rem 0 1.25rem}
+    .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:1.5rem}
+    .footer__brand img{width:40px;height:40px;object-fit:contain;margin-bottom:.55rem}
+    .footer__brand p{font-size:.78rem;line-height:1.65;color:rgba(255,255,255,.5);max-width:260px}
+    .footer__col h4{font-size:.78rem;font-weight:700;color:var(--gold-light);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem}
+    .footer__col ul li{margin-bottom:.4rem}
+    .footer__col ul a{font-size:.78rem;color:rgba(255,255,255,.55);transition:color var(--t)}
+    .footer__col ul a:hover{color:var(--gold-light)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .footer__bottom p,.footer__bottom a{font-size:.73rem}
+    .footer__bottom a{color:var(--gold-light)}
+
+    /* ── TABLET ────────────────────────────────────── */
+    @media(max-width:900px){
+      .footer .container{grid-template-columns:1fr 1fr}
+    }
+
+    /* ── MOBILE ────────────────────────────────────── */
+    @media(max-width:680px){
+      .top-bar{padding:.4rem 0}
+      .top-bar__brand img{width:30px;height:30px}
+      .top-bar__name strong{font-size:.75rem}
+      .top-bar__name span{display:none}
+      .top-bar__contact a{font-size:0;gap:0;padding:0;min-width:36px;min-height:36px;justify-content:center}
+      .top-bar__contact svg{width:20px;height:20px}
+      .page-banner{padding:1.5rem 0 1.25rem}
+      .page-banner h1{font-size:clamp(1.1rem,5vw,1.4rem)}
+      .staff{padding:2rem 0 3rem}
+      .staff-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
+      .footer .container{grid-template-columns:1fr;gap:1.25rem;margin-bottom:1rem}
+    }
+    @media(max-width:360px){
+      .staff-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="FULAFIA homepage">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </a>
+      <div class="top-bar__contact">
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Phone">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PAGE BANNER
+       Backend fills: eyebrow, h1 title, back-link href -->
+  <div class="page-banner" role="banner">
+    <div class="container">
+      <div class="page-banner__left">
+        <p class="page-banner__eyebrow">Federal University Lafia</p>
+        <h1>Staff Directory &mdash; Department of Architecture</h1>
+      </div>
+      <a href="department.html" class="page-banner__back" aria-label="Back to Department">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Back to Department
+      </a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB — backend fills parent links -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
+        <li><a href="faculty.html">Faculty of Environmental Design</a></li>
+        <li><a href="department.html">Architecture</a></li>
+        <li>Staff</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- 3. STAFF GRID
+       Backend loops through staff post type filtered by current context.
+       Each .staff-cat block = one category (e.g. Academic Staff, Admin Staff).
+       The whole section below is the WordPress loop output area. -->
+  <section class="staff" aria-labelledby="staff-heading">
+    <div class="container">
+
+      <!-- CATEGORY: Academic Staff -->
+      <div class="staff-cat">
+        <div class="staff-cat__header">
+          <h2>Academic Staff</h2>
+          <span class="staff-cat__line" aria-hidden="true"></span>
+          <span class="staff-cat__count">8 Members</span>
+        </div>
+        <div class="staff-grid">
+
+          <!-- Card 1 — Professor / HOD -->
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap">
+              <img class="staff-card__photo" src="../assets/VC.jpg" alt="Prof. A. Bello" loading="lazy" decoding="async">
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Professor</div>
+              <div class="staff-card__name">Prof. A. Bello</div>
+              <div class="staff-card__role">Head of Department &amp; Architecture Theory</div>
+              <div class="staff-card__contact">
+                <a href="mailto:bello@fulafia.edu.ng" aria-label="Email Prof. Bello">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap">
+              <img class="staff-card__photo" src="../assets/staff1.jpg" alt="Dr. C. Okeke" loading="lazy" decoding="async">
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Senior Lecturer</div>
+              <div class="staff-card__name">Dr. C. Okeke</div>
+              <div class="staff-card__role">Architectural Design Studio</div>
+              <div class="staff-card__contact">
+                <a href="mailto:okeke@fulafia.edu.ng" aria-label="Email Dr. Okeke">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap">
+              <img class="staff-card__photo" src="../assets/staff2.jpg" alt="Dr. M. Yusuf" loading="lazy" decoding="async">
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Lecturer I</div>
+              <div class="staff-card__name">Dr. M. Yusuf</div>
+              <div class="staff-card__role">Building Technology &amp; Structures</div>
+              <div class="staff-card__contact">
+                <a href="mailto:yusuf@fulafia.edu.ng" aria-label="Email Dr. Yusuf">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 — No photo example: backend adds class="no-photo" -->
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap no-photo">
+              <div class="staff-card__initials" aria-hidden="true">EA</div>
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Lecturer II</div>
+              <div class="staff-card__name">Mr. E. Agber</div>
+              <div class="staff-card__role">Environmental Planning</div>
+              <div class="staff-card__contact">
+                <a href="mailto:agber@fulafia.edu.ng" aria-label="Email Mr. Agber">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap">
+              <img class="staff-card__photo" src="../assets/staff3.jpg" alt="Mr. D. Sule" loading="lazy" decoding="async">
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Assistant Lecturer</div>
+              <div class="staff-card__name">Mr. D. Sule</div>
+              <div class="staff-card__role">Urban Design &amp; Housing</div>
+              <div class="staff-card__contact">
+                <a href="mailto:sule@fulafia.edu.ng" aria-label="Email Mr. Sule">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.staff-grid -->
+      </div><!-- /.staff-cat -->
+
+      <!-- CATEGORY: Administrative Staff -->
+      <div class="staff-cat">
+        <div class="staff-cat__header">
+          <h2>Administrative Staff</h2>
+          <span class="staff-cat__line" aria-hidden="true"></span>
+          <span class="staff-cat__count">3 Members</span>
+        </div>
+        <div class="staff-grid">
+
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap no-photo">
+              <div class="staff-card__initials" aria-hidden="true">NK</div>
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Senior Admin Officer</div>
+              <div class="staff-card__name">Mrs. N. Kolo</div>
+              <div class="staff-card__role">Departmental Secretary</div>
+              <div class="staff-card__contact">
+                <a href="mailto:kolo@fulafia.edu.ng" aria-label="Email Mrs. Kolo">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-card__photo-wrap no-photo">
+              <div class="staff-card__initials" aria-hidden="true">BI</div>
+            </div>
+            <div class="staff-card__info">
+              <div class="staff-card__rank">Technologist</div>
+              <div class="staff-card__name">Mr. B. Ibrahim</div>
+              <div class="staff-card__role">Model &amp; Drawing Laboratory</div>
+              <div class="staff-card__contact">
+                <a href="mailto:ibrahim@fulafia.edu.ng" aria-label="Email Mr. Ibrahim">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.staff-grid -->
+      </div><!-- /.staff-cat -->
+
+      <!-- EMPTY STATE — backend shows this block if no staff found -->
+      <!--
+      <div class="staff-empty">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        <p>No staff records found for this unit.</p>
+      </div>
+      -->
+
+    </div><!-- /.container -->
+  </section>
+
+  <!-- 4. FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="40" height="40" loading="lazy">
+        <p>Federal University Lafia<br>PMB 146, Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="https://fulafia.edu.ng">FULAFIA Home</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="department.html">Department</a></li>
+          <li><a href="news-single.html">News &amp; Events</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
