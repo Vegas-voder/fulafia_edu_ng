@@ -42,6 +42,26 @@
     .top-bar__website-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0;}
 
 
+    /* FACULTY NAV */
+    .faculty-nav { background: var(--white); border-bottom: 1px solid var(--grey-300); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+    .faculty-nav .container { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; position: relative; }
+    .faculty-nav__brand { display: flex; align-items: center; gap: .55rem; flex-shrink: 0; padding: .55rem 0; }
+    .faculty-nav__brand img { width: 32px; height: 32px; object-fit: contain; }
+    .faculty-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); white-space: nowrap; }
+    .nav-links { display: flex; align-items: stretch; }
+    .nav-links li { position: relative; display: flex; }
+    .nav-links a { display: flex; align-items: center; padding: 0 1rem; font-size: .85rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-links li.has-dropdown > a::after { content: ''; display: inline-block; width: 5px; height: 5px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: .4rem; margin-top: -2px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid var(--grey-300); border-top: 2px solid var(--gold); min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,.12); z-index: 100; }
+    .dropdown-menu a { display: block; padding: .65rem 1.1rem; font-size: .83rem; font-weight: 500; color: var(--grey-800); border-bottom: none; border-left: 3px solid transparent; transition: background var(--t), border-color var(--t), color var(--t); }
+    .dropdown-menu a:hover { background: var(--gold-bg); border-left-color: var(--gold); color: var(--gold); }
+    .nav-links li.has-dropdown:hover .dropdown-menu { display: block; }
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; flex-shrink: 0; }
+    .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--t); }
+
+    
     /* ── PAGE BANNER ───────────────────────────────── */
     .page-banner{background:var(--navy);padding:2rem 0 1.75rem;border-bottom:3px solid var(--gold)}
     .page-banner .container{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
