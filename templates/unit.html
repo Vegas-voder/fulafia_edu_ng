@@ -211,14 +211,15 @@
   <!-- 1. TOP BAR -->
   <div class="top-bar">
     <div class="container">
-      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="FULAFIA homepage">
+      <div class="top-bar__brand">
         <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
         <div class="top-bar__name">
           <strong>Federal University Lafia</strong>
           <span>Integrity &middot; Innovation &middot; Excellence</span>
         </div>
-      </a>
+      </div>
       <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" style="background:var(--gold);color:var(--white);padding:.35rem .75rem;border-radius:20px;font-weight:700;font-size:.78rem;text-decoration:none;">FULAFIA Website</a>
         <a href="mailto:info@fulafia.edu.ng" aria-label="Email">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
           info@fulafia.edu.ng
@@ -235,7 +236,6 @@
   <nav class="unit-nav" aria-label="Library navigation">
     <div class="container">
       <div class="unit-nav__brand">
-        <img src="../assets/Logo.png" alt="FULAFIA logo" width="30" height="30">
         <span class="unit-nav__name">University Library</span>
       </div>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
@@ -253,7 +253,7 @@
             <li><a href="#">E-Resources</a></li>
           </ul>
         </li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
   </nav>
@@ -266,12 +266,7 @@
       <p class="hero__eyebrow">Federal University Lafia</p>
       <h1 class="hero__title">University Library</h1>
       <p class="hero__sub">Your Gateway to Knowledge &amp; Research Excellence</p>
-      <div class="hero__actions">
-        <a href="#about" class="hero__btn hero__btn--primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-          About the Library
-        </a>
-      </div>
+      
     </div>
   </section>
 
@@ -308,64 +303,7 @@
   </section>
 
   <!-- 5. ABOUT / ACCORDION -->
-  <section class="about" id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <span class="section-label">About the Library</span>
-      <h2 class="section-title" id="about-heading">Who We Are</h2>
-
-      <div class="accordion" role="list">
-
-        <details class="acc-item" open>
-          <summary class="acc-header">History</summary>
-          <div class="acc-body">
-            <p>The University Library was established alongside the Federal University Lafia in 2011. It was designed from inception to be the primary academic and research resource centre for the university community, supporting the teaching, learning, and research activities of all faculties, departments, directorates, and units.</p>
-            <p>Over the years, the Library has grown significantly in its collections, services, and infrastructure — transitioning from a purely print-based collection to a hybrid library that provides both physical and digital resources to its users.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Vision &amp; Mission</summary>
-          <div class="acc-body">
-            <p><strong>Vision:</strong> To be a world-class academic library that provides innovative, user-centred information services in support of the academic and research excellence of the Federal University Lafia.</p>
-            <p><strong>Mission:</strong> To acquire, organise, preserve, and disseminate relevant information resources in all formats; to provide expert assistance to library users; and to foster a culture of reading, research, and lifelong learning within the FULAFIA community and beyond.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Objectives</summary>
-          <div class="acc-body">
-            <p>The Library pursues the following key objectives:</p>
-            <ul>
-              <li>To provide timely and equitable access to information resources in both print and electronic formats.</li>
-              <li>To support the academic programmes of the university through relevant and up-to-date collections.</li>
-              <li>To deliver professional reference, research, and information literacy services.</li>
-              <li>To leverage technology to enhance access to global knowledge resources.</li>
-              <li>To preserve and promote the scholarly output of the Federal University Lafia community.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Services &amp; Resources</summary>
-          <div class="acc-body">
-            <p>The University Library offers a wide range of services to support users at all levels:</p>
-            <ul>
-              <li>Circulation Services (borrowing, returns, renewals)</li>
-              <li>Reference and Research Assistance</li>
-              <li>Online Public Access Catalogue (OPAC)</li>
-              <li>Access to Electronic Databases and E-Journals</li>
-              <li>Postgraduate and Research Support Services</li>
-              <li>Information Literacy and User Education Programmes</li>
-              <li>Inter-Library Loans and Document Delivery</li>
-              <li>Institutional Repository (FULAFIA ScholarSpace)</li>
-              <li>Reprographic and Printing Services</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
+  
 
   <!-- 6. NEWS & EVENTS -->
   <section class="news-events" id="news" aria-labelledby="ne-heading">
@@ -492,7 +430,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#about">About the Library</a></li>
+          <li><a href="about.html">About the Library</a></li>
           <li><a href="staff.html">Staff Directory</a></li>
           <li><a href="#news">News &amp; Events</a></li>
         </ul>

@@ -273,14 +273,15 @@
   <!-- 1. TOP BAR -->
   <div class="top-bar">
     <div class="container">
-      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="Federal University Lafia homepage">
+      <div class="top-bar__brand">
         <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
         <div class="top-bar__name">
           <strong>Federal University Lafia</strong>
           <span>Integrity &middot; Innovation &middot; Excellence</span>
         </div>
-      </a>
+      </div>
       <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" style="background:var(--gold);color:var(--white);padding:.35rem .75rem;border-radius:20px;font-weight:700;font-size:.78rem;text-decoration:none;">FULAFIA Website</a>
         <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
           info@fulafia.edu.ng
@@ -297,7 +298,6 @@
   <nav class="dept-nav" aria-label="Department navigation">
     <div class="container">
       <div class="dept-nav__brand">
-        <img src="../assets/Logo.png" alt="FULAFIA logo" width="30" height="30">
         <span class="dept-nav__name">Dept. of Architecture</span>
       </div>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
@@ -307,7 +307,7 @@
       <ul class="nav-links" role="menubar">
         <li><a href="#" class="active">Home</a></li>
         <li><a href="dept-staff.html">Staff</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li class="has-dropdown">
           <a href="#">Admission</a>
           <ul class="dropdown-menu">
@@ -330,12 +330,7 @@
       <p class="hero__faculty"><a href="faculty.html" style="color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px;">&#8592; Back to Faculty</a></p>
       <h1 class="hero__title">Department of Architecture</h1>
       <p class="hero__sub">Designing Spaces. Shaping Futures.</p>
-      <div class="hero__actions">
-        <a href="#" class="hero__btn hero__btn--primary" aria-label="Download Department Guidebook">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          Department Guidebook
-        </a>
-      </div>
+      
     </div>
   </section>
 
@@ -378,56 +373,7 @@
   </section>
 
   <!-- 5. ABOUT (ACCORDION) -->
-  <section class="about" id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <span class="section-label">About the Department</span>
-      <h2 class="section-title" id="about-heading">Learn More About Us</h2>
-
-      <div class="accordion" role="list">
-
-        <details class="acc-item" open>
-          <summary class="acc-header">History</summary>
-          <div class="acc-body">
-            <p>The Department of Architecture was established in [year] as part of the Faculty of Environmental Design of the Federal University Lafia. Since its founding, it has grown into one of the most dynamic and forward-thinking architectural programmes in North-Central Nigeria.</p>
-            <p>Over the years, the department has produced graduates who have gone on to contribute meaningfully to architecture, urban development, and public policy across the country and beyond.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Philosophy</summary>
-          <div class="acc-body">
-            <p>Our philosophy is rooted in the belief that architecture is a social art. We train architects who understand that every building, every space, and every city is a reflection of the values, aspirations, and challenges of the people who inhabit them.</p>
-            <p>We are committed to design excellence, critical thinking, and ethical practice — producing graduates who are agents of positive change in their communities.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Vision &amp; Mission</summary>
-          <div class="acc-body">
-            <p><strong>Vision:</strong> To be a centre of excellence in architectural education, research, and practice in Nigeria and Africa.</p>
-            <p><strong>Mission:</strong> To provide a rigorous, inclusive, and innovative educational environment that equips students with the knowledge, skills, and ethical framework to practice architecture at the highest level.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Curriculum &amp; Requirements</summary>
-          <div class="acc-body">
-            <p>The department offers a five-year professional B.Arch degree programme accredited by the Architects Registration Council of Nigeria (ARCON). The curriculum covers:</p>
-            <ul>
-              <li>Architectural Design Studio (Years 1&ndash;5)</li>
-              <li>Building Technology and Materials</li>
-              <li>Structures and Environmental Engineering</li>
-              <li>History and Theory of Architecture</li>
-              <li>Professional Practice and Management</li>
-              <li>Urban Design and Housing</li>
-            </ul>
-            <p>Entry requirements include five O&rsquo;Level credits including Mathematics, Physics, and English Language, plus a satisfactory UTME score and a qualifying post-UTME screening.</p>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
+  
 
   <!-- 6. NEWS & EVENTS -->
   <section class="news-events" id="news" aria-labelledby="ne-heading">
@@ -556,7 +502,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#about">About the Department</a></li>
+          <li><a href="about.html">About the Department</a></li>
           <li><a href="dept-staff.html">Staff Directory</a></li>
           <li><a href="#">Programmes</a></li>
           <li><a href="faculty.html">Faculty Page</a></li>

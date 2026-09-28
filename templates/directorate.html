@@ -213,14 +213,15 @@
   <!-- 1. TOP BAR -->
   <div class="top-bar">
     <div class="container">
-      <a href="https://fulafia.edu.ng" class="top-bar__brand" target="_blank" rel="noopener" aria-label="FULAFIA homepage">
+      <div class="top-bar__brand">
         <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
         <div class="top-bar__name">
           <strong>Federal University Lafia</strong>
           <span>Integrity &middot; Innovation &middot; Excellence</span>
         </div>
-      </a>
+      </div>
       <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" style="background:var(--gold);color:var(--white);padding:.35rem .75rem;border-radius:20px;font-weight:700;font-size:.78rem;text-decoration:none;">FULAFIA Website</a>
         <a href="mailto:info@fulafia.edu.ng" aria-label="Email">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
           info@fulafia.edu.ng
@@ -237,7 +238,6 @@
   <nav class="dir-nav" aria-label="Directorate navigation">
     <div class="container">
       <div class="dir-nav__brand">
-        <img src="../assets/Logo.png" alt="FULAFIA logo" width="30" height="30">
         <span class="dir-nav__name">Directorate of Management Information Systems</span>
       </div>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
@@ -255,7 +255,7 @@
             <li><a href="#">Conferences</a></li>
           </ul>
         </li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
   </nav>
@@ -268,12 +268,7 @@
       <p class="hero__eyebrow">Federal University Lafia</p>
       <h1 class="hero__title">Directorate of Management Information Systems</h1>
       <p class="hero__sub">Powering Institutional Excellence Through Technology</p>
-      <div class="hero__actions">
-        <a href="#about" class="hero__btn hero__btn--primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-          About the Directorate
-        </a>
-      </div>
+      
     </div>
   </section>
 
@@ -310,48 +305,7 @@
   </section>
 
   <!-- 5. ABOUT / ACCORDION -->
-  <section class="about" id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <span class="section-label">About the Directorate</span>
-      <h2 class="section-title" id="about-heading">Who We Are</h2>
-
-      <div class="accordion" role="list">
-
-        <details class="acc-item" open>
-          <summary class="acc-header">History</summary>
-          <div class="acc-body">
-            <p>The Directorate of Management Information Systems (MIS) was established to coordinate and manage the university&rsquo;s information and communication technology infrastructure. Since its inception, it has grown into a critical pillar of the university&rsquo;s operational and academic functions, overseeing the digital transformation of institutional processes.</p>
-            <p>Over the years, the Directorate has implemented key systems that underpin student records management, financial operations, academic reporting, and administrative communications across all units of the university.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Vision &amp; Mission</summary>
-          <div class="acc-body">
-            <p><strong>Vision:</strong> To be the foremost technology-driven directorate in Nigerian university administration, enabling a seamless, data-informed, and innovative university experience.</p>
-            <p><strong>Mission:</strong> To provide reliable, secure, and efficient information systems and technology services that support the academic, research, and administrative goals of the Federal University Lafia.</p>
-          </div>
-        </details>
-
-        <details class="acc-item">
-          <summary class="acc-header">Programmes &amp; Services</summary>
-          <div class="acc-body">
-            <p>The Directorate offers a broad range of technology services and programmes to the university community, including:</p>
-            <ul>
-              <li>Student Information System (SIS) Administration</li>
-              <li>Enterprise Resource Planning (ERP) Support</li>
-              <li>University Website and Portal Management</li>
-              <li>Network Infrastructure and Cybersecurity</li>
-              <li>ICT Training and Capacity Building for Staff</li>
-              <li>Data Analytics and Institutional Reporting</li>
-              <li>Email and Communication Systems Management</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
+  
 
   <!-- 6. NEWS & EVENTS -->
   <section class="news-events" id="news" aria-labelledby="ne-heading">
@@ -478,7 +432,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#about">About the Directorate</a></li>
+          <li><a href="about.html">About the Directorate</a></li>
           <li><a href="dir-staff.html">Staff Directory</a></li>
           <li><a href="#news">News &amp; Events</a></li>
         </ul>

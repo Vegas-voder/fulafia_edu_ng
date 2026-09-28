@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Staff Directory – Federal University Lafia.">
-  <title>Staff Directory | FULAFIA</title>
+  <meta name="description" content="About Us – Federal University Lafia.">
+  <title>About Us | FULAFIA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -188,7 +188,7 @@
     <div class="container">
       <div class="page-banner__left">
         <p class="page-banner__eyebrow">Federal University Lafia</p>
-        <h1>Staff Directory &mdash; Department of Architecture</h1>
+        <h1>About Us</h1>
       </div>
       <a href="department.html" class="page-banner__back" aria-label="Back to Department">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
@@ -204,7 +204,7 @@
         <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
         <li><a href="faculty.html">Faculty of Environmental Design</a></li>
         <li><a href="department.html">Architecture</a></li>
-        <li>Staff</li>
+        <li>About Us</li>
       </ol>
     </div>
   </nav>
@@ -213,159 +213,15 @@
        Backend loops through staff post type filtered by current context.
        Each .staff-cat block = one category (e.g. Academic Staff, Admin Staff).
        The whole section below is the WordPress loop output area. -->
-  <section class="staff" aria-labelledby="staff-heading">
+  <section class="page-content" aria-labelledby="page-heading">
     <div class="container">
-
-      <!-- CATEGORY: Academic Staff -->
-      <div class="staff-cat">
-        <div class="staff-cat__header">
-          <h2>Academic Staff</h2>
-          <span class="staff-cat__line" aria-hidden="true"></span>
-          <span class="staff-cat__count">8 Members</span>
-        </div>
-        <div class="staff-grid">
-
-          <!-- Card 1 — Professor / HOD -->
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap">
-              <img class="staff-card__photo" src="../assets/VC.jpg" alt="Prof. A. Bello" loading="lazy" decoding="async">
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Professor</div>
-              <div class="staff-card__name">Prof. A. Bello</div>
-              <div class="staff-card__role">Head of Department &amp; Architecture Theory</div>
-              <div class="staff-card__contact">
-                <a href="mailto:bello@fulafia.edu.ng" aria-label="Email Prof. Bello">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap">
-              <img class="staff-card__photo" src="../assets/staff1.jpg" alt="Dr. C. Okeke" loading="lazy" decoding="async">
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Senior Lecturer</div>
-              <div class="staff-card__name">Dr. C. Okeke</div>
-              <div class="staff-card__role">Architectural Design Studio</div>
-              <div class="staff-card__contact">
-                <a href="mailto:okeke@fulafia.edu.ng" aria-label="Email Dr. Okeke">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap">
-              <img class="staff-card__photo" src="../assets/staff2.jpg" alt="Dr. M. Yusuf" loading="lazy" decoding="async">
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Lecturer I</div>
-              <div class="staff-card__name">Dr. M. Yusuf</div>
-              <div class="staff-card__role">Building Technology &amp; Structures</div>
-              <div class="staff-card__contact">
-                <a href="mailto:yusuf@fulafia.edu.ng" aria-label="Email Dr. Yusuf">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 4 — No photo example: backend adds class="no-photo" -->
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap no-photo">
-              <div class="staff-card__initials" aria-hidden="true">EA</div>
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Lecturer II</div>
-              <div class="staff-card__name">Mr. E. Agber</div>
-              <div class="staff-card__role">Environmental Planning</div>
-              <div class="staff-card__contact">
-                <a href="mailto:agber@fulafia.edu.ng" aria-label="Email Mr. Agber">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap">
-              <img class="staff-card__photo" src="../assets/staff3.jpg" alt="Mr. D. Sule" loading="lazy" decoding="async">
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Assistant Lecturer</div>
-              <div class="staff-card__name">Mr. D. Sule</div>
-              <div class="staff-card__role">Urban Design &amp; Housing</div>
-              <div class="staff-card__contact">
-                <a href="mailto:sule@fulafia.edu.ng" aria-label="Email Mr. Sule">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /.staff-grid -->
-      </div><!-- /.staff-cat -->
-
-      <!-- CATEGORY: Administrative Staff -->
-      <div class="staff-cat">
-        <div class="staff-cat__header">
-          <h2>Administrative Staff</h2>
-          <span class="staff-cat__line" aria-hidden="true"></span>
-          <span class="staff-cat__count">3 Members</span>
-        </div>
-        <div class="staff-grid">
-
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap no-photo">
-              <div class="staff-card__initials" aria-hidden="true">NK</div>
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Senior Admin Officer</div>
-              <div class="staff-card__name">Mrs. N. Kolo</div>
-              <div class="staff-card__role">Departmental Secretary</div>
-              <div class="staff-card__contact">
-                <a href="mailto:kolo@fulafia.edu.ng" aria-label="Email Mrs. Kolo">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="staff-card">
-            <div class="staff-card__photo-wrap no-photo">
-              <div class="staff-card__initials" aria-hidden="true">BI</div>
-            </div>
-            <div class="staff-card__info">
-              <div class="staff-card__rank">Technologist</div>
-              <div class="staff-card__name">Mr. B. Ibrahim</div>
-              <div class="staff-card__role">Model &amp; Drawing Laboratory</div>
-              <div class="staff-card__contact">
-                <a href="mailto:ibrahim@fulafia.edu.ng" aria-label="Email Mr. Ibrahim">
-                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /.staff-grid -->
-      </div><!-- /.staff-cat -->
-
-      <!-- EMPTY STATE — backend shows this block if no staff found -->
-      <!--
-      <div class="staff-empty">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-        <p>No staff records found for this unit.</p>
+      
+      <!-- Backend will load about content (e.g. History, Vision, Mission) here -->
+      <div class="about-content" style="max-width: 820px; line-height: 1.8; color: var(--grey-800);">
+         <p style="padding: 2rem 0; color: var(--grey-500);">About content will be loaded here by the backend.</p>
       </div>
-      -->
 
-    </div><!-- /.container -->
+    </div>
   </section>
 
   <!-- CONTACT CTA -->
