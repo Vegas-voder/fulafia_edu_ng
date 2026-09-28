@@ -154,6 +154,17 @@
       .cta-btn{width:100%;justify-content:center;font-size:.85rem;padding:.7rem 1rem;white-space:nowrap}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    /* DEPARTMENTS */
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .dept-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--grey-300); transition: transform var(--t), box-shadow var(--t); display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+    .dept-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,.1); border-color: var(--gold-light); }
+    .dept-card__img-wrap { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--grey-100); }
+    .dept-card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .dept-card:hover .dept-card__img { transform: scale(1.05); }
+    .dept-card__name { font-size: 1.05rem; font-weight: 800; color: var(--navy); padding: 1.2rem 1.2rem 0; flex: 1; line-height: 1.3; margin-bottom: 1rem; }
+    .dept-card__footer { padding: 1rem 1.2rem 1.2rem; font-size: .85rem; font-weight: 700; color: var(--gold); display: flex; justify-content: flex-end; border-top: 1px solid var(--grey-100); }
+
   </style>
 </head>
 <body>
@@ -203,7 +214,6 @@
       <ol>
         <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
         <li><a href="faculty.html">Faculty of Environmental Design</a></li>
-        <li><a href="department.html">Architecture</a></li>
         <li>Departments</li>
       </ol>
     </div>
@@ -217,8 +227,29 @@
     <div class="container">
       
       <!-- Backend will loop through departments here -->
-      <div class="dept-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
-         <p style="padding: 2rem 0; color: var(--grey-500);">Departments will be loaded here by the backend.</p>
+      
+      <div class="dept-grid">
+        <a href="department.html" class="dept-card" aria-label="Architecture">
+          <div class="dept-card__name">Department of Architecture</div>
+          <div class="dept-card__img-wrap">
+             <img class="dept-card__img" src="../assets/lib.jpg" alt="Architecture building" loading="lazy" decoding="async">
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+        <a href="department.html" class="dept-card" aria-label="Estate Management">
+          <div class="dept-card__name">Department of Estate Management</div>
+          <div class="dept-card__img-wrap">
+             <img class="dept-card__img" src="../assets/law.jpg" alt="Estate management building" loading="lazy" decoding="async">
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
+        <a href="department.html" class="dept-card" aria-label="Building Technology">
+          <div class="dept-card__name">Department of Building Technology</div>
+          <div class="dept-card__img-wrap">
+             <img class="dept-card__img" src="../assets/staff2.jpg" alt="Building tech" loading="lazy" decoding="async">
+          </div>
+          <div class="dept-card__footer">View Department &rarr;</div>
+        </a>
       </div>
 
     </div>

@@ -154,6 +154,17 @@
       .cta-btn{width:100%;justify-content:center;font-size:.85rem;padding:.7rem 1rem;white-space:nowrap}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    /* MANAGEMENT */
+    .mgt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+    .mgt-card { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); overflow: hidden; transition: box-shadow var(--t), border-color var(--t); display: flex; flex-direction: column; }
+    .mgt-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,.08); border-color: var(--gold-light); }
+    .mgt-card__photo { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top; }
+    .mgt-card__info { padding: 1.25rem 1rem; text-align: center; display: flex; flex-direction: column; flex: 1; }
+    .mgt-card__name { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+    .mgt-card__title { font-size: .72rem; color: var(--gold); font-weight: 700; margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em; }
+    .mgt-card__role { font-size: .78rem; color: var(--grey-500); line-height: 1.4; }
+
   </style>
 </head>
 <body>
@@ -203,7 +214,6 @@
       <ol>
         <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
         <li><a href="faculty.html">Faculty of Environmental Design</a></li>
-        <li><a href="department.html">Architecture</a></li>
         <li>Management</li>
       </ol>
     </div>
@@ -217,9 +227,24 @@
     <div class="container">
       
       <!-- Backend will loop through management members here -->
-      <div class="staff-grid">
-         <!-- Placeholder for management card -->
-         <p style="padding: 2rem 0; color: var(--grey-500);">Management members will be loaded here by the backend.</p>
+      
+      <div class="mgt-grid">
+        <div class="mgt-card">
+          <img class="mgt-card__photo" src="../assets/VC.jpg" alt="Dean" loading="lazy">
+          <div class="mgt-card__info">
+            <div class="mgt-card__title">Dean</div>
+            <h3 class="mgt-card__name">Prof. Kida</h3>
+            <div class="mgt-card__role">Faculty of Environmental Design</div>
+          </div>
+        </div>
+        <div class="mgt-card">
+          <img class="mgt-card__photo" src="../assets/staff1.jpg" alt="Faculty Officer" loading="lazy">
+          <div class="mgt-card__info">
+            <div class="mgt-card__title">Faculty Officer</div>
+            <h3 class="mgt-card__name">Mr. John Doe</h3>
+            <div class="mgt-card__role">Administrative Head</div>
+          </div>
+        </div>
       </div>
 
     </div>
