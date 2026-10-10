@@ -216,6 +216,174 @@
       .cta-btn{width:100%;justify-content:center;font-size:.85rem;padding:.7rem 1rem;white-space:nowrap}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    
+
+  
+    /* ── PURE CSS HORIZONTAL SLIDING HERO CAROUSEL (NO JS) ────── */
+    .hero { position: relative; overflow: hidden; height: clamp(340px, 50vw, 540px); }
+    .hero-carousel__radio { display: none; }
+
+    .hero-carousel__viewport {
+      width: 100%; height: 100%; overflow: hidden; position: relative;
+    }
+    .hero-carousel__track {
+    will-change: transform;
+      display: flex; width: 300%; height: 100%;
+      animation: heroAutoSlide 12s infinite cubic-bezier(.65,0,.35,1);
+      transition: transform .8s cubic-bezier(.65,0,.35,1);
+    }
+    .hero-slide {
+      position: relative; width: 33.333333%; height: 100%; flex-shrink: 0;
+      overflow: hidden;
+    }
+    .hero-slide img.hero__img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+    }
+
+    /* Auto Sliding Keyframes (3 slides: ~5.3s each) */
+    @keyframes heroAutoSlide {
+      0%, 28% { transform: translateX(0%); }
+      33%, 61% { transform: translateX(-33.333333%); }
+      66%, 95% { transform: translateX(-66.666667%); }
+      100% { transform: translateX(0%); }
+    }
+
+    /* Pause on hover */
+    .hero:hover .hero-carousel__track {
+    will-change: transform; animation-play-state: paused; }
+
+    /* Manual Radio selection overrides animation */
+    #hero-slide-1:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(0%) !important;
+    }
+    #hero-slide-2:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(-33.333333%) !important;
+    }
+    #hero-slide-3:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(-66.666667%) !important;
+    }
+
+    /* Arrow navigation */
+    .hero-carousel__arrows { display: none; }
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__arrows--1 { display: block; }
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__arrows--2 { display: block; }
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__arrows--3 { display: block; }
+    .hero-carousel__arrows--1 { display: block; }
+
+    .hero-carousel__arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px;
+      background: rgba(18,25,43,.6);
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 15;
+      transition: background var(--t), border-color var(--t), transform var(--t);
+      user-select: none; -webkit-user-select: none;
+      font-size: 1.15rem; line-height: 1;
+      backdrop-filter: blur(4px);
+    }
+    .hero-carousel__arrow:hover {
+      background: var(--gold); border-color: var(--gold);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .hero-carousel__arrow--prev { left: 1.25rem; }
+    .hero-carousel__arrow--next { right: 1.25rem; }
+
+    /* Indicator dots */
+    .hero-carousel__indicators {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: .6rem; z-index: 15;
+      background: rgba(18,25,43,.55); padding: .4rem .75rem; border-radius: 20px;
+      backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.25);
+    }
+    .hero-carousel__dot {
+      width: 10px; height: 10px; border-radius: 20px;
+      background: rgba(255,255,255,.45); cursor: pointer;
+      transition: background var(--t), width var(--t);
+      display: block;
+    }
+    .hero-carousel__dot:hover { background: var(--white); }
+
+    @keyframes heroDot1 {
+      0%, 28% { background: var(--gold); width: 24px; }
+      33%, 95% { background: rgba(255,255,255,.45); width: 10px; }
+      100% { background: var(--gold); width: 24px; }
+    }
+    @keyframes heroDot2 {
+      0%, 28% { background: rgba(255,255,255,.45); width: 10px; }
+      33%, 61% { background: var(--gold); width: 24px; }
+      66%, 100% { background: rgba(255,255,255,.45); width: 10px; }
+    }
+    @keyframes heroDot3 {
+      0%, 61% { background: rgba(255,255,255,.45); width: 10px; }
+      66%, 95% { background: var(--gold); width: 24px; }
+      100% { background: rgba(255,255,255,.45); width: 10px; }
+    }
+    .hero-carousel__dot--1 { animation: heroDot1 12s infinite; }
+    .hero-carousel__dot--2 { animation: heroDot2 12s infinite; }
+    .hero-carousel__dot--3 { animation: heroDot3 12s infinite; }
+
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__dot,
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__dot,
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__dot {
+      animation: none !important;
+    }
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__dot--1 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__dot--2 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__dot--3 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+
+    /* News Badge in Hero */
+    .hero__news-badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: var(--gold); color: var(--white);
+      font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; padding: .32rem .8rem;
+      border-radius: 4px; margin-bottom: .6rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+    .hero__title--news {
+      font-size: clamp(1.25rem, 3.8vw, 2.2rem) !important;
+      line-height: 1.25 !important; max-width: 740px !important;
+      color: var(--white) !important;
+    }
+    .hero__sub--news {
+      font-size: .88rem; color: rgba(255,255,255,.85);
+      max-width: 660px; margin-bottom: 1rem;
+    }
+
+    @media (max-width: 680px) {
+      .hero { height: clamp(280px, 60vw, 380px); }
+      .hero-carousel__arrow { width: 36px; height: 36px; font-size: .9rem; }
+      .hero-carousel__arrow--prev { left: .5rem; }
+      .hero-carousel__arrow--next { right: .5rem; }
+      .hero-carousel__indicators { bottom: .8rem; padding: .3rem .55rem; gap: .45rem; }
+      .hero__title--news { font-size: clamp(1.05rem, 4.5vw, 1.45rem) !important; }
+      .hero__sub--news { font-size: .78rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    }
+
+  
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 680px) {
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -258,23 +426,91 @@
         <span></span><span></span><span></span>
       </label>
       <ul class="nav-links" role="menubar">
-        <li><a href="faculty.html" class="active">Home</a></li>
+
+
+        <li><a href="centre.html" class="active">Home</a></li>
         <li><a href="ctr-staff.html">Staff</a></li>
-        <li><a href="news.html">News</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="news.html">News and Events</a></li>
+        <li class="nav-item--portal"><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="nav-portal-btn" aria-label="Access FULAFIA Portal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg><span>Portal</span></a></li>
       </ul>
     </div>
   </nav>
 
   <!-- 3. HERO -->
-  <section class="hero" aria-label="Centre hero">
-    <img class="hero__img" src="../assets/ced.jpg" alt="Centre for Entrepreneurial Development" loading="eager" fetchpriority="high" decoding="async">
-    <div class="hero__overlay" aria-hidden="true"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">Federal University Lafia</p>
-      <h1 class="hero__title">Centre for Entrepreneurial Development</h1>
-      <p class="hero__sub">Cultivating Innovation, Building Tomorrow&rsquo;s Enterprise Leaders</p>
-      
+  <!-- HERO CAROUSEL (PURE CSS HORIZONTAL SLIDING - NO JS) -->
+  <!-- HERO CAROUSEL (PURE CSS HORIZONTAL SLIDING - NO JS) -->
+  <section class="hero hero--carousel" aria-label="Featured Carousel">
+    <input type="radio" name="hero-slide" id="hero-slide-1" class="hero-carousel__radio" autocomplete="off">
+    <input type="radio" name="hero-slide" id="hero-slide-2" class="hero-carousel__radio" autocomplete="off">
+    <input type="radio" name="hero-slide" id="hero-slide-3" class="hero-carousel__radio" autocomplete="off">
+
+    <div class="hero-carousel__viewport">
+      <div class="hero-carousel__track">
+        <!-- Slide 1: Landing Photo -->
+        <div class="hero-slide hero-slide--1">
+          <img class="hero__img" src="../assets/ced.jpg" alt="Centre for Entrepreneurial Development" loading="eager" fetchpriority="high" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            
+        <p class="hero__eyebrow">Federal University Lafia</p>
+        <h1 class="hero__title">Centre for Entrepreneurial Development</h1>
+        <p class="hero__sub">Fostering Enterprise. Cultivating Innovators.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2: News Post 1 -->
+        <div class="hero-slide hero-slide--2">
+          <img class="hero__img" src="../assets/news.jpg" alt="CED Incubation Hub Awards Seed Grants to 12 Outstanding Student Enterprises" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__news-badge">Start-Up Seed Grant</span>
+            <h2 class="hero__title hero__title--news">CED Incubation Hub Awards Seed Grants to 12 Outstanding Student Enterprises</h2>
+            <p class="hero__sub hero__sub--news">Empowering viable youth-led start-ups in sustainable agriculture, renewable energy, and digital creative technologies.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: News Post 2 -->
+        <div class="hero-slide hero-slide--3">
+          <img class="hero__img" src="../assets/newss.jpg" alt="Annual University Entrepreneurship Trade Fair &amp; Innovation Exhibition Kicks Off" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__news-badge">Trade Exhibition</span>
+            <h2 class="hero__title hero__title--news">Annual University Entrepreneurship Trade Fair &amp; Innovation Exhibition Kicks Off</h2>
+            <p class="hero__sub hero__sub--news">Student entrepreneurs showcase market-ready products, commercial prototypes, and vocational innovations to venture partners.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation (Arrows & Indicators) -->
+    <div class="hero-carousel__nav">
+      <div class="hero-carousel__arrows hero-carousel__arrows--1">
+        <label for="hero-slide-3" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-2" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+      <div class="hero-carousel__arrows hero-carousel__arrows--2">
+        <label for="hero-slide-1" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-3" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+      <div class="hero-carousel__arrows hero-carousel__arrows--3">
+        <label for="hero-slide-2" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-1" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+
+      <div class="hero-carousel__indicators">
+        <label for="hero-slide-1" class="hero-carousel__dot hero-carousel__dot--1" aria-label="Slide 1"></label>
+        <label for="hero-slide-2" class="hero-carousel__dot hero-carousel__dot--2" aria-label="Slide 2"></label>
+        <label for="hero-slide-3" class="hero-carousel__dot hero-carousel__dot--3" aria-label="Slide 3"></label>
+      </div>
     </div>
   </section>
 

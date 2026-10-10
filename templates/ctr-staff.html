@@ -82,7 +82,7 @@
 
     /* STAFF CATEGORIES */
     .staff{padding:3rem 0 4rem;background:var(--off-white)}
-    .staff-category{margin-bottom:3rem}
+    .staff-category{margin-bottom:4.5rem}.staff-category+.staff-category{margin-top:5rem;padding-top:4rem;border-top:2px solid var(--grey-300)}
     .staff-category:last-child{margin-bottom:0}
     .staff-cat-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:2px solid var(--grey-300)}
     .staff-cat-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--navy);padding:.3rem .85rem;border-radius:20px;border-left:3px solid var(--gold);white-space:nowrap}
@@ -92,7 +92,7 @@
     .staff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.25rem}
     .staff-card{background:var(--white);border-radius:var(--radius);border:1px solid var(--grey-300);overflow:hidden;text-align:center;transition:transform var(--t),box-shadow var(--t)}
     .staff-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.09)}
-    .staff-card__img-wrap{aspect-ratio:1;overflow:hidden;background:var(--grey-100)}
+    .staff-card__img-wrap{aspect-ratio:1;max-height:155px;overflow:hidden;background:var(--grey-100)}
     .staff-card__img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
     .staff-card__img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--navy-mid))}
     .staff-card__img-placeholder svg{width:46px;height:46px;fill:rgba(255,255,255,.22)}
@@ -177,6 +177,31 @@
       .cta-btn{width:100%;justify-content:center;font-size:.85rem;padding:.7rem 1rem;white-space:nowrap}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 680px) {
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+    }
+
+  
+    a.staff-card {
+      display: flex; flex-direction: column; text-decoration: none; color: inherit;
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t); cursor: pointer;
+    }
+    a.staff-card:hover {
+      transform: translateY(-4px); box-shadow: 0 10px 28px rgba(18,25,43,.14); border-color: var(--gold);
+    }
+    .staff-card__view-profile {
+      display: inline-flex; align-items: center; gap: .3rem; font-size: .75rem; font-weight: 700;
+      color: var(--gold); margin-top: .6rem; transition: color var(--t);
+    }
+    a.staff-card:hover .staff-card__view-profile { color: var(--gold-light); }
+  
   </style>
 </head>
 <body>
@@ -219,18 +244,13 @@
         <span></span><span></span><span></span>
       </label>
       <ul class="nav-links" role="menubar">
+
+
         <li><a href="centre.html">Home</a></li>
         <li><a href="ctr-staff.html" class="active">Staff</a></li>
-        <li><a href="centre.html#about">About</a></li>
-        <li class="has-dropdown">
-          <a href="#">Admission</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Undergraduate</a></li>
-            <li><a href="#">Postgraduate</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Programmes</a></li>
-        <li><a href="centre.html#news">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="news.html">News and Events</a></li>
+        <li class="nav-item--portal"><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="nav-portal-btn" aria-label="Access FULAFIA Portal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg><span>Portal</span></a></li>
       </ul>
     </div>
   </nav>
@@ -241,7 +261,7 @@
       <div>
         <span class="section-label" style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.35)">Centre for Entrepreneurial Development</span>
         <h1 class="page-banner__title">Staff Directory</h1>
-        <p class="page-banner__sub">Academic, Non-Academic &amp; Technical Staff</p>
+        <p class="page-banner__sub">Teaching &amp; Non-Teaching Staff</p>
       </div>
       <a href="centre.html" class="page-banner__back">&larr; Back to Department</a>
     </div>
@@ -259,21 +279,19 @@
   </nav>
 
   <!-- 3. STAFF CATEGORIES -->
-  <main class="staff" id="main" aria-labelledby="staff-heading">
+  <main class="staff" id="main" aria-label="Staff Directory">
     <div class="container">
-      <span class="section-label">Our People</span>
-      <h2 class="section-title" id="staff-heading" style="margin-bottom:2.5rem">Meet the Team</h2>
 
       <!-- ── ACADEMIC STAFF ───────────────────────────────── -->
-      <div class="staff-category" id="academic">
+      <div class="staff-category" id="teaching">
         <div class="staff-cat-header">
-          <span class="staff-cat-label">Academic</span>
-          <h3>Academic Staff</h3>
+          <span class="staff-cat-label">Teaching</span>
+          <h3>Teaching Staff</h3>
           <span class="staff-cat-count">5 members</span>
         </div>
         <div class="staff-grid">
 
-          <div class="staff-card">
+          <a href="staff-single.html" class="staff-card" aria-label="View profile for Dr. [HOD Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/VC.jpg" alt="Dr. [HOD Name]" loading="eager" decoding="async">
             </div>
@@ -281,10 +299,9 @@
               <p class="staff-card__name">Dr. [HOD Name]</p>
               <p class="staff-card__role">HOD &amp; Associate Professor</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for Ar. [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff1.jpg" alt="Ar. [Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -292,10 +309,9 @@
               <p class="staff-card__name">Ar. [Staff Name]</p>
               <p class="staff-card__role">Senior Lecturer</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for Ar. [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff2.jpg" alt="Ar. [Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -303,10 +319,9 @@
               <p class="staff-card__name">Ar. [Staff Name]</p>
               <p class="staff-card__role">Lecturer I</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for Ar. [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff3.jpg" alt="Ar. [Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -314,10 +329,9 @@
               <p class="staff-card__name">Ar. [Staff Name]</p>
               <p class="staff-card__role">Lecturer II</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for Ar. [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff1.jpg" alt="Ar. [Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -325,22 +339,22 @@
               <p class="staff-card__name">Ar. [Staff Name]</p>
               <p class="staff-card__role">Assistant Lecturer</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
+          </a>
         </div>
       </div>
 
-      <!-- ── NON-ACADEMIC STAFF ────────────────────────────── -->
-      <div class="staff-category" id="non-academic">
+      <!-- ── NON-TEACHING STAFF ────────────────────────────── -->
+      <div class="staff-category" id="non-teaching">
         <div class="staff-cat-header">
-          <span class="staff-cat-label">Non-Academic</span>
-          <h3>Non-Academic Staff</h3>
-          <span class="staff-cat-count">3 members</span>
+          <span class="staff-cat-label">Non-Teaching</span>
+          <h3>Non-Teaching Staff</h3>
+          <span class="staff-cat-count">5 members</span>
         </div>
         <div class="staff-grid">
 
-          <div class="staff-card">
+          <a href="staff-single.html" class="staff-card" aria-label="View profile for [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff2.jpg" alt="[Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -348,10 +362,9 @@
               <p class="staff-card__name">[Staff Name]</p>
               <p class="staff-card__role">Dept. Secretary</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff3.jpg" alt="[Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -359,10 +372,9 @@
               <p class="staff-card__name">[Staff Name]</p>
               <p class="staff-card__role">Administrative Officer</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff1.jpg" alt="[Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -370,22 +382,12 @@
               <p class="staff-card__name">[Staff Name]</p>
               <p class="staff-card__role">Clerical Officer</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
+          </a>
 
-        </div>
-      </div>
 
-      <!-- ── TECHNICAL STAFF ──────────────────────────────── -->
-      <div class="staff-category" id="technical">
-        <div class="staff-cat-header">
-          <span class="staff-cat-label">Technical</span>
-          <h3>Technical Staff</h3>
-          <span class="staff-cat-count">2 members</span>
-        </div>
-        <div class="staff-grid">
-
-          <div class="staff-card">
+          <a href="staff-single.html" class="staff-card" aria-label="View profile for [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff2.jpg" alt="[Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -393,10 +395,9 @@
               <p class="staff-card__name">[Staff Name]</p>
               <p class="staff-card__role">Studio Technician</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-          <div class="staff-card">
+          </a><a href="staff-single.html" class="staff-card" aria-label="View profile for [Staff Name]">
             <div class="staff-card__img-wrap">
               <img class="staff-card__img" src="../assets/staff3.jpg" alt="[Staff Name]" loading="lazy" decoding="async">
             </div>
@@ -404,10 +405,9 @@
               <p class="staff-card__name">[Staff Name]</p>
               <p class="staff-card__role">Lab Technologist</p>
               <span class="staff-card__gold"></span>
+              <span class="staff-card__view-profile">View Profile &rarr;</span>
             </div>
-          </div>
-
-        </div>
+          </a>
       </div>
 
     </div>

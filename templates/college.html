@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="College of Natural and Applied Sciences – Federal University Lafia. Explore constituent faculties, research, publications and news.">
+  <title>College of Natural and Applied Sciences | Federal University Lafia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#8B6914;--gold-light:#A07820;--gold-bg:#f5edd6;
+      --navy:#12192B;--navy-mid:#1e2d4a;
+      --white:#fff;--off-white:#f8f8f6;
+      --grey-100:#f1f2f4;--grey-300:#d1d5db;
+      --grey-500:#6b7280;--grey-800:#1f2937;
+      --body:#2c2c2c;--radius:6px;--t:.2s ease;--max-w:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;color:var(--body);background:var(--white);-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+    .section-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-left:3px solid var(--gold);padding-left:.55rem;margin-bottom:.65rem}
+    .section-title{font-size:clamp(1.35rem,2.5vw,1.9rem);font-weight:800;color:var(--navy);margin-bottom:2rem}
+
+    .top-bar{background:var(--navy);padding:.55rem 0;border-bottom:2px solid var(--gold)}
+    .top-bar .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .top-bar__brand{display:flex;align-items:center;gap:.65rem}
+    .top-bar__brand img{width:38px;height:38px;object-fit:contain}
+    .top-bar__name strong{display:block;font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
+    .top-bar__name span{font-size:.68rem;color:rgba(255,255,255,.6)}
+    .top-bar__contact{display:flex;align-items:center;gap:1.4rem}
+    .top-bar__contact a{font-size:.78rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.35rem;transition:color var(--t)}
+    .top-bar__contact a:hover{color:var(--gold-light)}
+    .top-bar__contact svg{width:13px;height:13px;flex-shrink:0;fill:var(--gold)}
+    .top-bar__website-btn{background:var(--gold);color:var(--white)!important;padding:.35rem .85rem;border-radius:20px;font-weight:700;font-size:.75rem;display:inline-flex;align-items:center;gap:.35rem;transition:background var(--t)}
+    .top-bar__contact a.top-bar__website-btn:hover{background:var(--gold-light);color:var(--white)!important}
+    .top-bar__website-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+
+    .college-nav{background:var(--white);border-bottom:1px solid var(--grey-300);position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .college-nav .container{display:flex;align-items:stretch;justify-content:space-between;gap:1rem;position:relative}
+    .college-nav__brand{display:flex;align-items:center;gap:.55rem;flex-shrink:0;padding:.55rem 0}
+    .college-nav__name{font-size:.9rem;font-weight:800;color:var(--navy);white-space:nowrap}
+    .nav-links{display:flex;align-items:stretch}
+    .nav-links li{position:relative;display:flex}
+    .nav-links a{display:flex;align-items:center;padding:0 1rem;font-size:.85rem;font-weight:600;color:var(--grey-800);white-space:nowrap;border-bottom:3px solid transparent;transition:color var(--t),border-color var(--t)}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold)}
+    .nav-toggle{display:none}
+    .nav-toggle-label{display:none;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;flex-shrink:0}
+    .nav-toggle-label span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:var(--t)}
+
+    .hero{position:relative;overflow:hidden;height:clamp(280px,45vw,500px)}
+    .hero__img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    /* College: gradient from right, slightly different direction to faculty's left-to-right */
+    .hero__overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,25,43,.92) 0%,rgba(18,25,43,.6) 55%,rgba(18,25,43,.2) 100%)}
+    .hero__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:2rem 1.25rem;max-width:calc(var(--max-w) + 2.5rem);margin:0 auto;left:0;right:0}
+    .hero__eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.45rem}
+    /* College visual differentiator: gold left-border stripe on title */
+    .hero__title{font-size:clamp(1.4rem,4vw,2.6rem);font-weight:800;color:var(--white);line-height:1.15;max-width:580px;margin-bottom:.35rem;border-left:5px solid var(--gold);padding-left:.85rem}
+    .hero__sub{font-size:.85rem;color:rgba(255,255,255,.7);font-weight:500;margin-bottom:1rem;padding-left:1rem}
+    .hero__actions{display:flex;gap:.65rem;flex-wrap:wrap}
+    .hero__btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;padding:.55rem 1rem;border-radius:4px;transition:background var(--t),color var(--t);white-space:nowrap}
+    .hero__btn--primary{background:var(--gold);color:var(--white)}
+    .hero__btn--primary:hover{background:var(--gold-light)}
+    .hero__btn--outline{background:rgba(255,255,255,.12);color:var(--white);border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(4px)}
+    .hero__btn--outline:hover{background:rgba(255,255,255,.22)}
+
+    .welcome{padding:2.5rem 0;background:var(--white)}
+    .welcome .container{display:grid;grid-template-columns:260px 1fr;gap:2.5rem;align-items:center}
+    .welcome__photo-wrap{position:relative;flex-shrink:0}
+    .welcome__photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:var(--radius);display:block}
+    .welcome__accent{position:absolute;bottom:-8px;right:-8px;width:60px;height:60px;background:var(--gold);border-radius:var(--radius);z-index:-1}
+    .welcome__text blockquote{font-size:.92rem;line-height:1.85;color:var(--grey-800);font-style:italic;border-left:4px solid var(--gold);padding-left:1.1rem;margin-bottom:1.2rem}
+    .welcome__sig-line{width:40px;height:2px;background:var(--gold);margin-bottom:.5rem}
+    .welcome__sig strong{display:block;font-size:.9rem;font-weight:700;color:var(--navy)}
+    .welcome__sig span{font-size:.78rem;color:var(--grey-500)}
+
+    .departments{padding:4rem 0;background:var(--off-white)}
+    .dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+    .dept-card{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid var(--grey-300);transition:transform var(--t),box-shadow var(--t);display:flex;flex-direction:column;text-decoration:none;color:inherit}
+    .dept-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+    .dept-card__name{background:var(--navy);color:var(--white);font-size:.82rem;font-weight:700;padding:.65rem 1rem;border-bottom:2px solid var(--gold)}
+    .dept-card__img-wrap{aspect-ratio:16/10;overflow:hidden}
+    .dept-card__img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .35s ease;display:block}
+    .dept-card:hover .dept-card__img{transform:scale(1.05)}
+    .dept-card__footer{padding:.75rem 1rem;font-size:.78rem;color:var(--gold);font-weight:600;margin-top:auto;display:flex;align-items:center;gap:.3rem}
+
+    .research{padding:4rem 0;background:var(--white)}
+    .research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+    .research-card{border:1px solid var(--grey-300);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;transition:box-shadow var(--t),border-color var(--t)}
+    .research-card:hover{box-shadow:0 8px 24px rgba(139,105,20,.12);border-color:var(--gold)}
+    .research-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+    .research-card__tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);padding:.2rem .55rem;border-radius:20px;margin-bottom:.75rem}
+    .research-card__title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.35}
+    .research-card__meta{font-size:.76rem;color:var(--grey-500);line-height:1.5}
+
+    .news-events{padding:4rem 0;background:var(--off-white)}
+    .ne-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+    .ne-col__header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--grey-100)}
+    .ne-col__header h3{font-size:1.05rem;font-weight:800;color:var(--navy)}
+    .ne-list{display:flex;flex-direction:column;gap:1rem}
+    .ne-item{display:flex;gap:0;align-items:stretch;border:1px solid var(--grey-300);border-radius:var(--radius);overflow:hidden;background:var(--white);transition:box-shadow var(--t)}
+    .ne-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .ne-item__thumb{flex-shrink:0;width:100px;overflow:hidden;display:flex}
+    .ne-item__thumb img{width:100%;object-fit:cover;display:block;flex:1;min-height:90px}
+    .ne-item__inner{display:flex;gap:.7rem;align-items:flex-start;padding:.8rem;flex:1}
+    .ne-item__date{flex-shrink:0;width:40px;background:var(--navy);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.35rem .2rem;align-self:flex-start}
+    .ne-item__date .day{font-size:1rem;font-weight:800;color:var(--gold-light);line-height:1}
+    .ne-item__date .mon{font-size:.58rem;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.04em}
+    .ne-item__body h4{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;line-height:1.3}
+    .ne-item__body p{font-size:.76rem;color:var(--grey-500);line-height:1.5}
+    .ne-item__body a.read-more{font-size:.73rem;font-weight:600;color:var(--gold);display:inline-block;margin-top:.3rem}
+    .ne-item__body a.read-more:hover{color:var(--gold-light)}
+
+    .contact-cta{padding:3.5rem 0;background:var(--white)}
+    .cta-inner{background:var(--navy);border-radius:var(--radius);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-left:4px solid var(--gold)}
+    .cta-text h2{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.5rem}
+    .cta-text p{color:rgba(255,255,255,.8);font-size:.9rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:700;padding:.8rem 1.5rem;border-radius:30px;transition:background var(--t)}
+    .cta-btn:hover{background:var(--gold-light)}
+    .cta-btn svg{width:16px;height:16px;fill:currentColor}
+
+    .footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.65);padding:2.5rem 0 1.5rem}
+    .footer .container{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+    .footer__brand img{width:44px;height:44px;object-fit:contain;margin-bottom:.65rem}
+    .footer__brand p{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.55);max-width:280px}
+    .footer__col h4{font-size:.82rem;font-weight:700;color:var(--gold-light);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem}
+    .footer__col ul li{margin-bottom:.45rem}
+    .footer__col ul a{font-size:.8rem;color:rgba(255,255,255,.6);transition:color var(--t)}
+    .footer__col ul a:hover{color:var(--gold-light)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .footer__bottom p,.footer__bottom a{font-size:.75rem}
+    .footer__bottom a{color:var(--gold-light)}
+
+    @media(max-width:900px){
+      .welcome .container{grid-template-columns:180px 1fr;gap:1.5rem}
+      .ne-grid{grid-template-columns:1fr}
+      .footer .container{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .top-bar{padding:.4rem 0}
+      .top-bar .container{flex-wrap:nowrap;gap:.5rem}
+      .top-bar__contact{gap:.2rem}
+      .top-bar__brand img{width:30px;height:30px}
+      .top-bar__name span{display:none}
+      .top-bar__contact a{font-size:0;gap:0;padding:0;min-width:36px;min-height:36px;justify-content:center}
+      .top-bar__contact svg{width:20px;height:20px}
+      .nav-toggle-label{display:flex}
+      .college-nav .container{padding:0 1rem}
+      .college-nav__name{font-size:.8rem;overflow:hidden;text-overflow:ellipsis;max-width:55vw}
+      .nav-links{display:none;position:fixed;top:0;right:0;bottom:0;width:82%;max-width:300px;background:var(--white);flex-direction:column;border-left:3px solid var(--gold);box-shadow:-8px 0 40px rgba(0,0,0,.25);z-index:300;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:4rem}
+      .nav-toggle:checked~.nav-links{display:flex}
+      .nav-links li{display:block;width:100%}
+      .nav-links a{padding:.9rem 1.25rem;border-bottom:1px solid var(--grey-100);border-left:3px solid transparent;font-size:.9rem;min-height:48px;border-bottom-color:transparent}
+      .nav-links a:hover,.nav-links a.active{border-left-color:var(--gold);background:var(--gold-bg)}
+      .hero{height:clamp(240px,55vw,340px)}
+      .hero__title{font-size:clamp(1.15rem,5vw,1.6rem);padding-left:.6rem}
+      .hero__sub{padding-left:.75rem}
+      .welcome{padding:2rem 0}
+      .welcome .container{grid-template-columns:1fr;gap:1.25rem}
+      .welcome__photo{aspect-ratio:16/9;object-position:top center}
+      .welcome__accent{display:none}
+      .departments{padding:2.5rem 0}
+      .dept-grid{grid-template-columns:1fr 1fr;gap:1rem}
+      .research{padding:2.5rem 0}
+      .research-grid{grid-template-columns:1fr}
+      .news-events{padding:2.5rem 0}
+      .ne-item{flex-direction:column}
+      .ne-item__thumb{width:100%;height:120px}
+      .contact-cta{padding:2rem 0}
+      .cta-inner{padding:1.2rem 1.25rem 1.2rem 1rem;flex-direction:column;align-items:flex-start;gap:1.2rem}
+      .cta-text h2{font-size:1.15rem}
+      .cta-btn{width:100%;justify-content:center}
+      .footer{padding:2rem 0 1.25rem}
+      .footer .container{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.25rem}
+    }
+    @media(max-width:380px){.dept-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    
+
+  
+    /* ── PURE CSS HORIZONTAL SLIDING HERO CAROUSEL (NO JS) ────── */
+    .hero { position: relative; overflow: hidden; height: clamp(340px, 50vw, 540px); }
+    .hero-carousel__radio { display: none; }
+
+    .hero-carousel__viewport {
+      width: 100%; height: 100%; overflow: hidden; position: relative;
+    }
+    .hero-carousel__track {
+    will-change: transform;
+      display: flex; width: 300%; height: 100%;
+      animation: heroAutoSlide 12s infinite cubic-bezier(.65,0,.35,1);
+      transition: transform .8s cubic-bezier(.65,0,.35,1);
+    }
+    .hero-slide {
+      position: relative; width: 33.333333%; height: 100%; flex-shrink: 0;
+      overflow: hidden;
+    }
+    .hero-slide img.hero__img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+    }
+
+    /* Auto Sliding Keyframes (3 slides: ~5.3s each) */
+    @keyframes heroAutoSlide {
+      0%, 28% { transform: translateX(0%); }
+      33%, 61% { transform: translateX(-33.333333%); }
+      66%, 95% { transform: translateX(-66.666667%); }
+      100% { transform: translateX(0%); }
+    }
+
+    /* Pause on hover */
+    .hero:hover .hero-carousel__track {
+    will-change: transform; animation-play-state: paused; }
+
+    /* Manual Radio selection overrides animation */
+    #hero-slide-1:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(0%) !important;
+    }
+    #hero-slide-2:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(-33.333333%) !important;
+    }
+    #hero-slide-3:checked ~ .hero-carousel__viewport .hero-carousel__track {
+    will-change: transform;
+      animation: none !important; transform: translateX(-66.666667%) !important;
+    }
+
+    /* Arrow navigation */
+    .hero-carousel__arrows { display: none; }
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__arrows--1 { display: block; }
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__arrows--2 { display: block; }
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__arrows--3 { display: block; }
+    .hero-carousel__arrows--1 { display: block; }
+
+    .hero-carousel__arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px;
+      background: rgba(18,25,43,.6);
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 15;
+      transition: background var(--t), border-color var(--t), transform var(--t);
+      user-select: none; -webkit-user-select: none;
+      font-size: 1.15rem; line-height: 1;
+      backdrop-filter: blur(4px);
+    }
+    .hero-carousel__arrow:hover {
+      background: var(--gold); border-color: var(--gold);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .hero-carousel__arrow--prev { left: 1.25rem; }
+    .hero-carousel__arrow--next { right: 1.25rem; }
+
+    /* Indicator dots */
+    .hero-carousel__indicators {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: .6rem; z-index: 15;
+      background: rgba(18,25,43,.55); padding: .4rem .75rem; border-radius: 20px;
+      backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.25);
+    }
+    .hero-carousel__dot {
+      width: 10px; height: 10px; border-radius: 20px;
+      background: rgba(255,255,255,.45); cursor: pointer;
+      transition: background var(--t), width var(--t);
+      display: block;
+    }
+    .hero-carousel__dot:hover { background: var(--white); }
+
+    @keyframes heroDot1 {
+      0%, 28% { background: var(--gold); width: 24px; }
+      33%, 95% { background: rgba(255,255,255,.45); width: 10px; }
+      100% { background: var(--gold); width: 24px; }
+    }
+    @keyframes heroDot2 {
+      0%, 28% { background: rgba(255,255,255,.45); width: 10px; }
+      33%, 61% { background: var(--gold); width: 24px; }
+      66%, 100% { background: rgba(255,255,255,.45); width: 10px; }
+    }
+    @keyframes heroDot3 {
+      0%, 61% { background: rgba(255,255,255,.45); width: 10px; }
+      66%, 95% { background: var(--gold); width: 24px; }
+      100% { background: rgba(255,255,255,.45); width: 10px; }
+    }
+    .hero-carousel__dot--1 { animation: heroDot1 12s infinite; }
+    .hero-carousel__dot--2 { animation: heroDot2 12s infinite; }
+    .hero-carousel__dot--3 { animation: heroDot3 12s infinite; }
+
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__dot,
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__dot,
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__dot {
+      animation: none !important;
+    }
+    #hero-slide-1:checked ~ .hero-carousel__nav .hero-carousel__dot--1 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+    #hero-slide-2:checked ~ .hero-carousel__nav .hero-carousel__dot--2 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+    #hero-slide-3:checked ~ .hero-carousel__nav .hero-carousel__dot--3 {
+      background: var(--gold) !important; width: 24px !important;
+    }
+
+    /* News Badge in Hero */
+    .hero__news-badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: var(--gold); color: var(--white);
+      font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; padding: .32rem .8rem;
+      border-radius: 4px; margin-bottom: .6rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+    .hero__title--news {
+      font-size: clamp(1.25rem, 3.8vw, 2.2rem) !important;
+      line-height: 1.25 !important; max-width: 740px !important;
+      color: var(--white) !important;
+    }
+    .hero__sub--news {
+      font-size: .88rem; color: rgba(255,255,255,.85);
+      max-width: 660px; margin-bottom: 1rem;
+    }
+
+    @media (max-width: 680px) {
+      .hero { height: clamp(280px, 60vw, 380px); }
+      .hero-carousel__arrow { width: 36px; height: 36px; font-size: .9rem; }
+      .hero-carousel__arrow--prev { left: .5rem; }
+      .hero-carousel__arrow--next { right: .5rem; }
+      .hero-carousel__indicators { bottom: .8rem; padding: .3rem .55rem; gap: .45rem; }
+      .hero__title--news { font-size: clamp(1.05rem, 4.5vw, 1.45rem) !important; }
+      .hero__sub--news { font-size: .78rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    }
+
+
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 680px) {
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+    }
+
+    /* FACULTIES (College has Faculties, not departments) */
+    .faculties, .departments { padding: 4rem 0; background: var(--off-white); }
+    .faculties-grid, .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .faculty-card, .dept-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--grey-300); transition: transform var(--t), box-shadow var(--t); display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+    .faculty-card:hover, .dept-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+    .faculty-card__name, .dept-card__name { background: var(--navy); color: var(--white); font-size: .82rem; font-weight: 700; padding: .65rem 1rem; border-bottom: 2px solid var(--gold); }
+    .faculty-card__img-wrap, .dept-card__img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+    .faculty-card__img, .dept-card__img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .35s ease; display: block; }
+    .faculty-card:hover .faculty-card__img, .dept-card:hover .dept-card__img { transform: scale(1.05); }
+    .faculty-card__footer, .dept-card__footer { padding: .75rem 1rem; font-size: .78rem; color: var(--gold); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: .3rem; }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </div>
+      <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" target="_blank" rel="noopener" aria-label="FULAFIA Website">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span>FULAFIA Website</span>
+        </a>
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Call us">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLEGE NAV -->
+  <nav class="college-nav" aria-label="College navigation">
+    <div class="container">
+      <div class="college-nav__brand">
+        <span class="college-nav__name">College of Natural &amp; Applied Sciences</span>
+      </div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+
+
+        <li><a href="college.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="management.html">Management</a></li>
+        <li><a href="#faculties">Faculties</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publication.html">Publication</a></li>
+        <li class="nav-item--portal"><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="nav-portal-btn" aria-label="Access FULAFIA Portal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg><span>Portal</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <!-- HERO CAROUSEL (PURE CSS HORIZONTAL SLIDING - NO JS) -->
+  <!-- HERO CAROUSEL (PURE CSS HORIZONTAL SLIDING - NO JS) -->
+  <section class="hero hero--carousel" aria-label="Featured Carousel">
+    <input type="radio" name="hero-slide" id="hero-slide-1" class="hero-carousel__radio" autocomplete="off">
+    <input type="radio" name="hero-slide" id="hero-slide-2" class="hero-carousel__radio" autocomplete="off">
+    <input type="radio" name="hero-slide" id="hero-slide-3" class="hero-carousel__radio" autocomplete="off">
+
+    <div class="hero-carousel__viewport">
+      <div class="hero-carousel__track">
+        <!-- Slide 1: Landing Photo -->
+        <div class="hero-slide hero-slide--1">
+          <img class="hero__img" src="../assets/ced.jpg" alt="College of Natural and Applied Sciences" loading="eager" fetchpriority="high" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            
+        <p class="hero__eyebrow">Federal University Lafia</p>
+        <h1 class="hero__title">College of Natural &amp; Applied Sciences</h1>
+        <p class="hero__sub">Advancing Knowledge &mdash; Driving Scientific Innovation</p>
+        <div class="hero__actions">
+          <a href="#faculties" class="hero__btn hero__btn--primary">Our Faculties</a>
+          <a href="research.html" class="hero__btn hero__btn--outline">Research &amp; Publications</a>
+        </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: News Post 1 -->
+        <div class="hero-slide hero-slide--2">
+          <img class="hero__img" src="../assets/news.jpg" alt="College Researchers Secure &pound;1.2M International Climate &amp; Renewable Energy Grant" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__news-badge">Research Grant</span>
+            <h2 class="hero__title hero__title--news">College Researchers Secure &pound;1.2M International Climate &amp; Renewable Energy Grant</h2>
+            <p class="hero__sub hero__sub--news">Multidisciplinary scientific research addressing solar energy efficiency and environmental preservation across Nigeria.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: News Post 2 -->
+        <div class="hero-slide hero-slide--3">
+          <img class="hero__img" src="../assets/newss.jpg" alt="Annual International Conference on Applied Sciences &amp; Technology 2026 Announced" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__news-badge">Scientific Summit</span>
+            <h2 class="hero__title hero__title--news">Annual International Conference on Applied Sciences &amp; Technology 2026 Announced</h2>
+            <p class="hero__sub hero__sub--news">Distinguished scientists and industry partners gather at FULAFIA to present groundbreaking findings and commercial breakthroughs.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation (Arrows & Indicators) -->
+    <div class="hero-carousel__nav">
+      <div class="hero-carousel__arrows hero-carousel__arrows--1">
+        <label for="hero-slide-3" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-2" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+      <div class="hero-carousel__arrows hero-carousel__arrows--2">
+        <label for="hero-slide-1" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-3" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+      <div class="hero-carousel__arrows hero-carousel__arrows--3">
+        <label for="hero-slide-2" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Previous Slide">&#10094;</label>
+        <label for="hero-slide-1" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Next Slide">&#10095;</label>
+      </div>
+
+      <div class="hero-carousel__indicators">
+        <label for="hero-slide-1" class="hero-carousel__dot hero-carousel__dot--1" aria-label="Slide 1"></label>
+        <label for="hero-slide-2" class="hero-carousel__dot hero-carousel__dot--2" aria-label="Slide 2"></label>
+        <label for="hero-slide-3" class="hero-carousel__dot hero-carousel__dot--3" aria-label="Slide 3"></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVOST'S WELCOME -->
+  <section class="welcome" id="provost-welcome" aria-labelledby="welcome-heading">
+    <div class="container">
+      <div class="welcome__photo-wrap">
+        <img class="welcome__photo" src="../assets/VC.jpg" alt="Provost, College of Natural and Applied Sciences" loading="lazy" decoding="async">
+        <div class="welcome__accent" aria-hidden="true"></div>
+      </div>
+      <div class="welcome__text">
+        <span class="section-label">Provost&rsquo;s Welcome</span>
+        <h2 class="section-title" id="welcome-heading">A Message from the Provost</h2>
+        <blockquote>
+          &ldquo;Welcome to the College of Natural and Applied Sciences at Federal University Lafia.
+          Our College is dedicated to fostering cutting-edge research, rigorous academic training, and
+          the pursuit of scientific excellence. We equip our students with the analytical tools,
+          laboratory skills, and intellectual curiosity needed to tackle the complex challenges of our
+          time. We warmly invite scholars, researchers, and prospective students to be part of this
+          exciting academic community.&rdquo;
+        </blockquote>
+        <div class="welcome__sig">
+          <div class="welcome__sig-line"></div>
+          <strong>Prof. A. B. Hassan</strong>
+          <span>Provost, College of Natural &amp; Applied Sciences</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACULTIES (College has Faculties) -->
+  <section class="faculties" id="faculties" aria-labelledby="faculties-heading">
+    <div class="container">
+      <span class="section-label">Academic Faculties</span>
+      <h2 class="section-title" id="faculties-heading">Constituent Faculties</h2>
+      <div class="faculties-grid">
+
+        <a href="faculty.html" class="faculty-card" id="fac-physical" aria-label="Faculty of Physical Sciences">
+          <div class="faculty-card__name">Faculty of Physical Sciences</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/computing..jpg" alt="Faculty of Physical Sciences" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+        <a href="faculty.html" class="faculty-card" id="fac-life" aria-label="Faculty of Life &amp; Biological Sciences">
+          <div class="faculty-card__name">Faculty of Life &amp; Biological Sciences</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/law.jpg" alt="Faculty of Life &amp; Biological Sciences" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+        <a href="faculty.html" class="faculty-card" id="fac-computing" aria-label="Faculty of Computing &amp; Information Tech">
+          <div class="faculty-card__name">Faculty of Computing &amp; IT</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/mis.png" alt="Faculty of Computing &amp; IT" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+        <a href="faculty.html" class="faculty-card" id="fac-basic-med" aria-label="Faculty of Basic Medical Sciences">
+          <div class="faculty-card__name">Faculty of Basic Medical Sciences</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/sample.jpg" alt="Faculty of Basic Medical Sciences" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+        <a href="faculty.html" class="faculty-card" id="fac-clinical" aria-label="Faculty of Clinical Sciences">
+          <div class="faculty-card__name">Faculty of Clinical Sciences</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/laww.png" alt="Faculty of Clinical Sciences" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+        <a href="faculty.html" class="faculty-card" id="fac-env" aria-label="Faculty of Environmental Design">
+          <div class="faculty-card__name">Faculty of Environmental Design</div>
+          <div class="faculty-card__img-wrap">
+            <img class="faculty-card__img" src="../assets/environmental.jpg" alt="Faculty of Environmental Design" loading="lazy" decoding="async">
+          </div>
+          <div class="faculty-card__footer">View Faculty &rarr;</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- NEWS & EVENTS -->
+  <section class="news-events" id="news" aria-labelledby="ne-heading">
+    <div class="container">
+      <span class="section-label">Stay Informed</span>
+      <h2 class="section-title" id="ne-heading">News &amp; Events</h2>
+      <div class="ne-grid">
+        <div class="ne-col">
+          <div class="ne-col__header"><h3>Latest News</h3></div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Science Fair" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">08</span><span class="mon">Oct</span></div>
+                <div class="ne-item__body">
+                  <h4>Annual Science Fair 2025</h4>
+                  <p>Students from all departments showcase ground-breaking research projects.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="NRF Grant" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">14</span><span class="mon">Oct</span></div>
+                <div class="ne-item__body">
+                  <h4>College Wins Competitive Research Grant</h4>
+                  <p>The Dept. of Chemistry secures a &#8358;25m NRF grant for climate research.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newsss.jpg" alt="Accreditation" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">20</span><span class="mon">Nov</span></div>
+                <div class="ne-item__body">
+                  <h4>Computer Science Programme Fully Accredited</h4>
+                  <p>NUC full accreditation granted to the B.Sc. Computer Science programme.</p>
+                  <a href="news-single.html" class="read-more">Read more &rarr;</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="ne-col">
+          <div class="ne-col__header"><h3>Recent Events</h3></div>
+          <ul class="ne-list">
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newss.jpg" alt="Orientation" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">04</span><span class="mon">Sep</span></div>
+                <div class="ne-item__body">
+                  <h4>2025/2026 College Orientation Day</h4>
+                  <p>The Provost welcomed over 500 new students to the College.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/news.jpg" alt="Distinguished Lecture" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">22</span><span class="mon">Aug</span></div>
+                <div class="ne-item__body">
+                  <h4>Distinguished Lecture &mdash; Prof. Adamu Bello</h4>
+                  <p>Keynote on Quantum Computing and its applications in Nigeria.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+            <li class="ne-item">
+              <div class="ne-item__thumb"><img src="../assets/newsss.jpg" alt="Lab Open Day" loading="lazy" decoding="async"></div>
+              <div class="ne-item__inner">
+                <div class="ne-item__date"><span class="day">10</span><span class="mon">Jul</span></div>
+                <div class="ne-item__body">
+                  <h4>Laboratory Open Day</h4>
+                  <p>Secondary school students experienced cutting-edge lab facilities.</p>
+                  <a href="news-single.html" class="read-more">View highlights &rarr;</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 id="cta-heading">Need More Information?</h2>
+          <p>Reach out to the College office for enquiries on admissions, research, or partnerships.</p>
+        </div>
+        <a href="tel:+234123456789" class="cta-btn">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          Contact Us: +234 123 456 789
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>College of Natural &amp; Applied Sciences<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="college.html">Home</a></li>
+          <li><a href="about.html">About the College</a></li>
+          <li><a href="#faculties">Faculties</a></li>
+          <li><a href="management.html" target="_blank" rel="noopener">Management</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publication.html">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:college.nas@fulafia.edu.ng">college.nas@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

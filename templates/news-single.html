@@ -157,6 +157,17 @@
       .cta-btn{width:100%;justify-content:center;font-size:.85rem;padding:.7rem 1rem;white-space:nowrap}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
+  
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 680px) {
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -197,9 +208,9 @@
       </div>
       <div class="ctx-nav__links">
         <a href="faculty.html">Home</a>
-        <a href="faculty.html#about">About</a>
-        <a href="faculty.html#departments">Departments</a>
-        <a href="faculty.html#news" class="active">News</a>
+        <a href="about.html">About</a>
+        <a href="departments.html">Departments</a>
+        <a href="news.html" class="active">News and Events</a>
         <a href="management.html">Management</a>
       </div>
     </div>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Services and quality assurance functions of the Division of Academic Planning & Quality Assurance, FULAFIA.">
+  <title>Services & Functions | Federal University Lafia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --gold: #8B6914;
+      --gold-light: #A07820;
+      --gold-bg: #f5edd6;
+      --navy: #12192B;
+      --navy-mid: #1e2d4a;
+      --white: #ffffff;
+      --off-white: #f8f8f6;
+      --grey-100: #f1f2f4;
+      --grey-300: #d1d5db;
+      --grey-500: #6b7280;
+      --grey-800: #1f2937;
+      --body: #2c2c2c;
+      --radius: 6px;
+      --t: .2s ease;
+      --max-w: 1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--body); background: var(--off-white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .section-label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border-left: 3px solid var(--gold); padding-left: .55rem; margin-bottom: .65rem; }
+    .section-title { font-size: clamp(1.35rem, 2.5vw, 1.9rem); font-weight: 800; color: var(--navy); margin-bottom: 2rem; }
+
+    /* TOP BAR */
+    .top-bar { background: var(--navy); padding: .55rem 0; border-bottom: 2px solid var(--gold); }
+    .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .top-bar__brand { display: flex; align-items: center; gap: .65rem; }
+    .top-bar__brand img { width: 38px; height: 38px; object-fit: contain; }
+    .top-bar__name strong { display: block; font-size: .82rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .top-bar__name span { font-size: .68rem; color: rgba(255,255,255,.6); }
+    .top-bar__contact { display: flex; align-items: center; gap: 1.4rem; }
+    .top-bar__contact a { font-size: .78rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: .35rem; transition: color var(--t); }
+    .top-bar__contact a:hover { color: var(--gold-light); }
+    .top-bar__contact svg { width: 13px; height: 13px; flex-shrink: 0; fill: var(--gold); }
+    .top-bar__website-btn { background: var(--gold); color: var(--white) !important; padding: .35rem .85rem; border-radius: 20px; font-weight: 700; font-size: .75rem; display: inline-flex; align-items: center; gap: .35rem; transition: background var(--t); }
+    .top-bar__contact a.top-bar__website-btn:hover { background: var(--gold-light); color: var(--white) !important; }
+    .top-bar__website-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+    .site-nav--light { background: var(--white); border-bottom: 1px solid var(--grey-300); }
+    .site-nav--light { background: var(--navy); border-bottom: 3px solid var(--gold); }
+    .site-nav .container { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; position: relative; }
+    .site-nav__brand { display: flex; align-items: center; gap: .55rem; flex-shrink: 0; padding: .55rem 0; }
+    .site-nav--light .site-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); white-space: nowrap; }
+    .site-nav--light .site-nav__name { font-size: .9rem; font-weight: 800; color: var(--white); white-space: nowrap; }
+    
+    .nav-links { display: flex; align-items: stretch; }
+    .nav-links li { position: relative; display: flex; }
+    .site-nav--light .nav-links a { display: flex; align-items: center; padding: 0 1rem; font-size: .85rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .site-nav--light .nav-links a:hover, .site-nav--light .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    
+    .site-nav--light .nav-links a { display: flex; align-items: center; padding: 0 .95rem; font-size: .83rem; font-weight: 600; color: rgba(255,255,255,.75); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .site-nav--light .nav-links a:hover, .site-nav--light .nav-links a.active { color: var(--white); border-bottom-color: var(--gold); }
+    
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; flex-shrink: 0; }
+    .site-nav--light .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .site-nav--light .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* PAGE BANNER */
+    .page-banner { background: var(--navy); padding: 2.2rem 0 2rem; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .page-banner .container { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .page-banner__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: .4rem; }
+    .page-banner h1 { font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 800; color: var(--white); line-height: 1.18; }
+    .page-banner__sub { font-size: .88rem; color: rgba(255,255,255,.75); margin-top: .4rem; max-width: 650px; }
+    .page-banner__back { display: inline-flex; align-items: center; gap: .45rem; font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.8); border: 1.5px solid rgba(255,255,255,.25); padding: .5rem 1rem; border-radius: 4px; transition: background var(--t), color var(--t); white-space: nowrap; }
+    .page-banner__back:hover { background: rgba(255,255,255,.1); color: var(--white); }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--grey-100); padding: .65rem 0; border-bottom: 1px solid var(--grey-300); }
+    .breadcrumb ol { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+    .breadcrumb li { font-size: .76rem; color: var(--grey-500); display: flex; align-items: center; gap: .45rem; }
+    .breadcrumb li+li::before { content: '/'; color: var(--grey-300); }
+    .breadcrumb a { color: var(--gold); font-weight: 600; }
+    .breadcrumb a:hover { color: var(--gold-light); }
+    .breadcrumb li:last-child { color: var(--grey-800); font-weight: 600; }
+
+    /* CONTENT SECTIONS */
+    .page-section { padding: 3.5rem 0 4rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .content-card { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); padding: 1.6rem; transition: transform var(--t), box-shadow var(--t), border-color var(--t); display: flex; flex-direction: column; }
+    .content-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.08); border-color: var(--gold); }
+    .card-tag { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); background: var(--gold-bg); padding: .2rem .6rem; border-radius: 20px; margin-bottom: .8rem; align-self: flex-start; }
+    .card-title { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .5rem; line-height: 1.35; }
+    .card-text { font-size: .83rem; color: var(--grey-500); line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+    .card-meta { display: flex; align-items: center; justify-content: space-between; font-size: .78rem; font-weight: 600; color: var(--navy); border-top: 1px solid var(--grey-100); padding-top: .85rem; margin-top: auto; }
+    .card-meta a { color: var(--gold); font-weight: 700; display: inline-flex; align-items: center; gap: .25rem; }
+    .card-meta a:hover { color: var(--gold-light); }
+
+    /* DOWNLOAD LIST */
+    .dl-list { display: flex; flex-direction: column; gap: 1rem; }
+    .dl-item { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; transition: border-color var(--t), box-shadow var(--t); }
+    .dl-item:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+    .dl-item__info { display: flex; align-items: center; gap: 1rem; }
+    .dl-item__icon { width: 42px; height: 42px; background: var(--gold-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dl-item__icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .dl-item__title { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
+    .dl-item__desc { font-size: .78rem; color: var(--grey-500); }
+    .dl-btn { display: inline-flex; align-items: center; gap: .4rem; background: var(--navy); color: var(--white); font-size: .78rem; font-weight: 700; padding: .55rem 1rem; border-radius: 4px; transition: background var(--t); white-space: nowrap; flex-shrink: 0; }
+    .dl-btn:hover { background: var(--gold); }
+    .dl-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* CONTACT SECTION */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .contact-info-card { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); padding: 2rem; border-top: 4px solid var(--gold); }
+    .contact-info-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 1.25rem; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; font-size: .88rem; color: var(--grey-800); }
+    .contact-detail svg { width: 20px; height: 20px; fill: var(--gold); flex-shrink: 0; margin-top: .15rem; }
+    .contact-detail strong { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--grey-500); margin-bottom: .15rem; }
+
+    /* CONTACT CTA */
+    .contact-cta { padding: 3.5rem 0; background: var(--off-white); }
+    .cta-inner { background: var(--navy); border-radius: var(--radius); padding: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-left: 4px solid var(--gold); }
+    .cta-text h2 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: .5rem; }
+    .cta-text p { color: rgba(255,255,255,.8); font-size: .9rem; }
+    .cta-btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--gold); color: var(--white); font-size: .95rem; font-weight: 700; padding: .8rem 1.5rem; border-radius: 30px; transition: background var(--t); text-decoration: none; }
+    .cta-btn:hover { background: var(--gold-light); }
+    .cta-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* FOOTER */
+    .footer { background: var(--navy); border-top: 3px solid var(--gold); color: rgba(255,255,255,.65); padding: 2.5rem 0 1.5rem; }
+    .footer .container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer__brand img { width: 44px; height: 44px; object-fit: contain; margin-bottom: .65rem; }
+    .footer__brand p { font-size: .8rem; line-height: 1.65; color: rgba(255,255,255,.55); max-width: 280px; }
+    .footer__col h4 { font-size: .82rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .85rem; }
+    .footer__col ul li { margin-bottom: .45rem; }
+    .footer__col ul a { font-size: .8rem; color: rgba(255,255,255,.6); transition: color var(--t); }
+    .footer__col ul a:hover { color: var(--gold-light); }
+    .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer__bottom p, .footer__bottom a { font-size: .75rem; }
+    .footer__bottom a { color: var(--gold-light); }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+      .footer .container { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .top-bar { padding: .4rem 0; }
+      .top-bar .container { flex-wrap: nowrap; gap: .5rem; }
+      .top-bar__name span { display: none; }
+      .top-bar__contact a:first-child { display: flex; }
+      .top-bar__contact a { font-size: 0; gap: 0; padding: 0; min-width: 36px; min-height: 36px; justify-content: center; }
+      .top-bar__contact svg { width: 20px; height: 20px; }
+      .top-bar__website-btn span { display: none; }
+      .top-bar__website-btn { padding: 0 !important; background: transparent !important; min-width: 36px; min-height: 36px; justify-content: center; }
+      .top-bar__website-btn svg { width: 20px !important; height: 20px !important; fill: var(--gold) !important; }
+
+      .nav-toggle-label { display: flex; }
+      .site-nav .container { padding: 0 1rem; }
+      .site-nav__name { font-size: .8rem; overflow: hidden; text-overflow: ellipsis; max-width: 55vw; }
+      .nav-links { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 82%; max-width: 300px; flex-direction: column; border-left: 3px solid var(--gold); box-shadow: -8px 0 40px rgba(0,0,0,.3); z-index: 300; overflow-y: auto; padding-top: 4rem; }
+      .site-nav--light .nav-links { background: var(--white); }
+      .site-nav--light .nav-links { background: var(--navy-mid); }
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-links li { display: block; width: 100%; }
+      .nav-links a { padding: .9rem 1.25rem; font-size: .9rem; min-height: 48px; border-left: 3px solid transparent; border-bottom: 1px solid rgba(0,0,0,.06); }
+      .site-nav--light .nav-links a { border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+      .nav-links a:hover, .nav-links a.active { border-left-color: var(--gold); background: var(--gold-bg); color: var(--navy) !important; }
+      
+      .page-banner { padding: 1.5rem 0 1.25rem; }
+      .page-banner h1 { font-size: clamp(1.2rem, 5vw, 1.55rem); }
+      .card-grid { grid-template-columns: 1fr; }
+      .dl-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .dl-btn { width: 100%; justify-content: center; }
+      .cta-inner { padding: 1.2rem 1rem; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+      .cta-btn { width: 100%; justify-content: center; }
+      .footer .container { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  
+  
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 680px) {
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </div>
+      <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" target="_blank" rel="noopener" aria-label="FULAFIA Website">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span>FULAFIA Website</span>
+        </a>
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Call us">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="site-nav site-nav--light" aria-label="Main Navigation">
+    <div class="container">
+      <div class="site-nav__brand">
+        <span class="site-nav__name">Division of Academic Planning & Quality Assurance</span>
+      </div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+
+
+        <li><a href="division.html">Home</a></li>
+        <li><a href="division-programmes.html" class="active">Programmes</a></li>
+        <li><a href="division-admissions.html">Admissions</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li class="nav-item--portal"><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="nav-portal-btn" aria-label="Access FULAFIA Portal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg><span>Portal</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner" role="banner">
+    <div class="container">
+      <div class="page-banner__left">
+        <p class="page-banner__eyebrow">Division of Academic Planning & Quality Assurance</p>
+        <h1>Planning Services & Functions</h1>
+        <p class="page-banner__sub">Ensuring curriculum benchmarks, compliance with regulatory standards, and institutional quality.</p>
+      </div>
+      <a href="division.html" class="page-banner__back">&larr; Back to Division</a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
+        <li><a href="division.html">Division of APQA</a></li>
+        <li>Services & Functions</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-section">
+    <div class="container">
+      
+      <span class="section-label">Core Operations</span>
+      <h2 class="section-title">Institutional Planning Services</h2>
+      <div class="card-grid">
+        <div class="content-card">
+          <span class="card-tag">Curriculum Unit</span>
+          <h3 class="card-title">Curriculum Planning &amp; Review</h3>
+          <p class="card-text">Overseeing continuous appraisal and upgrading of academic curricula across faculties in accordance with National Universities Commission benchmark standards.</p>
+          <div class="card-meta">
+            <span>Standards &amp; Quality</span>
+            <a href="division-admissions.html">Review Criteria &rarr;</a>
+          </div>
+        </div>
+        <div class="content-card">
+          <span class="card-tag">Quality Unit</span>
+          <h3 class="card-title">Academic Audit &amp; Monitoring</h3>
+          <p class="card-text">Conducting periodic institutional teaching quality audits, faculty assessment surveys, and student feedback appraisals for continuous improvement.</p>
+          <div class="card-meta">
+            <span>Continuous Monitoring</span>
+            <a href="division-forms.html">Audit Templates &rarr;</a>
+          </div>
+        </div>
+        <div class="content-card">
+          <span class="card-tag">Accreditation Unit</span>
+          <h3 class="card-title">Accreditation Coordination</h3>
+          <p class="card-text">Coordinating all preparation, mock appraisals, and documentation for NUC and professional bodies&rsquo; accreditation exercises across all university programmes.</p>
+          <div class="card-meta">
+            <span>Accreditation Support</span>
+            <a href="division-admissions.html">NUC Standards &rarr;</a>
+          </div>
+        </div>
+        <div class="content-card">
+          <span class="card-tag">Statistics Unit</span>
+          <h3 class="card-title">Institutional Research &amp; Briefs</h3>
+          <p class="card-text">Generating academic statistical profiles, enrolment projections, carrying-capacity formulas, and annual university academic briefs for management decision-making.</p>
+          <div class="card-meta">
+            <span>Data &amp; Planning</span>
+            <a href="division-contact.html">Request Data &rarr;</a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </main>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 id="cta-heading">Need Assistance or Enquiries?</h2>
+          <p>Get in touch with the university desk for questions regarding programmes, admissions, and academic services.</p>
+        </div>
+        <a href="tel:+2348112990109" class="cta-btn">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          Call: +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>Division of Academic Planning & Quality Assurance<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="division.html">Home</a></li>
+          <li><a href="division-programmes.html">Programmes & Services</a></li>
+          <li><a href="division-admissions.html">Admissions & Standards</a></li>
+          <li><a href="division-forms.html">Forms & Downloads</a></li>
+          <li><a href="staff.html">Staff Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2025 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Prof. A. Bello – Academic Staff Profile, Department of Architecture, Federal University Lafia.">
+  <title>Prof. A. Bello | Staff Profile | FULAFIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #8B6914; --gold-light: #A07820; --gold-bg: #f5edd6;
+      --navy: #12192B; --navy-mid: #1e2d4a;
+      --white: #fff; --off-white: #f8f8f6;
+      --grey-100: #f1f2f4; --grey-200: #e5e7eb; --grey-300: #d1d5db;
+      --grey-500: #6b7280; --grey-800: #1f2937;
+      --body: #2c2c2c; --radius: 8px; --t: .2s ease; --max-w: 1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--body); background: var(--off-white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ── TOP BAR ───────────────────────────────────── */
+    .top-bar { background: var(--navy); padding: .55rem 0; border-bottom: 2px solid var(--gold); }
+    .top-bar .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .top-bar__brand { display: flex; align-items: center; gap: .65rem; }
+    .top-bar__brand img { width: 38px; height: 38px; object-fit: contain; }
+    .top-bar__name strong { display: block; font-size: .82rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .top-bar__name span { font-size: .68rem; color: rgba(255,255,255,.6); }
+    .top-bar__contact { display: flex; align-items: center; gap: 1.4rem; }
+    .top-bar__contact a { font-size: .78rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: .35rem; transition: color var(--t); }
+    .top-bar__contact a:hover { color: var(--gold-light); }
+    .top-bar__contact svg { width: 13px; height: 13px; flex-shrink: 0; fill: var(--gold); }
+
+    .top-bar__website-btn { background: var(--gold); color: var(--white) !important; padding: .35rem .85rem; border-radius: 20px; font-weight: 700; font-size: .75rem; display: inline-flex; align-items: center; gap: .35rem; transition: background var(--t); }
+    .top-bar__contact a.top-bar__website-btn:hover { background: var(--gold-light); color: var(--white) !important; }
+    .top-bar__website-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── FACULTY NAV ───────────────────────────────── */
+    .faculty-nav { background: var(--white); border-bottom: 1px solid var(--grey-300); position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+    .faculty-nav .container { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; position: relative; }
+    .faculty-nav__brand { display: flex; align-items: center; gap: .55rem; flex-shrink: 0; padding: .55rem 0; }
+    .faculty-nav__brand img { width: 32px; height: 32px; object-fit: contain; }
+    .faculty-nav__name { font-size: .9rem; font-weight: 800; color: var(--navy); white-space: nowrap; }
+    .nav-links { display: flex; align-items: stretch; }
+    .nav-links li { position: relative; display: flex; }
+    .nav-links a { display: flex; align-items: center; padding: 0 1rem; font-size: .85rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; flex-shrink: 0; }
+    .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--t); }
+
+    /* Portal Button in Nav */
+    .nav-links li.nav-item--portal { align-items: center; padding: 0 .35rem; }
+    .nav-links a.nav-portal-btn { display: inline-flex; align-items: center; gap: .35rem; background: var(--gold); color: var(--white) !important; padding: .38rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; border-bottom: none !important; line-height: 1; box-shadow: 0 2px 6px rgba(139,105,20,.25); transition: background var(--t), transform var(--t), box-shadow var(--t); }
+    .nav-links a.nav-portal-btn:hover { background: var(--gold-light); color: var(--white) !important; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(139,105,20,.35); }
+    .nav-links a.nav-portal-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── PAGE BANNER ───────────────────────────────── */
+    .page-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); color: var(--white); padding: 2.2rem 0; border-bottom: 3px solid var(--gold); }
+    .page-banner .container { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .page-banner__eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: .35rem; }
+    .page-banner h1 { font-size: clamp(1.4rem, 3.5vw, 2.1rem); font-weight: 800; line-height: 1.2; }
+    .page-banner__back { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 700; color: var(--white); background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); padding: .5rem 1rem; border-radius: 20px; transition: background var(--t), border-color var(--t); }
+    .page-banner__back:hover { background: var(--gold); border-color: var(--gold); }
+    .page-banner__back svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* ── BREADCRUMB ────────────────────────────────── */
+    .breadcrumb { background: var(--grey-100); padding: .6rem 0; border-bottom: 1px solid var(--grey-300); }
+    .breadcrumb ol { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; font-size: .78rem; }
+    .breadcrumb li { color: var(--grey-500); display: flex; align-items: center; gap: .45rem; }
+    .breadcrumb li + li::before { content: '/'; color: var(--grey-300); }
+    .breadcrumb a { color: var(--gold); font-weight: 600; }
+    .breadcrumb a:hover { color: var(--gold-light); }
+    .breadcrumb li:last-child { color: var(--grey-800); font-weight: 700; }
+
+    /* ── PROFILE HERO SECTION ──────────────────────── */
+    .profile-hero { padding: 2.5rem 0 1.5rem; }
+    .profile-card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(18,25,43,.08); border: 1px solid var(--grey-200);
+      display: grid; grid-template-columns: 280px 1fr; gap: 2.2rem;
+      padding: 2.2rem; position: relative; overflow: hidden;
+    }
+    .profile-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--navy) 100%);
+    }
+
+    /* Left: Portrait photo */
+    .profile-photo-col { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .profile-photo-wrap {
+      width: 220px; height: 260px; border-radius: 8px; overflow: hidden;
+      border: 3px solid var(--gold); box-shadow: 0 8px 24px rgba(18,25,43,.15);
+      position: relative; margin-bottom: 1.2rem; background: var(--grey-100);
+    }
+    .profile-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .profile-badge {
+      display: inline-block; background: var(--gold-bg); color: var(--gold);
+      border: 1px solid var(--gold); font-size: .75rem; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase; padding: .3rem .85rem;
+      border-radius: 20px; margin-bottom: .6rem;
+    }
+
+    /* Right: Details */
+    .profile-header-col { display: flex; flex-direction: column; justify-content: center; }
+    .profile-name { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: .4rem; }
+    .profile-title { font-size: 1.05rem; font-weight: 700; color: var(--gold); margin-bottom: .35rem; }
+    .profile-dept { font-size: .88rem; color: var(--grey-500); font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .4rem; }
+
+    .profile-contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .75rem; margin-top: .8rem;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: .7rem; padding: .65rem .9rem;
+      background: var(--grey-100); border-radius: 6px; font-size: .82rem;
+      color: var(--grey-800); border: 1px solid rgba(0,0,0,.04);
+    }
+    .contact-item svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
+    .contact-item a { color: var(--navy); font-weight: 600; transition: color var(--t); }
+    .contact-item a:hover { color: var(--gold); }
+
+    .scholar-links { display: flex; gap: .6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+    .scholar-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .78rem; font-weight: 700; padding: .4rem .85rem; border-radius: 20px;
+      background: var(--navy); color: var(--white); transition: background var(--t);
+    }
+    .scholar-btn:hover { background: var(--gold); }
+
+    /* ── MAIN PROFILE CONTENT ──────────────────────── */
+    .profile-body { padding: 1.5rem 0 4rem; }
+    .profile-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+
+    .profile-main-col { display: flex; flex-direction: column; gap: 2rem; }
+    .profile-side-col { display: flex; flex-direction: column; gap: 1.8rem; }
+
+    .profile-section {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.8rem; border: 1px solid var(--grey-200);
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    .section-heading {
+      font-size: 1.2rem; font-weight: 800; color: var(--navy);
+      margin-bottom: 1.2rem; padding-bottom: .6rem; border-bottom: 2px solid var(--gold-bg);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .section-heading::after {
+      content: ''; width: 36px; height: 3px; background: var(--gold); border-radius: 2px;
+    }
+
+    .bio-text { font-size: .92rem; line-height: 1.8; color: var(--grey-800); margin-bottom: 1rem; }
+
+    /* Qualifications list */
+    .timeline { display: flex; flex-direction: column; gap: 1rem; }
+    .timeline-item {
+      display: flex; gap: 1rem; border-left: 2px solid var(--gold);
+      padding-left: 1rem; position: relative;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -6px; top: 4px;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+    }
+    .timeline-year { font-size: .78rem; font-weight: 800; color: var(--gold); }
+    .timeline-degree { font-size: .92rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
+    .timeline-inst { font-size: .82rem; color: var(--grey-500); }
+
+    /* Publications list */
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-item {
+      padding: 1rem; background: var(--off-white); border-radius: 6px;
+      border-left: 4px solid var(--gold); transition: transform var(--t);
+    }
+    .pub-item:hover { transform: translateX(3px); }
+    .pub-type { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: var(--gold); margin-bottom: .25rem; letter-spacing: .05em; }
+    .pub-title { font-size: .92rem; font-weight: 700; color: var(--navy); margin-bottom: .3rem; line-height: 1.4; }
+    .pub-meta { font-size: .8rem; color: var(--grey-500); font-style: italic; }
+
+    /* Tags / Specializations */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tag {
+      background: var(--grey-100); color: var(--grey-800); font-size: .78rem;
+      font-weight: 600; padding: .35rem .75rem; border-radius: 20px;
+      border: 1px solid var(--grey-300); transition: all var(--t);
+    }
+    .tag:hover { background: var(--gold-bg); border-color: var(--gold); color: var(--gold); }
+
+    /* Sidebar info box */
+    .info-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.5rem; border: 1px solid var(--grey-200);
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    .info-card h3 {
+      font-size: 1rem; font-weight: 800; color: var(--navy);
+      margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 2px solid var(--grey-100);
+    }
+    .info-list { display: flex; flex-direction: column; gap: .75rem; font-size: .84rem; }
+    .info-list li { display: flex; justify-content: space-between; padding-bottom: .5rem; border-bottom: 1px dashed var(--grey-200); }
+    .info-list li span:first-child { color: var(--grey-500); font-weight: 500; }
+    .info-list li span:last-child { color: var(--navy); font-weight: 700; text-align: right; }
+
+    /* Course list */
+    .course-list { display: flex; flex-direction: column; gap: .6rem; }
+    .course-pill {
+      background: var(--off-white); border-radius: 6px; padding: .65rem .85rem;
+      border-left: 3px solid var(--navy); font-size: .83rem;
+    }
+    .course-pill strong { color: var(--navy); display: block; font-size: .85rem; }
+    .course-pill span { color: var(--grey-500); font-size: .76rem; }
+
+    /* ── FOOTER ────────────────────────────────────── */
+    .footer { background: var(--navy); color: rgba(255,255,255,.75); padding: 3rem 0 1.5rem; border-top: 3px solid var(--gold); }
+    .footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+    .footer__brand img { width: 44px; height: 44px; margin-bottom: .75rem; }
+    .footer__brand p { font-size: .8rem; line-height: 1.6; }
+    .footer__col h4 { font-size: .88rem; font-weight: 800; color: var(--white); margin-bottom: .9rem; text-transform: uppercase; letter-spacing: .06em; }
+    .footer__col ul { display: flex; flex-direction: column; gap: .5rem; }
+    .footer__col a { font-size: .8rem; transition: color var(--t); }
+    .footer__col a:hover { color: var(--gold-light); }
+    .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .75rem; }
+    .footer__bottom a { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .profile-card { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .profile-header-col { align-items: center; }
+      .profile-contact-grid { width: 100%; text-align: left; }
+      .profile-layout { grid-template-columns: 1fr; }
+      .footer .container { grid-template-columns: 1fr; gap: 1.8rem; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-toggle-label { display: flex; }
+      .nav-links {
+        display: none; position: fixed; top: 0; right: 0; bottom: 0;
+        width: 82%; max-width: 300px; background: var(--white);
+        flex-direction: column; border-left: 3px solid var(--gold);
+        box-shadow: -8px 0 40px rgba(0,0,0,.25); z-index: 300;
+        overflow-y: auto; padding-top: 4rem;
+      }
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-links li { display: block; width: 100%; }
+      .nav-links a { padding: .9rem 1.25rem; border-bottom: 1px solid var(--grey-100); min-height: 48px; }
+      .nav-links li.nav-item--portal { padding: .5rem 1.25rem; width: 100%; }
+      .nav-links a.nav-portal-btn { width: 100%; justify-content: center; padding: .75rem 1rem; border-radius: 6px; min-height: 44px; font-size: .88rem; box-shadow: none; }
+      .profile-card { padding: 1.5rem 1rem; }
+      .profile-photo-wrap { width: 180px; height: 210px; }
+      .profile-section { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="38" height="38">
+        <div class="top-bar__name">
+          <strong>Federal University Lafia</strong>
+          <span>Integrity &middot; Innovation &middot; Excellence</span>
+        </div>
+      </div>
+      <div class="top-bar__contact">
+        <a href="https://fulafia.edu.ng" class="top-bar__website-btn" target="_blank" rel="noopener" aria-label="FULAFIA Website">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span>FULAFIA Website</span>
+        </a>
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Call us">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. FACULTY / DEPT NAV -->
+  <nav class="faculty-nav" aria-label="Faculty navigation">
+    <div class="container">
+      <div class="faculty-nav__brand">
+        <span class="faculty-nav__name">Faculty of Environmental Design</span>
+      </div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+        <li><a href="faculty.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="management.html">Management</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="staff.html" class="active">Staff</a></li>
+        <li><a href="news.html">News and Events</a></li>
+        <li class="nav-item--portal"><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="nav-portal-btn" aria-label="Access FULAFIA Portal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5zM5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg><span>Portal</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 3. PAGE BANNER -->
+  <div class="page-banner" role="banner">
+    <div class="container">
+      <div>
+        <p class="page-banner__eyebrow">Department of Architecture &middot; Faculty of Environmental Design</p>
+        <h1>Staff Profile &amp; Research Portfolio</h1>
+      </div>
+      <a href="staff.html" class="page-banner__back" aria-label="Back to Staff Directory">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Back to Staff Directory
+      </a>
+    </div>
+  </div>
+
+  <!-- 4. BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="https://fulafia.edu.ng">FULAFIA</a></li>
+        <li><a href="faculty.html">Faculty of Environmental Design</a></li>
+        <li><a href="staff.html">Staff Directory</a></li>
+        <li>Prof. A. Bello</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- 5. PROFILE HERO CARD -->
+  <section class="profile-hero" aria-label="Staff Profile Overview">
+    <div class="container">
+      <div class="profile-card">
+        
+        <!-- Left: Photo & Badge -->
+        <div class="profile-photo-col">
+          <div class="profile-photo-wrap">
+            <img src="../assets/VC.jpg" alt="Prof. A. Bello" loading="eager" fetchpriority="high">
+          </div>
+          <span class="profile-badge">Professor</span>
+          <span style="font-size:.78rem;color:var(--grey-500);font-weight:600;">Staff ID: FUL/ED/ARC/014</span>
+        </div>
+
+        <!-- Right: Primary Details & Contacts -->
+        <div class="profile-header-col">
+          <h2 class="profile-name">Prof. A. Bello, Ph.D, FNIA, ARCON</h2>
+          <p class="profile-title">Professor of Architecture &amp; Spatial Planning</p>
+          <p class="profile-dept">
+            <svg viewBox="0 0 20 20" aria-hidden="true" style="width:15px;height:15px;fill:var(--gold);"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+            Head of Department &middot; Department of Architecture
+          </p>
+
+          <div class="profile-contact-grid">
+            <div class="contact-item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+              <span>Email: <a href="mailto:a.bello@fulafia.edu.ng">a.bello@fulafia.edu.ng</a></span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/></svg>
+              <span>Phone: <a href="tel:+2348112990109">+234 811 299 0109</a></span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+              <span>Office: Rm 204, Architecture Complex</span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+              <span>Consultation: Tue &amp; Thu 10am&ndash;2pm</span>
+            </div>
+          </div>
+
+          <div class="scholar-links">
+            <a href="https://orcid.org" target="_blank" rel="noopener" class="scholar-btn">
+              <span>ORCID: 0000-0002-1825-0097</span>
+            </a>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener" class="scholar-btn">
+              <span>Google Scholar</span>
+            </a>
+            <a href="https://researchgate.net" target="_blank" rel="noopener" class="scholar-btn">
+              <span>ResearchGate</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DETAILED PROFILE CONTENT -->
+  <main class="profile-body">
+    <div class="container">
+      <div class="profile-layout">
+        
+        <!-- Left: Major Sections -->
+        <div class="profile-main-col">
+
+          <!-- Biography -->
+          <article class="profile-section" aria-labelledby="bio-heading">
+            <h3 class="section-heading" id="bio-heading">Biography &amp; Academic Background</h3>
+            <p class="bio-text">
+              Prof. A. Bello is a seasoned Professor of Architecture, distinguished educator, and registered chartered architect. With over 22 years of pedagogical, administrative, and industry practice, he currently serves as the Head of Department of Architecture at Federal University Lafia.
+            </p>
+            <p class="bio-text">
+              His scholastic inquiry centers on sustainable built environments, climate-responsive indigenous architecture, parametric spatial design, and urban regeneration in West Africa. He has spearheaded multi-disciplinary research initiatives funded by national and international grant bodies, notably leading the TETFund National Research Fund (NRF) initiative on low-carbon construction materials.
+            </p>
+            <p class="bio-text">
+              As a dedicated mentor, Prof. Bello has successfully supervised numerous doctoral dissertations and master's theses. He serves as an external examiner, accreditation team lead for the National Universities Commission (NUC), and Council Member of the Architects Registration Council of Nigeria (ARCON).
+            </p>
+          </article>
+
+          <!-- Selected Publications -->
+          <section class="profile-section" aria-labelledby="pub-heading">
+            <h3 class="section-heading" id="pub-heading">Selected Publications &amp; Research</h3>
+            <div class="pub-list">
+
+              <div class="pub-item">
+                <span class="pub-type">Journal Article &middot; 2024</span>
+                <h4 class="pub-title">Thermal Comfort and Energy Efficiency in Sub-Saharan Educational Facilities: An Empirical Assessment</h4>
+                <p class="pub-meta">Bello, A., &amp; Okeke, C. &mdash; <em>Journal of African Architectural Science</em>, 18(2), 114–129. DOI: 10.1016/j.jaas.2024.03.011</p>
+              </div>
+
+              <div class="pub-item">
+                <span class="pub-type">Journal Article &middot; 2023</span>
+                <h4 class="pub-title">Vernacular Materials and Climate Resilience in Northern Nigeria: Bridging Tradition and Contemporary Tech</h4>
+                <p class="pub-meta">Bello, A., Hassan, K., &amp; Garba, M. &mdash; <em>International Journal of Sustainable Built Environment</em>, 12(4), 450–467.</p>
+              </div>
+
+              <div class="pub-item">
+                <span class="pub-type">Monograph &middot; 2022</span>
+                <h4 class="pub-title">Contemporary Nigerian Architecture: Ecology, Form, and Meaning</h4>
+                <p class="pub-meta">Bello, A. &mdash; <em>FULAFIA University Press</em>, Monograph Series No. 4, 218pp. ISBN: 978-978-568-12-4</p>
+              </div>
+
+              <div class="pub-item">
+                <span class="pub-type">Conference Proceeding &middot; 2022</span>
+                <h4 class="pub-title">Parametric Design Optimization for High-Density Urban Hubs in Nasarawa State</h4>
+                <p class="pub-meta">Bello, A. &mdash; <em>Proceedings of the Nigerian Institute of Architects (NIA) Annual Conference</em>, Abuja, pp. 78–92.</p>
+              </div>
+
+              <div class="pub-item">
+                <span class="pub-type">Book Chapter &middot; 2021</span>
+                <h4 class="pub-title">Passive Cooling Strategies and Climate Adaptation in Tropical Public Buildings</h4>
+                <p class="pub-meta">Bello, A., &amp; Ibrahim, S. &mdash; In <em>Urban Futures in West Africa</em> (pp. 145–168), Academic Publishers.</p>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Education & Academic Qualifications -->
+          <section class="profile-section" aria-labelledby="edu-heading">
+            <h3 class="section-heading" id="edu-heading">Education &amp; Qualifications</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="timeline-year">2012</span>
+                <div>
+                  <h4 class="timeline-degree">Ph.D. in Architecture &amp; Urban Studies</h4>
+                  <p class="timeline-inst">University of Lagos, Nigeria</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-year">2005</span>
+                <div>
+                  <h4 class="timeline-degree">M.Sc. Architecture (Distinction)</h4>
+                  <p class="timeline-inst">Ahmadu Bello University, Zaria, Nigeria</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-year">2002</span>
+                <div>
+                  <h4 class="timeline-degree">B.Sc. (Hons) Architecture</h4>
+                  <p class="timeline-inst">Ahmadu Bello University, Zaria, Nigeria</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Right: Sidebar Information -->
+        <aside class="profile-side-col">
+
+          <!-- Specializations -->
+          <div class="info-card">
+            <h3>Research Specializations</h3>
+            <div class="tag-cloud">
+              <span class="tag">Sustainable Architecture</span>
+              <span class="tag">Vernacular Design</span>
+              <span class="tag">Parametric Modeling</span>
+              <span class="tag">Climate Resilience</span>
+              <span class="tag">Digital Fabrication</span>
+              <span class="tag">Spatial Planning</span>
+              <span class="tag">Urban Heritage</span>
+            </div>
+          </div>
+
+          <!-- Academic Affiliations -->
+          <div class="info-card">
+            <h3>Professional Affiliations</h3>
+            <ul class="info-list">
+              <li>
+                <span>Council Status</span>
+                <span>Fully Chartered (ARCON)</span>
+              </li>
+              <li>
+                <span>Institute</span>
+                <span>Fellow, NIA (FNIA)</span>
+              </li>
+              <li>
+                <span>International</span>
+                <span>Member, UIA</span>
+              </li>
+              <li>
+                <span>Academic Body</span>
+                <span>AARCHES Member</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- 7. FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA logo" width="44" height="44" loading="lazy">
+        <p>Faculty of Environmental Design<br>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Home</a></li>
+          <li><a href="department.html">Department of Architecture</a></li>
+          <li><a href="staff.html">Staff Directory</a></li>
+          <li><a href="news.html">News &amp; Events</a></li>
+          <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">University Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact Desk</h4>
+        <ul>
+          <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+          <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+          <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer__bottom">
+        <p>&copy; 2026 Federal University Lafia. All rights reserved.</p>
+        <a href="../index.html">&larr; Back to Template Hub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
