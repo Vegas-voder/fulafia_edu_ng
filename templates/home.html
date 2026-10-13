@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Federal University Lafia – A centre of excellence committed to producing graduates with integrity, innovation, and academic distinction. Explore academics, faculties, research, and campus life.">
+  <meta name="keywords" content="Federal University Lafia, FULAFIA, university Nigeria, Nasarawa, academics, faculties, admission">
+  <meta property="og:title" content="Federal University Lafia | Integrity · Innovation · Excellence">
+  <meta property="og:description" content="Federal University Lafia – Shaping future leaders through quality education, research, and community service.">
+  <meta property="og:type" content="website">
+  <title>Federal University Lafia | Integrity · Innovation · Excellence</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════════════════ */
+    :root {
+      --gold:       #8B6914;
+      --gold-light: #A07820;
+      --gold-bg:    #f5edd6;
+      --navy:       #12192B;
+      --navy-mid:   #1e2d4a;
+      --white:      #ffffff;
+      --off-white:  #f8f8f6;
+      --grey-100:   #f1f2f4;
+      --grey-300:   #d1d5db;
+      --grey-500:   #6b7280;
+      --grey-800:   #1f2937;
+      --body-text:  #2c2c2c;
+      --radius:     6px;
+      --t:          .2s ease;
+      --max-w:      1180px;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--body-text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .section-label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border-left: 3px solid var(--gold); padding-left: .55rem; margin-bottom: .65rem; }
+    .section-title { font-size: clamp(1.35rem, 2.5vw, 1.9rem); font-weight: 800; color: var(--navy); margin-bottom: 2rem; }
+
+    /* ══════════════════════════════════════════════════════
+       LAZY-LOAD REVEAL ANIMATION
+    ══════════════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ══════════════════════════════════════════════════════
+       TOP BAR
+    ══════════════════════════════════════════════════════ */
+    .top-bar { background: var(--navy); padding: .5rem 0; border-bottom: 2px solid var(--gold); }
+    .top-bar .container { display: flex; align-items: center; justify-content: flex-end; gap: 1.25rem; flex-wrap: wrap; }
+    .top-bar__contact { display: flex; align-items: center; gap: 1.4rem; }
+    .top-bar__contact a { font-size: .78rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: .35rem; transition: color var(--t); }
+    .top-bar__contact a:hover { color: var(--gold-light); }
+    .top-bar__contact svg { width: 13px; height: 13px; flex-shrink: 0; fill: var(--gold); }
+
+    /* ══════════════════════════════════════════════════════
+       MAIN NAV
+    ══════════════════════════════════════════════════════ */
+    .main-nav { background: var(--white); border-bottom: 1px solid var(--grey-300); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .main-nav .container { display: flex; align-items: center; justify-content: space-between; gap: .75rem; position: relative; }
+    .main-nav__brand { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; padding: .65rem 0; text-decoration: none; }
+    .main-nav__brand img { width: 44px; height: 44px; object-fit: contain; }
+    .main-nav__brand-text { display: flex; flex-direction: column; }
+    .main-nav__brand-title { font-size: 1.25rem; font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: .02em; }
+    .main-nav__brand-sub { font-size: .72rem; font-weight: 500; color: var(--grey-500); line-height: 1.2; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-links li { position: relative; display: flex; }
+    .nav-links a { display: flex; align-items: center; padding: 1.1rem .85rem; font-size: .83rem; font-weight: 600; color: var(--grey-800); white-space: nowrap; border-bottom: 3px solid transparent; transition: color var(--t), border-color var(--t); }
+    .nav-links a:hover, .nav-links a.active, .nav-links li:hover > a { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-links li.has-dropdown > a::after { content: ''; display: inline-block; width: 5px; height: 5px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: .45rem; margin-top: -3px; transition: transform var(--t); }
+    .nav-links li.has-dropdown:hover > a::after { transform: rotate(225deg); margin-top: 3px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid var(--grey-300); border-top: 2px solid var(--gold); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,.12); z-index: 200; border-radius: 0 0 var(--radius) var(--radius); }
+    .dropdown-menu a { display: block; padding: .65rem 1.1rem; font-size: .82rem; font-weight: 500; color: var(--grey-800); border-bottom: none; border-left: 3px solid transparent; transition: background var(--t), border-color var(--t), color var(--t); }
+    .dropdown-menu a:hover { background: var(--gold-bg); border-left-color: var(--gold); color: var(--gold); }
+    .nav-links li.has-dropdown:hover .dropdown-menu { display: block; }
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; flex-shrink: 0; }
+    .nav-toggle-label span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: var(--t); }
+
+    /* Academics Dropdown - Plain 3 Columns (matches other dropdowns) */
+    .nav-links li.nav-item--mega { position: static; }
+    .dropdown-menu--columns {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--grey-300);
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      z-index: 200;
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .nav-links li.nav-item--mega:hover .dropdown-menu--columns,
+    .nav-links li.nav-item--mega.open .dropdown-menu--columns {
+      display: block;
+    }
+    .dropdown-columns {
+      display: grid;
+      grid-template-columns: 230px 250px 1fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+    .dropdown-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .dropdown-col__title {
+      display: block;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--navy);
+      padding: 0 .75rem .45rem;
+      border-bottom: 1px solid var(--grey-200);
+      margin-bottom: .45rem;
+    }
+    .dropdown-col__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .dropdown-col__list li a {
+      display: block;
+      padding: .45rem .75rem;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--grey-800);
+      border-left: 3px solid transparent;
+      border-bottom: none;
+      line-height: 1.35;
+      text-decoration: none;
+      white-space: normal;
+      transition: background var(--t), border-color var(--t), color var(--t);
+    }
+    .dropdown-col__list li a:hover {
+      background: var(--gold-bg);
+      border-left-color: var(--gold);
+      color: var(--gold);
+    }
+    .dropdown-faculties-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 1.25rem;
+    }
+    @media (max-width: 960px) {
+      .dropdown-columns {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .dropdown-faculties-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       HERO CAROUSEL (JS DRIVEN & SMOOTH)
+    ══════════════════════════════════════════════════════ */
+    .hero { position: relative; overflow: hidden; height: clamp(420px, 58vw, 620px); background: var(--navy); }
+    .hero-carousel__viewport { width: 100%; height: 100%; overflow: hidden; position: relative; }
+    .hero-carousel__track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .hero-slide {
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .hero-slide img.hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1);
+      transition: transform 7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .hero-slide.active img.hero__img {
+      transform: scale(1.06);
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(102deg, rgba(18,25,43,.92) 0%, rgba(18,25,43,.65) 55%, rgba(18,25,43,.22) 100%);
+      z-index: 2;
+    }
+    .hero__content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 1.5rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--gold);
+      color: var(--white);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .32rem .85rem;
+      border-radius: 4px;
+      margin-bottom: .75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .hero__eyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: .45rem;
+    }
+    .hero__title {
+      font-size: clamp(1.75rem, 4.5vw, 3.1rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 720px;
+      margin-bottom: .6rem;
+    }
+    .hero__sub {
+      font-size: .95rem;
+      color: rgba(255,255,255,.82);
+      font-weight: 500;
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+      line-height: 1.65;
+    }
+    .hero__actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .hero__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: .7rem 1.4rem;
+      border-radius: 30px;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      white-space: nowrap;
+    }
+    .hero__btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(139,105,20,.35);
+    }
+    .hero__btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139,105,20,.45);
+    }
+    .hero__btn--outline {
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .hero__btn--outline:hover {
+      background: rgba(255,255,255,.24);
+      transform: translateY(-2px);
+    }
+    .hero-carousel__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      background: rgba(18,25,43,.55);
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 15;
+      transition: background var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      user-select: none;
+      padding: 0;
+    }
+    .hero-carousel__arrow svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--white);
+    }
+    .hero-carousel__arrow:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,.3);
+    }
+    .hero-carousel__arrow--prev { left: 1.5rem; }
+    .hero-carousel__arrow--next { right: 1.5rem; }
+    .hero-carousel__indicators {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      z-index: 15;
+      background: rgba(18,25,43,.55);
+      padding: .45rem .85rem;
+      border-radius: 30px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .hero-carousel__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.45);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .35s ease, width .35s ease;
+      display: block;
+    }
+    .hero-carousel__dot:hover {
+      background: rgba(255,255,255,.8);
+    }
+    .hero-carousel__dot.active {
+      width: 26px;
+      background: var(--gold);
+    }
+
+    /* ══════════════════════════════════════════════════════
+       STATS STRIP
+    ══════════════════════════════════════════════════════ */
+    .stats-strip { background: var(--navy); padding: 2.2rem 0; border-bottom: 3px solid var(--gold); }
+    .stats-strip .container { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 1.5rem; border-right: 1px solid rgba(255,255,255,.1); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num-row { display: flex; align-items: baseline; gap: .15rem; }
+    .stat-item__number { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--gold-light); line-height: 1; letter-spacing: -.02em; }
+    .stat-item__suffix { font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+    .stat-item__label { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.65); text-transform: uppercase; letter-spacing: .07em; margin-top: .4rem; }
+
+    /* ══════════════════════════════════════════════════════
+       VC MESSAGE
+    ══════════════════════════════════════════════════════ */
+    .vc-message { padding: 4.5rem 0; background: var(--white); }
+    .vc-message .container { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: center; }
+    .vc-photo-wrap { position: relative; flex-shrink: 0; }
+    .vc-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: var(--radius); display: block; box-shadow: 0 16px 40px rgba(18,25,43,.15); }
+    .vc-photo-accent { position: absolute; bottom: -10px; right: -10px; width: 70px; height: 70px; background: var(--gold); border-radius: var(--radius); z-index: -1; }
+    .vc-text blockquote { font-size: .95rem; line-height: 1.9; color: var(--grey-800); font-style: italic; border-left: 4px solid var(--gold); padding-left: 1.25rem; margin-bottom: 1.5rem; }
+    .vc-sig-line { width: 44px; height: 3px; background: var(--gold); margin-bottom: .65rem; border-radius: 2px; }
+    .vc-sig strong { display: block; font-size: .95rem; font-weight: 800; color: var(--navy); }
+    .vc-sig span { font-size: .8rem; color: var(--grey-500); }
+    .read-more-btn { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.25rem; font-size: .82rem; font-weight: 700; color: var(--gold); border: 1.5px solid var(--gold); padding: .5rem 1.1rem; border-radius: 20px; transition: background var(--t), color var(--t); }
+    .read-more-btn:hover { background: var(--gold); color: var(--white); }
+
+    /* ══════════════════════════════════════════════════════
+       PHILOSOPHY / VISION / MISSION
+    ══════════════════════════════════════════════════════ */
+    .pvm { padding: 4.5rem 0; background: var(--off-white); }
+    .pvm-header { margin-bottom: 2rem; }
+    .pvm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .pvm-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.75rem; border: 1px solid var(--grey-300); position: relative; overflow: hidden; transition: transform var(--t), box-shadow var(--t); }
+    .pvm-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,.09); }
+    .pvm-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+    .pvm-card__icon { width: 46px; height: 46px; background: var(--gold-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .pvm-card__icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .pvm-card__tag { font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+    .pvm-card__title { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .75rem; }
+    .pvm-card__body { font-size: .85rem; color: var(--grey-500); line-height: 1.8; }
+
+    /* ══════════════════════════════════════════════════════
+       LOCATION / MAP
+    ══════════════════════════════════════════════════════ */
+    .location { padding: 4.5rem 0; background: var(--white); }
+    .location .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; align-items: start; }
+    .location__address { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .location__addr-item { display: flex; gap: .75rem; align-items: flex-start; }
+    .location__addr-item svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; margin-top: .1rem; }
+    .location__addr-item p { font-size: .86rem; color: var(--grey-800); line-height: 1.6; }
+    .location__addr-item strong { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin-bottom: .15rem; }
+    .map-wrap { border-radius: var(--radius); overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.12); border: 1px solid var(--grey-300); aspect-ratio: 16/10; position: relative; }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+
+    /* ══════════════════════════════════════════════════════
+       NEWS
+    ══════════════════════════════════════════════════════ */
+    .news-section { padding: 4.5rem 0; background: var(--white); }
+    .news-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .news-card { background: var(--white); border: 1px solid var(--grey-300); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow var(--t), transform var(--t); }
+    .news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.1); transform: translateY(-4px); }
+    .news-card__img-wrap { aspect-ratio: 16/10; overflow: hidden; }
+    .news-card__img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; display: block; }
+    .news-card:hover .news-card__img { transform: scale(1.06); }
+    .news-card__body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .news-card__meta { display: flex; align-items: center; gap: .5rem; margin-bottom: .55rem; }
+    .news-card__date { font-size: .7rem; font-weight: 700; color: var(--gold); background: var(--gold-bg); padding: .2rem .55rem; border-radius: 4px; }
+    .news-card__cat { font-size: .68rem; color: var(--grey-500); font-weight: 600; }
+    .news-card__title { font-size: .88rem; font-weight: 800; color: var(--navy); line-height: 1.4; margin-bottom: .45rem; }
+    .news-card__excerpt { font-size: .78rem; color: var(--grey-500); line-height: 1.6; flex: 1; }
+    .news-card__link { display: inline-flex; align-items: center; gap: .3rem; font-size: .75rem; font-weight: 700; color: var(--gold); margin-top: .85rem; }
+    .news-card__link:hover { color: var(--gold-light); }
+    .view-all-btn { font-size: .8rem; font-weight: 700; color: var(--gold); border: 1.5px solid var(--gold); padding: .45rem 1rem; border-radius: 20px; display: inline-flex; align-items: center; gap: .35rem; transition: background var(--t), color var(--t); }
+    .view-all-btn:hover { background: var(--gold); color: var(--white); }
+
+    /* ══════════════════════════════════════════════════════
+       CAMPUS LIFE
+    ══════════════════════════════════════════════════════ */
+    .campus-life { padding: 4.5rem 0; background: var(--off-white); }
+    .campus-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .campus-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--grey-300); display: flex; flex-direction: column; transition: transform var(--t), box-shadow var(--t); }
+    .campus-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,.12); }
+    .campus-card__img-wrap { aspect-ratio: 4/3; overflow: hidden; }
+    .campus-card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .campus-card:hover .campus-card__img { transform: scale(1.07); }
+    .campus-card__body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .campus-card__icon-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .55rem; }
+    .campus-card__icon { width: 32px; height: 32px; background: var(--gold-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .campus-card__icon svg { width: 16px; height: 16px; fill: var(--gold); }
+    .campus-card__title { font-size: .9rem; font-weight: 800; color: var(--navy); }
+    .campus-card__desc { font-size: .78rem; color: var(--grey-500); line-height: 1.6; margin-top: .45rem; flex: 1; }
+
+    /* ══════════════════════════════════════════════════════
+       CTA (SOLID GOLD ACCENT SECTION)
+    ══════════════════════════════════════════════════════ */
+    .cta-section {
+      padding: 4.5rem 0;
+      background: var(--gold);
+    }
+    .cta-inner { text-align: center; }
+    .cta-inner .section-label {
+      color: var(--white);
+      border-left: 3px solid var(--white);
+      margin-bottom: .75rem;
+    }
+    .cta-inner h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .75rem;
+    }
+    .cta-inner p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.92);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .9rem;
+      font-weight: 700;
+      padding: .8rem 1.75rem;
+      border-radius: 30px;
+      transition: background var(--t), color var(--t);
+    }
+    .cta-btn--primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .cta-btn--primary:hover {
+      background: var(--navy-mid);
+    }
+    .cta-btn--secondary {
+      background: var(--white);
+      color: var(--navy);
+    }
+    .cta-btn--secondary:hover {
+      background: var(--grey-100);
+    }
+    .cta-btn--ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid var(--white);
+    }
+    .cta-btn--ghost:hover {
+      background: rgba(255,255,255,.15);
+    }
+    .cta-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════ */
+    .footer { background: var(--navy); border-top: 3px solid var(--gold); color: rgba(255,255,255,.65); padding: 3rem 0 1.5rem; }
+    .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer__brand img { width: 46px; height: 46px; object-fit: contain; margin-bottom: .75rem; }
+    .footer__brand strong { display: block; font-size: .88rem; font-weight: 800; color: var(--white); margin-bottom: .45rem; }
+    .footer__brand p { font-size: .78rem; line-height: 1.7; color: rgba(255,255,255,.5); max-width: 280px; }
+    .footer__social { display: flex; gap: .65rem; margin-top: 1rem; }
+    .footer__social a { width: 34px; height: 34px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background var(--t), border-color var(--t); }
+    .footer__social a:hover { background: var(--gold); border-color: var(--gold); }
+    .footer__social svg { width: 15px; height: 15px; fill: rgba(255,255,255,.7); }
+    .footer__social a:hover svg { fill: var(--white); }
+    .footer__col h4 { font-size: .78rem; font-weight: 800; color: var(--gold-light); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer__col ul li { margin-bottom: .5rem; }
+    .footer__col ul a { font-size: .78rem; color: rgba(255,255,255,.55); transition: color var(--t); display: flex; align-items: center; gap: .35rem; }
+    .footer__col ul a:hover { color: var(--gold-light); }
+    .footer__col ul a::before { content: '›'; color: var(--gold); font-size: .9rem; }
+    .footer__bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer__bottom p, .footer__bottom a { font-size: .74rem; color: rgba(255,255,255,.4); }
+    .footer__bottom a:hover { color: var(--gold-light); }
+
+
+    /* ══════════════════════════════════════════════════════
+       RESPONSIVE — TABLET & MOBILE (960px)
+    ══════════════════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .nav-toggle-label { display: flex; }
+      .main-nav .container { padding: 0 1rem; }
+      .main-nav__brand img { width: 36px; height: 36px; }
+      .main-nav__brand-title { font-size: 1.1rem; }
+      .main-nav__brand-sub { font-size: .68rem; }
+      .nav-links { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 320px; background: var(--white); flex-direction: column; border-left: 3px solid var(--gold); box-shadow: -8px 0 40px rgba(0,0,0,.25); z-index: 300; overflow-y: auto; padding-top: 4rem; }
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-links li { display: block; width: 100%; flex-direction: column; }
+      .nav-links a { padding: .85rem 1.25rem; border-bottom: 1px solid var(--grey-100); border-left: 3px solid transparent; font-size: .88rem; min-height: 48px; }
+      .nav-links a:hover, .nav-links a.active { border-left-color: var(--gold); background: var(--gold-bg); }
+      .dropdown-menu { display: none; position: static; box-shadow: none; border: none; border-left: 3px solid var(--gold); margin-left: 1rem; background: var(--grey-100); }
+      .nav-links li.has-dropdown:focus-within .dropdown-menu,
+      .nav-links li.has-dropdown.open .dropdown-menu { display: block; }
+      .dropdown-menu a { padding: .65rem 1.1rem; font-size: .82rem; min-height: 42px; }
+      .nav-links li.nav-item--mega { position: relative; }
+      .mega-menu { display: none; position: static; box-shadow: none; border: none; padding: .65rem .85rem; border-left: 3px solid var(--gold); background: var(--grey-100); }
+      .nav-links li.nav-item--mega:focus-within .mega-menu,
+      .nav-links li.nav-item--mega.open .mega-menu { display: block; }
+      .mega-menu__top { display: none; }
+      .mega-menu__body { grid-template-columns: 1fr; gap: 1.25rem; }
+      .mega-faculties-grid { grid-template-columns: 1fr; gap: .25rem; }
+      .mega-group--colleges { background: transparent; border: none; padding: 0; box-shadow: none; }
+      .mega-list li a { padding: .35rem 0; font-size: .82rem; background: transparent !important; }
+      .mega-list--highlight li a { padding: .5rem .75rem; background: var(--white) !important; }
+      .hero { height: clamp(340px, 60vw, 480px); }
+      .hero__content { padding: 2rem 1.25rem; }
+      .hero__title { font-size: clamp(1.4rem, 4.8vw, 2.2rem); }
+      .hero__sub { font-size: .86rem; }
+      .hero-carousel__arrow { width: 40px; height: 40px; }
+      .hero-carousel__arrow--prev { left: .75rem; }
+      .hero-carousel__arrow--next { right: .75rem; }
+      .vc-message .container { grid-template-columns: 220px 1fr; gap: 2rem; }
+      .pvm-grid { grid-template-columns: 1fr; }
+      .location .container { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .campus-grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .stats-strip .container { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1); }
+      .stat-item:last-child, .stat-item:nth-last-child(2) { border-bottom: none; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       RESPONSIVE — MOBILE (680px)
+    ══════════════════════════════════════════════════════ */
+    @media (max-width: 680px) {
+      .top-bar { padding: .4rem 0; }
+      .top-bar .container { justify-content: center; }
+      .top-bar__contact { gap: 1rem; justify-content: center; }
+      .top-bar__contact a { font-size: .75rem; }
+      .main-nav__brand-title { font-size: 1rem; }
+      .main-nav__brand-sub { display: none; }
+      .hero { height: clamp(320px, 68vw, 420px); }
+      .hero__title { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
+      .hero__sub { font-size: .8rem; }
+      .hero-carousel__arrow { width: 34px; height: 34px; }
+      .hero-carousel__arrow--prev { left: .5rem; }
+      .hero-carousel__arrow--next { right: .5rem; }
+      .stats-strip .container { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: .85rem; }
+      .vc-message { padding: 3rem 0; }
+      .vc-message .container { grid-template-columns: 1fr; gap: 1.5rem; }
+      .vc-photo { aspect-ratio: 16/9; object-position: top center; }
+      .vc-photo-accent { display: none; }
+      .pvm { padding: 3rem 0; }
+      .pvm-grid { grid-template-columns: 1fr; }
+      .location { padding: 3rem 0; }
+      .location .container { grid-template-columns: 1fr; }
+      .map-wrap { aspect-ratio: 4/3; }
+      .news-section { padding: 3rem 0; }
+      .news-grid { grid-template-columns: 1fr; }
+      .campus-life { padding: 3rem 0; }
+      .campus-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .cta-section { padding: 3rem 0; }
+      .cta-btns { flex-direction: column; align-items: stretch; }
+      .cta-btn { justify-content: center; }
+      .footer { padding: 2rem 0 1.25rem; }
+      .footer__grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    }
+
+    @media (max-width: 420px) {
+      .campus-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__contact">
+        <a href="mailto:info@fulafia.edu.ng" aria-label="Send email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 7.414 7-5.828V4H3v.586l7 5.828zm-8 4.172V6.414l7.55 6.287a.75.75 0 0 0 .9 0L18 6.414V14.586H2z"/></svg>
+          info@fulafia.edu.ng
+        </a>
+        <a href="tel:+2348112990109" aria-label="Call us">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h5l1.5 4-2.5 1.5a11 11 0 0 0 4.5 4.5L12 9.5l4 1.5v5c0 1.1-.9 2-2 2C6.477 18 2 13.523 2 8V4a2 2 0 0 1 2-2z"/></svg>
+          +234 811 299 0109
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN NAV -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="home.html" class="main-nav__brand">
+        <img src="../assets/Logo.png" alt="FULAFIA" width="44" height="44">
+        <div class="main-nav__brand-text">
+          <strong class="main-nav__brand-title">FULAFIA</strong>
+          <span class="main-nav__brand-sub">Federal University of Lafia</span>
+        </div>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links" role="menubar">
+        <li class="has-dropdown">
+          <a href="#about">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="#about">About FULAFIA</a></li>
+            <li><a href="#vc-message">Vice-Chancellor&rsquo;s Message</a></li>
+            <li><a href="#pvm">Philosophy, Vision &amp; Mission</a></li>
+            <li><a href="management.html">University Management</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown nav-item--mega">
+          <a href="academics.html">Academics</a>
+          <div class="dropdown-menu dropdown-menu--columns" aria-label="Academics Menu">
+            <div class="dropdown-columns">
+
+              <!-- COLUMN 1: COLLEGES -->
+              <div class="dropdown-col">
+                <span class="dropdown-col__title">Colleges</span>
+                <ul class="dropdown-col__list">
+                  <li><a href="college.html">College of Health Sciences</a></li>
+                  <li><a href="college.html">College of Medicine</a></li>
+                  <li><a href="college.html">College of Postgraduate Studies</a></li>
+                </ul>
+              </div>
+
+              <!-- COLUMN 2: SCHOOLS -->
+              <div class="dropdown-col">
+                <span class="dropdown-col__title">Schools</span>
+                <ul class="dropdown-col__list">
+                  <li><a href="school.html">School of Basic &amp; Remedial Studies</a></li>
+                  <li><a href="school.html">School of Postgraduate Studies</a></li>
+                </ul>
+              </div>
+
+              <!-- COLUMN 3: FACULTIES -->
+              <div class="dropdown-col dropdown-col--faculties">
+                <span class="dropdown-col__title">Faculties</span>
+                <div class="dropdown-faculties-split">
+                  <ul class="dropdown-col__list">
+                    <li><a href="faculty.html">Faculty of Agriculture</a></li>
+                    <li><a href="faculty.html">Faculty of Arts</a></li>
+                    <li><a href="faculty.html">Faculty of Basic Clinical Sciences</a></li>
+                    <li><a href="faculty.html">Faculty of Basic Medical Sciences</a></li>
+                    <li><a href="faculty.html">Faculty of Clinical Sciences</a></li>
+                    <li><a href="faculty.html">Faculty of Computing</a></li>
+                    <li><a href="faculty.html">Faculty of Education</a></li>
+                    <li><a href="faculty.html">Faculty of Engineering</a></li>
+                    <li><a href="faculty.html">Faculty of Environmental Design</a></li>
+                    <li><a href="faculty.html">Faculty of Law</a></li>
+                  </ul>
+                  <ul class="dropdown-col__list">
+                    <li><a href="faculty.html">Faculty of Life Sciences</a></li>
+                    <li><a href="faculty.html">Faculty of Management Science</a></li>
+                    <li><a href="faculty.html">Faculty of Medical Laboratory Science</a></li>
+                    <li><a href="faculty.html">Faculty of Nursing</a></li>
+                    <li><a href="faculty.html">Faculty of Pharmaceutical Science</a></li>
+                    <li><a href="faculty.html">Faculty of Physical Sciences</a></li>
+                    <li><a href="faculty.html">Faculty of Radiography &amp; Applied Health</a></li>
+                    <li><a href="faculty.html">Faculty of Social Science</a></li>
+                    <li><a href="faculty.html">Faculty of Veterinary</a></li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Units</a>
+          <ul class="dropdown-menu">
+            <li><a href="unit.html">All Units</a></li>
+            <li><a href="#">Registry</a></li>
+            <li><a href="#">Bursary</a></li>
+            <li><a href="#">University Library</a></li>
+            <li><a href="#">Physical Planning &amp; Works</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Directorates</a>
+          <ul class="dropdown-menu">
+            <li><a href="directorate.html">MIS Directorate</a></li>
+            <li><a href="#">ICT Directorate</a></li>
+            <li><a href="#">SPQA Directorate</a></li>
+            <li><a href="#">Research &amp; Innovation Directorate</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Centers</a>
+          <ul class="dropdown-menu">
+            <li><a href="centre.html">All Centers</a></li>
+            <li><a href="#">Centre for Energy &amp; Defence (CED)</a></li>
+            <li><a href="#">Research Centre</a></li>
+            <li><a href="#">Innovation &amp; Entrepreneurship Hub</a></li>
+          </ul>
+        </li>
+        <li><a href="#news">Fulafia Events</a></li>
+        <li class="has-dropdown">
+          <a href="#">Portal</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Student Portal</a></li>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Staff Portal</a></li>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Postgraduate Portal</a></li>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Remedial Portal</a></li>
+          </ul>
+        </li>
+        <li><a href="#stats">Key Institutional Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 3. HERO CAROUSEL -->
+  <section class="hero" id="heroSlider" aria-label="Featured Carousel" role="region">
+    <div class="hero-carousel__viewport">
+      <div class="hero-carousel__track" id="heroTrack">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" aria-hidden="false">
+          <img class="hero__img" src="../assets/hero.jpg" alt="Federal University Lafia campus" loading="eager" fetchpriority="high" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__badge">Welcome to FULAFIA</span>
+            <h1 class="hero__title">Shaping Tomorrow&rsquo;s Leaders Through Excellence</h1>
+            <p class="hero__sub">Federal University Lafia &mdash; a centre of academic distinction, research innovation, and community transformation in the heart of Nasarawa State.</p>
+            <div class="hero__actions">
+              <a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="hero__btn hero__btn--primary">Apply Now &rarr;</a>
+              <a href="#about" class="hero__btn hero__btn--outline">Explore FULAFIA</a>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide" aria-hidden="true">
+          <img class="hero__img" src="../assets/environmental.jpg" alt="FULAFIA academic excellence" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__badge">Accreditation News</span>
+            <h2 class="hero__title" style="font-size:clamp(1.4rem,3.8vw,2.3rem)">FULAFIA Achieves Full NUC Accreditation Across All Faculties</h2>
+            <p class="hero__sub">A landmark milestone validating our commitment to academic standards, world-class research, and student-centred education.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="hero-slide" aria-hidden="true">
+          <img class="hero__img" src="../assets/library.jpg" alt="FULAFIA digital library" loading="lazy" decoding="async">
+          <div class="hero__overlay" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__badge">New Infrastructure</span>
+            <h2 class="hero__title" style="font-size:clamp(1.4rem,3.8vw,2.3rem)">Ultra-Modern Digital Library &amp; Research Hub Now Open</h2>
+            <p class="hero__sub">State-of-the-art facilities for students and researchers &mdash; featuring 50,000+ digital resources, quiet study zones, and advanced ICT labs.</p>
+            <div class="hero__actions">
+              <a href="news-single.html" class="hero__btn hero__btn--primary">Read More &rarr;</a>
+              <a href="news.html" class="hero__btn hero__btn--outline">All News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Arrows & Dots -->
+    <button type="button" class="hero-carousel__arrow hero-carousel__arrow--prev" id="heroPrevBtn" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <button type="button" class="hero-carousel__arrow hero-carousel__arrow--next" id="heroNextBtn" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+    <div class="hero-carousel__indicators" id="heroIndicators" role="tablist" aria-label="Hero carousel pagination">
+      <button type="button" class="hero-carousel__dot active" role="tab" aria-selected="true" aria-label="Slide 1" data-index="0"></button>
+      <button type="button" class="hero-carousel__dot" role="tab" aria-selected="false" aria-label="Slide 2" data-index="1"></button>
+      <button type="button" class="hero-carousel__dot" role="tab" aria-selected="false" aria-label="Slide 3" data-index="2"></button>
+    </div>
+  </section>
+
+  <!-- 4. STATS -->
+  <section class="stats-strip" aria-label="University at a glance">
+    <div class="container">
+      <div class="stat-item reveal">
+        <div class="stat-num-row">
+          <span class="stat-item__number">14</span><span class="stat-item__suffix">+</span>
+        </div>
+        <span class="stat-item__label">Years of Excellence</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num-row">
+          <span class="stat-item__number">100</span><span class="stat-item__suffix">+</span>
+        </div>
+        <span class="stat-item__label">Academic Programmes</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num-row">
+          <span class="stat-item__number">10</span>
+        </div>
+        <span class="stat-item__label">Faculties</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num-row">
+          <span class="stat-item__number">20K</span><span class="stat-item__suffix">+</span>
+        </div>
+        <span class="stat-item__label">Students</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. VC MESSAGE -->
+  <section class="vc-message" id="vc-message" aria-labelledby="vc-heading">
+    <div class="container">
+      <div class="vc-photo-wrap reveal">
+        <img class="vc-photo" src="../assets/VC.jpg" alt="Prof. Mohammed Isa Kida – Vice-Chancellor, Federal University Lafia" loading="lazy" decoding="async">
+        <div class="vc-photo-accent" aria-hidden="true"></div>
+      </div>
+      <div class="vc-text reveal reveal-delay-1">
+        <span class="section-label">Vice-Chancellor&rsquo;s Message</span>
+        <h2 class="section-title" id="vc-heading">A Message from the Vice-Chancellor</h2>
+        <blockquote>
+          &ldquo;Welcome to Federal University Lafia. Since our establishment in 2011, we have remained steadfast in our commitment to producing graduates who are not only academically distinguished, but who are also imbued with the values of integrity, innovation, and service to humanity. Our university stands as a beacon of academic excellence in Nasarawa State and across Nigeria &mdash; fostering research, scholarship, and community engagement that transforms lives and communities. I invite you to explore the rich academic life, vibrant campus culture, and the world-class opportunities that await you here at FULAFIA.&rdquo;
+        </blockquote>
+        <div class="vc-sig">
+          <div class="vc-sig-line"></div>
+          <strong>Prof. Mohammed Isa Kida</strong>
+          <span>Vice-Chancellor, Federal University Lafia</span>
+        </div>
+        <a href="#" class="read-more-btn">
+          Read Full Message
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PHILOSOPHY / VISION / MISSION -->
+  <section class="pvm" id="pvm" aria-labelledby="pvm-heading">
+    <div class="container">
+      <div class="pvm-header">
+        <span class="section-label reveal">Our Identity</span>
+        <h2 class="section-title reveal" id="pvm-heading">Philosophy, Vision &amp; Mission</h2>
+      </div>
+      <div class="pvm-grid">
+        <div class="pvm-card reveal">
+          <div class="pvm-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 19.93zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+          </div>
+          <div class="pvm-card__tag">Philosophy</div>
+          <h3 class="pvm-card__title">Our Core Philosophy</h3>
+          <p class="pvm-card__body">Federal University Lafia is founded on the philosophy that education is a powerful instrument for individual empowerment, social transformation, and national development. We believe in holistic learning that nurtures the intellect, character, and civic responsibility of every student.</p>
+        </div>
+        <div class="pvm-card reveal reveal-delay-1">
+          <div class="pvm-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+          </div>
+          <div class="pvm-card__tag">Vision</div>
+          <h3 class="pvm-card__title">Our Vision</h3>
+          <p class="pvm-card__body">To become a world-class university committed to excellence in teaching, learning, research, and community service, producing graduates who are globally competitive and locally relevant &mdash; driven by integrity and dedicated to the sustainable development of Nigeria.</p>
+        </div>
+        <div class="pvm-card reveal reveal-delay-2">
+          <div class="pvm-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div class="pvm-card__tag">Mission</div>
+          <h3 class="pvm-card__title">Our Mission</h3>
+          <p class="pvm-card__body">To provide quality education that equips students with relevant knowledge, skills, and values for personal development and national service &mdash; through innovative teaching, impactful research, and meaningful community engagement anchored in integrity and excellence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. LOCATION -->
+  <section class="location" id="location" aria-labelledby="loc-heading">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title" id="loc-heading">Our Location</h2>
+        <p style="font-size:.88rem;color:var(--grey-500);line-height:1.75;margin-bottom:1.25rem;">Federal University Lafia is situated in Lafia, the capital of Nasarawa State, Nigeria &mdash; easily accessible by road from Abuja and major northern cities.</p>
+        <div class="location__address">
+          <div class="location__addr-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            <div>
+              <strong>Address</strong>
+              <p>Federal University Lafia, PMB 146,<br>Lafia, Nasarawa State, Nigeria.</p>
+            </div>
+          </div>
+          <div class="location__addr-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24a11.36 11.36 0 0 0 3.56.56c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.82 21 3 13.18 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.56 3.57.11.35.02.74-.25 1.01l-2.19 2.21z"/></svg>
+            <div>
+              <strong>Phone</strong>
+              <p><a href="tel:+2348112990109" style="color:var(--grey-800)">+234 811 299 0109</a></p>
+            </div>
+          </div>
+          <div class="location__addr-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:info@fulafia.edu.ng" style="color:var(--grey-800)">info@fulafia.edu.ng</a></p>
+            </div>
+          </div>
+          <div class="location__addr-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <div>
+              <strong>Office Hours</strong>
+              <p>Monday &ndash; Friday: 8:00 AM &ndash; 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap reveal reveal-delay-1">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31584.39403085869!2d8.478956!3d8.490694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104fa68fe76c7a83%3A0x44e33b5ef5a2b4a5!2sFederal%20University%20Lafia!5e0!3m2!1sen!2sng!4v1697000000000!5m2!1sen!2sng"
+          loading="lazy"
+          allowfullscreen=""
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Federal University Lafia campus location on Google Maps"
+          aria-label="Interactive map showing Federal University Lafia campus location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 9. NEWS -->
+  <section class="news-section" id="news" aria-labelledby="news-heading">
+    <div class="container">
+      <div class="news-header">
+        <div>
+          <span class="section-label reveal">Stay Informed</span>
+          <h2 class="section-title reveal" id="news-heading" style="margin-bottom:0">News &amp; Recent Activities</h2>
+        </div>
+        <a href="news.html" class="view-all-btn reveal">View All News &rarr;</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-card reveal">
+          <div class="news-card__img-wrap">
+            <img class="news-card__img" src="../assets/news.jpg" alt="FULAFIA 13th Convocation Ceremony" loading="lazy" decoding="async">
+          </div>
+          <div class="news-card__body">
+            <div class="news-card__meta">
+              <span class="news-card__date">Oct 05, 2026</span>
+              <span class="news-card__cat">&middot; University News</span>
+            </div>
+            <h3 class="news-card__title">FULAFIA Celebrates 13th Convocation with Over 4,000 Graduates</h3>
+            <p class="news-card__excerpt">The Federal University Lafia held its 13th Convocation Ceremony, conferring degrees on over 4,000 graduates across all faculties. The Vice-Chancellor urged graduates to serve as agents of change.</p>
+            <a href="news-single.html" class="news-card__link">Read more &rarr;</a>
+          </div>
+        </article>
+        <article class="news-card reveal reveal-delay-1">
+          <div class="news-card__img-wrap">
+            <img class="news-card__img" src="../assets/newss.jpg" alt="FULAFIA Research Innovation Grant" loading="lazy" decoding="async">
+          </div>
+          <div class="news-card__body">
+            <div class="news-card__meta">
+              <span class="news-card__date">Sep 22, 2026</span>
+              <span class="news-card__cat">&middot; Research</span>
+            </div>
+            <h3 class="news-card__title">TETFUND Awards FULAFIA &#8358;500M Research Innovation Grant</h3>
+            <p class="news-card__excerpt">TETFund has awarded Federal University Lafia a &#8358;500 million grant to expand research infrastructure, sponsor postgraduate scholarships, and develop cutting-edge innovation labs.</p>
+            <a href="news-single.html" class="news-card__link">Read more &rarr;</a>
+          </div>
+        </article>
+        <article class="news-card reveal reveal-delay-2">
+          <div class="news-card__img-wrap">
+            <img class="news-card__img" src="../assets/newsss.jpg" alt="FULAFIA Admission 2026/2027" loading="lazy" decoding="async">
+          </div>
+          <div class="news-card__body">
+            <div class="news-card__meta">
+              <span class="news-card__date">Sep 10, 2026</span>
+              <span class="news-card__cat">&middot; Admissions</span>
+            </div>
+            <h3 class="news-card__title">2026/2027 Undergraduate Admission: Important Dates &amp; Requirements</h3>
+            <p class="news-card__excerpt">The Office of the Registrar announces the 2026/2027 academic session admission exercise. Eligible candidates are required to complete screening by 31st October 2026.</p>
+            <a href="news-single.html" class="news-card__link">Read more &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CAMPUS LIFE -->
+  <section class="campus-life" id="campus" aria-labelledby="campus-heading">
+    <div class="container">
+      <span class="section-label reveal">Life at FULAFIA</span>
+      <h2 class="section-title reveal" id="campus-heading">Campus Life</h2>
+      <div class="campus-grid">
+        <div class="campus-card reveal">
+          <div class="campus-card__img-wrap">
+            <img class="campus-card__img" src="../assets/sample.jpg" alt="Modern lecture halls at Federal University Lafia" loading="lazy" decoding="async">
+          </div>
+          <div class="campus-card__body">
+            <div class="campus-card__icon-row">
+              <div class="campus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v1h12v-1l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/></svg>
+              </div>
+              <h3 class="campus-card__title">Modern Lecture Halls</h3>
+            </div>
+            <p class="campus-card__desc">State-of-the-art, air-conditioned lecture halls equipped with digital projectors, high-speed Wi-Fi, and modern seating &mdash; designed to foster an optimal learning environment for every student.</p>
+          </div>
+        </div>
+        <div class="campus-card reveal reveal-delay-1">
+          <div class="campus-card__img-wrap">
+            <img class="campus-card__img" src="../assets/library.jpg" alt="FULAFIA Digital Library" loading="lazy" decoding="async">
+          </div>
+          <div class="campus-card__body">
+            <div class="campus-card__icon-row">
+              <div class="campus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              </div>
+              <h3 class="campus-card__title">Digital Library</h3>
+            </div>
+            <p class="campus-card__desc">The FULAFIA central library houses over 100,000 physical volumes and 50,000+ digital resources &mdash; with quiet reading rooms, research assistance, and 24/7 online database access for students and staff.</p>
+          </div>
+        </div>
+        <div class="campus-card reveal reveal-delay-2">
+          <div class="campus-card__img-wrap">
+            <img class="campus-card__img" src="../assets/mis.png" alt="FULAFIA Research Laboratories" loading="lazy" decoding="async">
+          </div>
+          <div class="campus-card__body">
+            <div class="campus-card__icon-row">
+              <div class="campus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 2v2h-.25A1.75 1.75 0 0 0 4 5.75v.5C4 7.216 4.784 8 5.75 8H6v8.25A3.75 3.75 0 0 0 9.75 20h4.5A3.75 3.75 0 0 0 18 16.25V8h.25A1.75 1.75 0 0 0 20 6.25v-.5A1.75 1.75 0 0 0 18.25 4H18V2H6zm2 6h8v8.25a2.25 2.25 0 0 1-2.25 2.25h-3.5A2.25 2.25 0 0 1 8 16.25V8z"/></svg>
+              </div>
+              <h3 class="campus-card__title">Research Labs</h3>
+            </div>
+            <p class="campus-card__desc">Cutting-edge laboratories across science, engineering, computing, and environmental studies &mdash; providing students and researchers with world-class tools for innovation, discovery, and breakthrough research.</p>
+          </div>
+        </div>
+        <div class="campus-card reveal reveal-delay-3">
+          <div class="campus-card__img-wrap">
+            <img class="campus-card__img" src="../assets/ced.jpg" alt="FULAFIA Student Hostels" loading="lazy" decoding="async">
+          </div>
+          <div class="campus-card__body">
+            <div class="campus-card__icon-row">
+              <div class="campus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              </div>
+              <h3 class="campus-card__title">Student Hostels</h3>
+            </div>
+            <p class="campus-card__desc">Comfortable, secure, and affordable on-campus accommodation options for students &mdash; featuring modern amenities, 24-hour security, recreational spaces, and a supportive community living experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CTA -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="section-label reveal">Take the Next Step</span>
+        <h2 class="reveal" id="cta-heading">Join the FULAFIA Community</h2>
+        <p class="reveal">Ready to begin your academic journey at Federal University Lafia? Contact our admissions office, start your application today, or download our prospectus to explore all that FULAFIA has to offer.</p>
+        <div class="cta-btns">
+          <a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener" class="cta-btn cta-btn--primary reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            Apply Now
+          </a>
+          <a href="mailto:info@fulafia.edu.ng" class="cta-btn cta-btn--secondary reveal reveal-delay-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Contact Us
+          </a>
+          <a href="#" class="cta-btn cta-btn--ghost reveal reveal-delay-2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
+            Download Brochure
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="../assets/Logo.png" alt="Federal University Lafia logo" width="46" height="46" loading="lazy">
+          <strong>Federal University Lafia</strong>
+          <p>PMB 146, Lafia, Nasarawa State, Nigeria.<br>Committed to integrity, innovation, and excellence in education, research, and community service.</p>
+          <div class="footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter / X">
+              <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19.1C5.12 19.55 12 19.55 12 19.55s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 11.75a29 29 0 0 0-.46-5.33z" fill="currentColor"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48 9.75,15.02" fill="var(--navy)"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About FULAFIA</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="#">Programmes</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#news">News &amp; Events</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Portals</h4>
+          <ul>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Student Portal</a></li>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Staff Portal</a></li>
+            <li><a href="https://portal.fulafia.edu.ng" target="_blank" rel="noopener">Postgraduate Portal</a></li>
+            <li><a href="#">Library Portal</a></li>
+            <li><a href="#">Alumni Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@fulafia.edu.ng">info@fulafia.edu.ng</a></li>
+            <li><a href="tel:+2348112990109">+234 811 299 0109</a></li>
+            <li><a href="https://fulafia.edu.ng" target="_blank" rel="noopener">fulafia.edu.ng</a></li>
+            <li><a href="#location">Campus Location</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Federal University Lafia. All rights reserved.</p>
+        <p>
+          <a href="#">Privacy Policy</a> &nbsp;|&nbsp;
+          <a href="#">Accessibility</a> &nbsp;|&nbsp;
+          <a href="../index.html">&larr; Template Hub</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE SCRIPTS -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. LAZY REVEAL ANIMATIONS (IntersectionObserver)
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      }
+
+      // 2. HERO CAROUSEL CONTROLLER (Smooth Auto & Manual Sliding)
+      var track = document.getElementById('heroTrack');
+      if (track) {
+        var slides = Array.from(track.querySelectorAll('.hero-slide'));
+        var prevBtn = document.getElementById('heroPrevBtn');
+        var nextBtn = document.getElementById('heroNextBtn');
+        var dotsContainer = document.getElementById('heroIndicators');
+        var dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.hero-carousel__dot')) : [];
+        var heroEl = document.getElementById('heroSlider');
+        var total = slides.length;
+        var current = 0;
+        var timer = null;
+        var slideInterval = 5000;
+        var isHovered = false;
+
+        function goToSlide(index) {
+          current = (index + total) % total;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+          slides.forEach(function (slide, i) {
+            if (i === current) {
+              slide.classList.add('active');
+              slide.setAttribute('aria-hidden', 'false');
+            } else {
+              slide.classList.remove('active');
+              slide.setAttribute('aria-hidden', 'true');
+            }
+          });
+
+          dots.forEach(function (dot, i) {
+            if (i === current) {
+              dot.classList.add('active');
+              dot.setAttribute('aria-selected', 'true');
+            } else {
+              dot.classList.remove('active');
+              dot.setAttribute('aria-selected', 'false');
+            }
+          });
+        }
+
+        function startAuto() {
+          stopAuto();
+          timer = setInterval(function () {
+            if (!isHovered) {
+              goToSlide(current + 1);
+            }
+          }, slideInterval);
+        }
+
+        function stopAuto() {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () {
+            goToSlide(current - 1);
+            startAuto();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () {
+            goToSlide(current + 1);
+            startAuto();
+          });
+        }
+
+        dots.forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            var idx = parseInt(dot.getAttribute('data-index'), 10);
+            if (!isNaN(idx)) {
+              goToSlide(idx);
+              startAuto();
+            }
+          });
+        });
+
+        if (heroEl) {
+          heroEl.addEventListener('mouseenter', function () {
+            isHovered = true;
+          });
+          heroEl.addEventListener('mouseleave', function () {
+            isHovered = false;
+            startAuto();
+          });
+
+          // Touch swipe navigation for mobile & tablets
+          var touchStartX = 0;
+          var touchEndX = 0;
+          heroEl.addEventListener('touchstart', function (e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+              touchStartX = e.changedTouches[0].clientX;
+            }
+          }, { passive: true });
+          heroEl.addEventListener('touchend', function (e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+              touchEndX = e.changedTouches[0].clientX;
+              var diff = touchEndX - touchStartX;
+              if (Math.abs(diff) > 40) {
+                if (diff < 0) {
+                  goToSlide(current + 1);
+                } else {
+                  goToSlide(current - 1);
+                }
+                startAuto();
+              }
+            }
+          }, { passive: true });
+
+          // Keyboard arrow navigation
+          heroEl.setAttribute('tabindex', '0');
+          heroEl.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+              goToSlide(current - 1);
+              startAuto();
+            } else if (e.key === 'ArrowRight') {
+              goToSlide(current + 1);
+              startAuto();
+            }
+          });
+        }
+
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) {
+            stopAuto();
+          } else {
+            startAuto();
+          }
+        });
+
+        // Initialize hero carousel
+        goToSlide(0);
+        startAuto();
+      }
+
+      // 3. MOBILE MENU DROPDOWN ACCORDIONS
+      var dropdownToggles = document.querySelectorAll('.nav-links li.has-dropdown > a');
+      dropdownToggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function (e) {
+          if (window.innerWidth <= 960) {
+            e.preventDefault();
+            var li = toggle.parentElement;
+            li.classList.toggle('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
