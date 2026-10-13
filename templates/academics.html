@@ -77,60 +77,91 @@
     .breadcrumb a:hover { color: var(--gold-light); }
     .breadcrumb li:last-child { color: var(--grey-800); font-weight: 600; }
 
-    /* SECTION SUB-NAV / QUICK JUMP */
-    .section-nav { background: var(--white); border-bottom: 1px solid var(--grey-200); padding: .85rem 0; position: sticky; top: 49px; z-index: 40; box-shadow: 0 2px 4px rgba(0,0,0,.03); }
-    .section-nav .container { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
-    .section-nav__label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--grey-500); margin-right: .5rem; }
-    .section-nav__links { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    /* STICKY QUICK JUMP NAV */
+    .section-nav { background: var(--white); border-bottom: 1px solid var(--grey-200); padding: .75rem 0; position: sticky; top: 49px; z-index: 40; box-shadow: 0 1px 4px rgba(0,0,0,.03); }
+    .section-nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .section-nav__links { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
     .section-nav__link { display: inline-flex; align-items: center; gap: .45rem; padding: .35rem .85rem; font-size: .8rem; font-weight: 600; color: var(--navy); background: var(--grey-100); border: 1px solid var(--grey-200); border-radius: 20px; transition: all var(--t); }
     .section-nav__link:hover { background: var(--gold-bg); border-color: var(--gold); color: var(--gold); }
-    .section-nav__badge { font-size: .68rem; font-weight: 700; background: var(--navy); color: var(--white); padding: .1rem .45rem; border-radius: 10px; }
-    .section-nav__link:hover .section-nav__badge { background: var(--gold); }
+    .section-nav__count { font-size: .68rem; color: var(--grey-500); }
 
-    /* COMMON SECTION STYLES */
-    .academic-section { padding: 3.5rem 0; }
-    .academic-section--alt { background: var(--white); border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); }
-    .section-header { margin-bottom: 2rem; }
-    .section-label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border-left: 3px solid var(--gold); padding-left: .55rem; margin-bottom: .45rem; }
-    .section-title { font-size: clamp(1.25rem, 2.2vw, 1.7rem); font-weight: 800; color: var(--navy); line-height: 1.25; margin-bottom: .4rem; }
-    .section-desc { font-size: .85rem; color: var(--grey-500); line-height: 1.5; max-width: 680px; }
+    /* SECTIONS */
+    .academic-section { padding: 3.25rem 0; }
+    .academic-section + .academic-section { border-top: 1px solid var(--grey-200); }
+    .section-header { margin-bottom: 1.75rem; }
+    .section-title { font-size: clamp(1.4rem, 2.5vw, 1.95rem); font-weight: 800; color: var(--navy); line-height: 1.25; margin-bottom: .35rem; }
+    .section-desc { font-size: .88rem; color: var(--grey-500); line-height: 1.55; max-width: 680px; }
 
-    /* SECTION 1: COLLEGES GRID */
-    .colleges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
-    .college-card { background: var(--white); border: 1px solid var(--grey-200); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color var(--t), box-shadow var(--t), transform var(--t); position: relative; border-left: 4px solid var(--gold); }
-    .college-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,.06); transform: translateY(-3px); }
-    .college-card__tag { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: .45rem; }
-    .college-card__title { font-size: 1.05rem; font-weight: 800; color: var(--navy); line-height: 1.3; margin-bottom: .5rem; }
-    .college-card__desc { font-size: .8rem; color: var(--grey-500); line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
-    .college-card__action { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; color: var(--gold); margin-top: auto; }
-    .college-card__action svg { width: 14px; height: 14px; fill: currentColor; transition: transform var(--t); }
-    .college-card:hover .college-card__action svg { transform: translateX(4px); }
+    /* UNIFIED MINIMALIST CARD GRID (4-column responsive) */
+    .academic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 
-    /* SECTION 2: SCHOOLS GRID */
-    .schools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; }
-    .school-card { background: var(--off-white); border: 1px solid var(--grey-200); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color var(--t), box-shadow var(--t), transform var(--t); border-left: 4px solid var(--navy-mid); }
-    .school-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,.06); transform: translateY(-3px); background: var(--white); }
-    .school-card__tag { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: .45rem; }
-    .school-card__title { font-size: 1.05rem; font-weight: 800; color: var(--navy); line-height: 1.3; margin-bottom: .5rem; }
-    .school-card__desc { font-size: .8rem; color: var(--grey-500); line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
-    .school-card__action { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 700; color: var(--gold); margin-top: auto; }
-    .school-card__action svg { width: 14px; height: 14px; fill: currentColor; transition: transform var(--t); }
-    .school-card:hover .school-card__action svg { transform: translateX(4px); }
-
-    /* SECTION 3: FACULTIES (MINIMALIST CARDS) */
-    .faculties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-    .faculty-card { background: var(--white); border: 1px solid var(--grey-200); border-radius: var(--radius); padding: 1.15rem 1.25rem; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color var(--t), box-shadow var(--t), transform var(--t); position: relative; }
-    .faculty-card:hover { border-color: var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,.05); transform: translateY(-2px); }
-    .faculty-card__header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .6rem; }
-    .faculty-card__tag { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); }
-    .faculty-card__arrow { width: 14px; height: 14px; fill: var(--grey-300); transition: fill var(--t), transform var(--t); }
-    .faculty-card:hover .faculty-card__arrow { fill: var(--gold); transform: translateX(3px); }
-    .faculty-card__title { font-size: .92rem; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: .55rem; flex: 1; }
-    .faculty-card__meta { font-size: .72rem; color: var(--grey-500); display: flex; align-items: center; gap: .35rem; }
-    .faculty-card__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+    /* MINIMALIST CARD (IDENTICAL ACROSS COLLEGES, SCHOOLS & FACULTIES) */
+    .academic-card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+      position: relative;
+    }
+    .academic-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+      transform: translateY(-2px);
+    }
+    .academic-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      margin-bottom: .6rem;
+    }
+    .academic-card__tag {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gold);
+    }
+    .academic-card__arrow {
+      width: 14px;
+      height: 14px;
+      fill: var(--grey-300);
+      transition: fill var(--t), transform var(--t);
+    }
+    .academic-card:hover .academic-card__arrow {
+      fill: var(--gold);
+      transform: translateX(3px);
+    }
+    .academic-card__title {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: .55rem;
+      flex: 1;
+    }
+    .academic-card__meta {
+      font-size: .72rem;
+      color: var(--grey-500);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .academic-card__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
 
     /* CONTACT CTA */
-    .contact-cta { padding: 3.5rem 0; background: var(--off-white); }
+    .contact-cta { padding: 3.5rem 0; background: var(--off-white); border-top: 1px solid var(--grey-200); }
     .cta-inner { background: var(--navy); border-radius: var(--radius); padding: 2.2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-left: 4px solid var(--gold); }
     .cta-text h2 { font-size: 1.35rem; font-weight: 800; color: var(--white); margin-bottom: .35rem; }
     .cta-text p { color: rgba(255,255,255,.75); font-size: .85rem; }
@@ -162,7 +193,7 @@
       .nav-links a { padding: .85rem 1.25rem; width: 100%; border-bottom: 1px solid var(--grey-100); }
       .nav-toggle:checked ~ .nav-links { display: flex; }
       .section-nav { top: 48px; }
-      .colleges-grid, .schools-grid, .faculties-grid { grid-template-columns: 1fr; }
+      .academic-grid { grid-template-columns: 1fr; }
       .footer .container { grid-template-columns: 1fr; }
     }
   </style>
@@ -235,11 +266,10 @@
   <!-- 5. QUICK JUMP SECTION NAV -->
   <div class="section-nav" aria-label="Quick jump">
     <div class="container">
-      <span class="section-nav__label">Jump to Section:</span>
       <div class="section-nav__links">
-        <a href="#colleges" class="section-nav__link">Colleges <span class="section-nav__badge">3</span></a>
-        <a href="#schools" class="section-nav__link">Schools <span class="section-nav__badge">2</span></a>
-        <a href="#faculties" class="section-nav__link">Faculties <span class="section-nav__badge">19</span></a>
+        <a href="#colleges" class="section-nav__link">Colleges <span class="section-nav__count">(3)</span></a>
+        <a href="#schools" class="section-nav__link">Schools <span class="section-nav__count">(2)</span></a>
+        <a href="#faculties" class="section-nav__link">Faculties <span class="section-nav__count">(19)</span></a>
       </div>
     </div>
   </div>
@@ -250,336 +280,343 @@
     <section class="academic-section" id="colleges" aria-labelledby="colleges-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Section 1</span>
           <h2 class="section-title" id="colleges-heading">Colleges</h2>
           <p class="section-desc">Specialized collegiate divisions delivering advanced professional, clinical, and doctoral education across multidisciplinary faculties.</p>
         </div>
 
-        <div class="colleges-grid">
+        <div class="academic-grid">
           <!-- College 1 -->
-          <a href="college.html" class="college-card">
-            <span class="college-card__tag">Collegiate Division</span>
-            <h3 class="college-card__title">College of Health Sciences</h3>
-            <p class="college-card__desc">Pioneering medical sciences, basic clinical, and allied health educational programmes.</p>
-            <span class="college-card__action">
-              Explore College
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </span>
+          <a href="college.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">College</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="academic-card__title">College of Health Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
+              <span>Medical &amp; Allied Health Sciences</span>
+            </div>
           </a>
 
           <!-- College 2 -->
-          <a href="college.html" class="college-card">
-            <span class="college-card__tag">Collegiate Division</span>
-            <h3 class="college-card__title">College of Medicine</h3>
-            <p class="college-card__desc">Comprehensive clinical healthcare education, residency pathways, and specialized medical training.</p>
-            <span class="college-card__action">
-              Explore College
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </span>
+          <a href="college.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">College</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="academic-card__title">College of Medicine</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
+              <span>Clinical &amp; Medical Education</span>
+            </div>
           </a>
 
           <!-- College 3 -->
-          <a href="college.html" class="college-card">
-            <span class="college-card__tag">Collegiate Division</span>
-            <h3 class="college-card__title">College of Postgraduate Studies</h3>
-            <p class="college-card__desc">Supervising advanced research degrees, graduate diplomas, and inter-faculty academic fellowships.</p>
-            <span class="college-card__action">
-              Explore College
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </span>
+          <a href="college.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">College</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="academic-card__title">College of Postgraduate Studies</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
+              <span>Advanced Postgraduate Research</span>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
     <!-- ── SECTION 2: SCHOOLS ─────────────────────────────────────── -->
-    <section class="academic-section academic-section--alt" id="schools" aria-labelledby="schools-heading">
+    <section class="academic-section" id="schools" aria-labelledby="schools-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Section 2</span>
           <h2 class="section-title" id="schools-heading">Schools</h2>
           <p class="section-desc">Dedicated academic schools administering foundation preparation, remedial curriculum, and university-wide postgraduate programmes.</p>
         </div>
 
-        <div class="schools-grid">
+        <div class="academic-grid">
           <!-- School 1 -->
-          <a href="school.html" class="school-card">
-            <span class="school-card__tag">Foundation Studies</span>
-            <h3 class="school-card__title">School of Basic &amp; Remedial Studies</h3>
-            <p class="school-card__desc">Pre-degree transition tracks, IJMB preparatory studies, and foundation science access curricula.</p>
-            <span class="school-card__action">
-              Explore School
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </span>
+          <a href="school.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">School</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="academic-card__title">School of Basic &amp; Remedial Studies</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
+              <span>Foundation &amp; Pre-Degree Studies</span>
+            </div>
           </a>
 
           <!-- School 2 -->
-          <a href="school.html" class="school-card">
-            <span class="school-card__tag">Postgraduate School</span>
-            <h3 class="school-card__title">School of Postgraduate Studies</h3>
-            <p class="school-card__desc">Doctor of Philosophy (Ph.D.), Masters (M.Sc./M.A.), and Postgraduate Diploma (PGD) programmes.</p>
-            <span class="school-card__action">
-              Explore School
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-            </span>
+          <a href="school.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">School</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <h3 class="academic-card__title">School of Postgraduate Studies</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
+              <span>Masters, M.Phil &amp; Ph.D Programmes</span>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ── SECTION 3: FACULTIES (MINIMALIST CARDS) ────────────────── -->
+    <!-- ── SECTION 3: FACULTIES ───────────────────────────────────── -->
     <section class="academic-section" id="faculties" aria-labelledby="faculties-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Section 3</span>
           <h2 class="section-title" id="faculties-heading">Faculties</h2>
           <p class="section-desc">Core degree-awarding faculties encompassing undergraduate and graduate academic departments across disciplines.</p>
         </div>
 
-        <div class="faculties-grid">
+        <div class="academic-grid">
           <!-- 1 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Agriculture</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Agriculture</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Undergraduate &amp; Postgraduate</span>
             </div>
           </a>
 
           <!-- 2 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Arts</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Arts</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Undergraduate &amp; Postgraduate</span>
             </div>
           </a>
 
           <!-- 3 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Basic Clinical Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Basic Clinical Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Clinical Sciences Track</span>
             </div>
           </a>
 
           <!-- 4 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Basic Medical Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Basic Medical Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Undergraduate &amp; Postgraduate</span>
             </div>
           </a>
 
           <!-- 5 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Clinical Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Clinical Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Professional Degree Programmes</span>
             </div>
           </a>
 
           <!-- 6 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Computing</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Computing</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Computer Science &amp; IT</span>
             </div>
           </a>
 
           <!-- 7 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Education</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Education</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Educational Studies</span>
             </div>
           </a>
 
           <!-- 8 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Engineering</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Engineering</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Engineering Sciences</span>
             </div>
           </a>
 
           <!-- 9 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Environmental Design</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Environmental Design</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Architecture &amp; Built Environment</span>
             </div>
           </a>
 
           <!-- 10 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Law</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Law</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Legal Studies &amp; Jurisprudence</span>
             </div>
           </a>
 
           <!-- 11 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Life Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Life Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Biological Sciences</span>
             </div>
           </a>
 
           <!-- 12 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Management Science</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Management Science</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Business &amp; Administration</span>
             </div>
           </a>
 
           <!-- 13 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Medical Laboratory Science</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Medical Laboratory Science</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Laboratory Medicine</span>
             </div>
           </a>
 
           <!-- 14 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Nursing</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Nursing</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Nursing &amp; Healthcare</span>
             </div>
           </a>
 
           <!-- 15 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Pharmaceutical Science</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Pharmaceutical Science</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Pharmacy &amp; Pharmacology</span>
             </div>
           </a>
 
           <!-- 16 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Physical Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Physical Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Pure &amp; Applied Sciences</span>
             </div>
           </a>
 
           <!-- 17 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Radiography and Applied Health Sciences</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Radiography and Applied Health Sciences</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Radiography &amp; Imaging</span>
             </div>
           </a>
 
           <!-- 18 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Social Science</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Social Science</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Social &amp; Behavioral Sciences</span>
             </div>
           </a>
 
           <!-- 19 -->
-          <a href="faculty.html" class="faculty-card">
-            <div class="faculty-card__header">
-              <span class="faculty-card__tag">Faculty</span>
-              <svg class="faculty-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <a href="faculty.html" class="academic-card">
+            <div class="academic-card__header">
+              <span class="academic-card__tag">Faculty</span>
+              <svg class="academic-card__arrow" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
             </div>
-            <h3 class="faculty-card__title">Faculty of Veterinary</h3>
-            <div class="faculty-card__meta">
-              <span class="faculty-card__dot"></span>
+            <h3 class="academic-card__title">Faculty of Veterinary</h3>
+            <div class="academic-card__meta">
+              <span class="academic-card__dot"></span>
               <span>Veterinary Medicine</span>
             </div>
           </a>
@@ -595,7 +632,7 @@
       <div class="cta-inner">
         <div class="cta-text">
           <h2>Have Questions About Our Academic Programmes?</h2>
-          <p>Get in touch with the university admissions desk or the respective academic divisions.</p>
+          <p>Get in touch with the university admissions desk or respective academic divisions.</p>
         </div>
         <a href="mailto:info@fulafia.edu.ng" class="cta-btn">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
